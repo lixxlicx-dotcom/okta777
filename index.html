@@ -190,12 +190,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
     <div class="cap20" id="cap20"></div>
   </section>
 
-  <!-- S7 -->
+  <!-- S7 : 3 Kartu Ponsel (bisa beda-beda fotonya) -->
   <section class="scene" id="s7">
     <div class="zoomer" id="zoomer">
-      <div class="ph" id="ph0"><div class="in" style="background:linear-gradient(160deg,#cfd6c7,#8f9a86)"><div class="av" data-av="helmet"></div></div></div>
-      <div class="ph" id="ph2"><div class="in" style="background:linear-gradient(160deg,#efe1cd,#c9b08a)"><div class="av" data-av="cap"></div></div></div>
-      <div class="ph" id="ph1"><div class="in" style="background:linear-gradient(160deg,#4a6dff,#141f5c)"><div class="av" data-av="shock"></div></div></div>
+      <div class="ph" id="ph0"><div class="in" style="background:linear-gradient(160deg,#cfd6c7,#8f9a86)"><div class="av" data-av="hp1"></div></div></div>
+      <div class="ph" id="ph2"><div class="in" style="background:linear-gradient(160deg,#efe1cd,#c9b08a)"><div class="av" data-av="hp3"></div></div></div>
+      <div class="ph" id="ph1"><div class="in" style="background:linear-gradient(160deg,#4a6dff,#141f5c)"><div class="av" data-av="hp2"></div></div></div>
     </div>
     <div class="lab" id="la1"></div><div class="lab" id="la2"></div><div class="lab" id="la3"></div><div class="lab" id="la4"></div>
     <div class="lab" id="lb1"></div><div class="lab" id="lb2"></div><div class="lab" id="lb3"></div>
@@ -262,11 +262,16 @@ const CFG = {
   /* Upload foto PNG transparan ke folder GitHub yang sama dengan index.html.
      Jika salah satu file belum di-upload, otomatis memakai avatar bawaan. */
   IMAGES: {
-    cap: "foto1.png",     // 1. Foto Utama / Cutout
-    shock: "foto2.png",   // 2. Foto Post IG / Glitch
-    helmet: "foto3.png",  // 3. Foto Kartu / Mini
-    suit: "foto4.png",    // 4. Foto Hitam Putih 1
-    tee: "foto5.png"      // 5. Foto Hitam Putih 2
+    cap: "foto1.png",     // 1. Foto Utama (cutout + sunburst) & foto profil IG
+    shock: "foto2.png",   // 2. Foto Post IG & wajah glitch
+    helmet: "foto3.png",  // 3. Foto ikon like mini di IG
+    suit: "foto4.png",    // 4. Foto Hitam Putih 1 ("THESE GUYS MAD")
+    tee: "foto5.png",     // 5. Foto Hitam Putih 2 ("I GOT ALL THE DOUGH")
+
+    /* 3 FOTO KHUSUS DI KARTU PONSEL (bisa beda semua) */
+    hp1: "hp1.png",       // Ponsel kiri
+    hp2: "hp2.png",       // Ponsel tengah (utama yang di-zoom)
+    hp3: "hp3.png"        // Ponsel kanan
   }
 };
 const END_TIME = 14.83;   // durasi total sama seperti di video (14.83 detik)
@@ -277,7 +282,10 @@ const PEOPLE = {
   shock: {skin:"#dba37d",hair:"#14141a",phones:true,jacket:"#1d2b4d",expr:"shock"},
   helmet:{skin:"#e2b08c",cap:"#8c917c",jacket:"#5a615b",expr:"neutral"},
   suit:  {skin:"#dcb08e",hair:"#16161a",jacket:"#2b2b30",tie:true,expr:"neutral"},
-  tee:   {skin:"#d8ac88",hair:"#222226",jacket:"#74747a",expr:"talk"}
+  tee:   {skin:"#d8ac88",hair:"#222226",jacket:"#74747a",expr:"talk"},
+  hp1:   {skin:"#e2b08c",cap:"#8c917c",jacket:"#5a615b",expr:"neutral"},
+  hp2:   {skin:"#dba37d",hair:"#14141a",phones:true,jacket:"#1d2b4d",expr:"shock"},
+  hp3:   {skin:"#e9b896",cap:"#2b2f3a",jacket:"#6f6c4c",expr:"smile"}
 };
 function shade(hex,d){const n=parseInt(hex.slice(1),16);const f=v=>Math.max(0,Math.min(255,v+d));return "#"+[(n>>16)&255,(n>>8)&255,n&255].map(f).map(v=>v.toString(16).padStart(2,"0")).join("");}
 function personSVG(o){
