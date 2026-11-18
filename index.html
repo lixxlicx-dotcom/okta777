@@ -41,7 +41,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #s1 .t1{left:calc(var(--u)*8);top:calc(50% - var(--u)*22);font-size:calc(var(--u)*21)}
 #s1 .t2{left:calc(var(--u)*3);top:calc(50% - var(--u)*26);font-size:calc(var(--u)*52)}
 
-/* ---------- S2 : Elastic Card Pop & Camera Shutter (tanpa glitch) ---------- */
+/* ---------- S2 : Elastic Card Pop & Camera Shutter ---------- */
 #s2{background:#efeef5}
 #s2 .rays{position:absolute;left:50%;top:50%;width:calc(var(--u)*320);height:calc(var(--u)*320);margin:calc(var(--u)*-160) 0 0 calc(var(--u)*-160);background:repeating-conic-gradient(from 0deg,#fff 0 6deg,#8f88b9 6deg 12deg)}
 #s2 .fw{position:absolute;left:50%;top:50%;width:calc(var(--u)*84);height:calc(var(--u)*84);margin:calc(var(--u)*-42) 0 0 calc(var(--u)*-42);border-radius:calc(var(--u)*5);padding:calc(var(--u)*1.6);background:#fff;box-shadow:0 calc(var(--u)*3) calc(var(--u)*8) rgba(30,20,70,.28);will-change:transform,opacity}
@@ -139,9 +139,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 /* ---------- S11 : akhir (hitam) + interactive glow + tombol ---------- */
 #s11{background:#000}
 #s11 .glow{position:absolute;left:50%;top:50%;width:calc(var(--u)*115);height:calc(var(--u)*115);margin:calc(var(--u)*-57.5) 0 0 calc(var(--u)*-57.5);border-radius:50%;background:radial-gradient(circle,rgba(122,75,247,.38) 0,rgba(44,118,255,.16) 45%,rgba(0,0,0,0) 72%);pointer-events:none;transition:transform .18s ease-out}
-#s11 .end{position:absolute;left:0;right:0;bottom:0;padding:0 calc(var(--u)*6) calc(env(safe-area-inset-bottom) + var(--u)*10);display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*3);opacity:0}
+#s11 .end{position:absolute;left:0;right:0;bottom:0;padding:0 calc(var(--u)*6) calc(env(safe-area-inset-bottom) + var(--u)*12);display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*3.5);opacity:0}
 #s11 .end>*{pointer-events:inherit}
-.btn{appearance:none;-webkit-appearance:none;border:0;cursor:pointer;text-decoration:none;font:inherit;font-weight:700;font-size:calc(var(--u)*3.9);color:#fff;padding:calc(var(--u)*3.2) calc(var(--u)*7.5);border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);min-width:calc(var(--u)*48);text-align:center}
+.btn{appearance:none;-webkit-appearance:none;border:0;cursor:pointer;text-decoration:none;font:inherit;font-weight:700;font-size:calc(var(--u)*4);color:#fff;padding:calc(var(--u)*3.4) calc(var(--u)*8);border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);min-width:calc(var(--u)*48);text-align:center}
 .btn.main{background:#fff;color:#000;border-color:#fff;box-shadow:0 0 calc(var(--u)*5) rgba(255,255,255,.28)}
 .btn:active{transform:scale(.97)}
 
@@ -169,7 +169,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
       <div class="bw t2 hw" id="t2"></div>
     </section>
 
-    <!-- S2 : Elastic Card Pop & Camera Shutter (tanpa glitch) -->
+    <!-- S2 : Elastic Card Pop & Camera Shutter -->
     <section class="scene" id="s2">
       <div class="rays hw" id="rays"></div>
       <div class="fw" id="fw"><div class="inner av" data-av="shock"></div></div>
@@ -269,7 +269,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
       <div class="end" id="endUi">
         <a class="btn main" id="igLink" target="_blank" rel="noopener noreferrer"></a>
         <button class="btn" id="replay" type="button">↻ Putar ulang</button>
-        <button class="btn" id="shareBtn" type="button">↗ Bagikan</button>
       </div>
     </section>
 
@@ -745,25 +744,6 @@ function moveEndGlow(e){
 }
 stage.addEventListener("pointermove",moveEndGlow);
 stage.addEventListener("touchmove",moveEndGlow,{passive:true});
-
-/* Tombol Bagikan / Salin Link */
-$("#shareBtn").addEventListener("click",async()=>{
-  const btn=$("#shareBtn");
-  const url=location.href.split("?")[0];
-  if(navigator.share){
-    try{
-      await navigator.share({title:CFG.USERNAME,text:CFG.USERNAME+" — "+CFG.DURATION_LABEL,url});
-      return;
-    }catch(e){}
-  }
-  try{
-    await navigator.clipboard.writeText(url);
-    btn.textContent="✓ Link disalin!";
-    setTimeout(()=>{btn.textContent="↗ Bagikan";},2000);
-  }catch(e){
-    btn.textContent=url.replace(/^https?:\/\//,"");
-  }
-});
 
 /* ---------- daftar scene ---------- */
 const SC=[
