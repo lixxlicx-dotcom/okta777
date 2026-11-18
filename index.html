@@ -23,6 +23,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .p-av img,.mini img,.p-img img,.ph img{object-fit:cover;object-position:45% 40%}
 .hw{will-change:transform,opacity}
 
+/* Story Progress Bar di atas layar */
+#storyBar{position:absolute;left:calc(var(--u)*3);right:calc(var(--u)*3);top:calc(env(safe-area-inset-top) + var(--u)*2.2);height:calc(var(--u)*.65);border-radius:99px;background:rgba(130,130,140,.28);overflow:hidden;z-index:95;pointer-events:none}
+#storyFill{width:0%;height:100%;background:rgba(255,255,255,.92);box-shadow:0 0 calc(var(--u)*1.2) rgba(0,0,0,.25);border-radius:99px}
+
 /* Efek Flash Beat Global */
 #beatFlash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:85;mix-blend-mode:overlay}
 
@@ -36,12 +40,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #s1 .t1{left:calc(var(--u)*8);top:calc(50% - var(--u)*22);font-size:calc(var(--u)*21)}
 #s1 .t2{left:calc(var(--u)*3);top:calc(50% - var(--u)*26);font-size:calc(var(--u)*52)}
 
-/* ---------- S2 : wajah glitch (bingkai pas 1:1 agar tidak terpotong) ---------- */
+/* ---------- S2 : Elastic Card Pop & Camera Shutter (tanpa glitch) ---------- */
 #s2{background:#efeef5}
 #s2 .rays{position:absolute;left:50%;top:50%;width:calc(var(--u)*320);height:calc(var(--u)*320);margin:calc(var(--u)*-160) 0 0 calc(var(--u)*-160);background:repeating-conic-gradient(from 0deg,#fff 0 6deg,#8f88b9 6deg 12deg)}
-#s2 .fw{position:absolute;left:50%;top:50%;width:calc(var(--u)*104);height:calc(var(--u)*104);margin:calc(var(--u)*-52) 0 0 calc(var(--u)*-52)}
-#s2 .fw>*{position:absolute;inset:0}
-#s2 .fw img{object-fit:cover;object-position:45% 45%}
+#s2 .fw{position:absolute;left:50%;top:50%;width:calc(var(--u)*84);height:calc(var(--u)*84);margin:calc(var(--u)*-42) 0 0 calc(var(--u)*-42);border-radius:calc(var(--u)*5);padding:calc(var(--u)*1.6);background:#fff;box-shadow:0 calc(var(--u)*3) calc(var(--u)*8) rgba(30,20,70,.28);will-change:transform,opacity}
+#s2 .fw .inner{width:100%;height:100%;border-radius:calc(var(--u)*3.6);overflow:hidden;background:#18181c}
+#s2 .fw img{object-fit:cover;object-position:45% 42%}
+#s2 .shutter{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
 
 /* ---------- S3 : post Instagram ---------- */
 #s3{background:#fff}
@@ -52,7 +57,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .p-av span{display:block;width:100%;height:100%;border-radius:50%;border:calc(var(--u)*.6) solid #fff;background:#e9e2ff;overflow:hidden}
 .p-img{position:relative;height:calc(var(--u)*100);overflow:hidden;background:#18181c}
 .p-img .big{position:absolute;inset:0;width:100%;height:100%}
-.p-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,60,120,.14),rgba(255,120,40,.12));pointer-events:none}
+.p-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,60,120,.12),rgba(255,120,40,.1));pointer-events:none}
 .p-act{height:calc(var(--u)*12);display:flex;align-items:center;padding:0 calc(var(--u)*3.5);gap:calc(var(--u)*4)}
 .p-act svg{width:calc(var(--u)*6.6);height:calc(var(--u)*6.6);fill:none;stroke:#111;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
 .p-act svg:last-child{margin-left:auto}
@@ -67,7 +72,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .today{position:absolute;width:calc(var(--u)*24);height:calc(var(--u)*24);display:flex;align-items:center;justify-content:center}
 .today b{display:flex;align-items:center;justify-content:center;width:calc(var(--u)*15);height:calc(var(--u)*15);border-radius:50%;background:#ff3b30;color:#fff;font-size:calc(var(--u)*7.6);font-weight:600}
 
-/* ---------- S5 : cutout + sunburst ---------- */
+/* ---------- S5 : cutout + sunburst + music visualizer ---------- */
 #s5 .wash{position:absolute;inset:0;background:#fff;opacity:0}
 #s5 .card{position:absolute;left:0;top:50%;width:calc(var(--u)*100);height:calc(var(--u)*108);margin-top:calc(var(--u)*-54);transform-origin:50% 50%;background:rgba(255,255,255,0)}
 #s5 .burst{position:absolute;left:0;top:calc(var(--u)*2);width:calc(var(--u)*100);height:calc(var(--u)*100);opacity:0}
@@ -76,7 +81,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #s5 .rings circle{fill:none;stroke:#1f6bff;stroke-width:4.6}
 #s5 .streak{position:absolute;right:0;top:calc(var(--u)*56);height:calc(var(--u)*.7);width:0;background:#ff8a1a}
 #s5 .badge{position:absolute;right:calc(var(--u)*3);bottom:calc(var(--u)*3);background:#111;color:#fff;font-size:calc(var(--u)*2.1);font-weight:800;line-height:1.15;text-align:center;padding:calc(var(--u)*1) calc(var(--u)*1.6);letter-spacing:.04em;opacity:0}
-#s5 .cap20{position:absolute;left:0;right:0;top:calc(50% + var(--u)*34);text-align:center;font-size:calc(var(--u)*3.3);font-weight:600;color:#8e8e93;opacity:0}
+#s5 .capWrap{position:absolute;left:0;right:0;top:calc(50% + var(--u)*33.5);display:flex;align-items:center;justify-content:center;gap:calc(var(--u)*2);opacity:0}
+#s5 .cap20{font-size:calc(var(--u)*3.3);font-weight:700;color:#6e6e73}
+.eq{display:flex;align-items:flex-end;gap:calc(var(--u)*.6);height:calc(var(--u)*3)}
+.eq i{display:block;width:calc(var(--u)*.65);height:40%;background:#ff8a00;border-radius:99px}
 
 /* ---------- S6 : bokeh + partikel dreamy + teks ---------- */
 #s6{background:#f5efe8}
@@ -97,10 +105,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #s6 .sweep{position:absolute;left:0;top:calc(50% - var(--u)*1);width:100%;height:calc(var(--u)*5);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95) 40%,rgba(255,255,255,0));opacity:0}
 #s6 .bigw{position:absolute;left:calc(var(--u)*-3);top:calc(50% - var(--u)*15);font-size:calc(var(--u)*25);font-weight:800;color:#fff;letter-spacing:-.045em;line-height:1;white-space:nowrap;opacity:0;text-shadow:0 0 calc(var(--u)*5) rgba(20,80,220,.45)}
 
-/* ---------- S7 : kartu ponsel + label ---------- */
-#s7{background:radial-gradient(circle at 50% 45%,#fff 0,#efefef 100%)}
-#s7 .zoomer{position:absolute;left:50%;top:50%;width:0;height:0}
-.ph{position:absolute;left:calc(var(--u)*-15);top:calc(var(--u)*-27);width:calc(var(--u)*30);height:calc(var(--u)*54);border-radius:calc(var(--u)*4);background:#111;padding:calc(var(--u)*.9);box-shadow:0 calc(var(--u)*2) calc(var(--u)*5) rgba(0,0,0,.25)}
+/* ---------- S7 : 3 kartu ponsel (3D perspective) + label ---------- */
+#s7{background:radial-gradient(circle at 50% 45%,#fff 0,#efefef 100%);perspective:calc(var(--u)*220)}
+#s7 .zoomer{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
+.ph{position:absolute;left:calc(var(--u)*-15);top:calc(var(--u)*-27);width:calc(var(--u)*30);height:calc(var(--u)*54);border-radius:calc(var(--u)*4);background:#111;padding:calc(var(--u)*.9);box-shadow:0 calc(var(--u)*2.5) calc(var(--u)*6) rgba(0,0,0,.28);backface-visibility:hidden}
 .ph .in{width:100%;height:100%;border-radius:calc(var(--u)*3.2);overflow:hidden;position:relative}
 .ph .in .av{position:absolute;inset:0;width:100%;height:100%}
 .lab{position:absolute;background:#e63946;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;padding:calc(var(--u)*1) calc(var(--u)*2);white-space:nowrap;transform-origin:0 50%;opacity:0;box-shadow:0 calc(var(--u)*.8) calc(var(--u)*2) rgba(230,57,70,.35)}
@@ -108,18 +116,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 
 /* ---------- S8 : kartu jatuh ---------- */
 #s8{background:#fff}
-#s8 .fall{position:absolute;left:calc(50% - var(--u)*11);top:calc(50% - var(--u)*20);width:calc(var(--u)*22);height:calc(var(--u)*40);border-radius:calc(var(--u)*3);background:#1b1b1f;box-shadow:calc(var(--u)*1.2) 0 0 rgba(255,0,70,.6),calc(var(--u)*-1.2) 0 0 rgba(0,220,255,.6)}
+#s8 .fall{position:absolute;left:calc(50% - var(--u)*11);top:calc(50% - var(--u)*20);width:calc(var(--u)*22);height:calc(var(--u)*40);border-radius:calc(var(--u)*3);background:#1b1b1f;box-shadow:0 calc(var(--u)*2) calc(var(--u)*5) rgba(0,0,0,.25)}
 
-/* ---------- S9 / S10 : grayscale ---------- */
+/* ---------- S9 / S10 : grayscale + film grain + dreamy bloom ---------- */
 #s9,#s10{background:linear-gradient(180deg,#f2f2f4,#d8d8dc)}
-.pp{position:absolute;filter:grayscale(1) contrast(.95) brightness(1.08)}
+.pp{position:absolute;filter:grayscale(1) contrast(.98) brightness(1.06)}
 #s9 .pp{left:calc(var(--u)*-8);bottom:0;width:calc(var(--u)*100);height:calc(var(--u)*130)}
 #s10 .pp{left:calc(var(--u)*-17);bottom:calc(var(--u)*-8);width:calc(var(--u)*134);height:calc(var(--u)*170)}
 .haze{position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.7),rgba(255,255,255,0) 60%)}
+.grain{position:absolute;inset:-20%;background-image:radial-gradient(rgba(0,0,0,.09) 1px,transparent 0);background-size:calc(var(--u)*1.1) calc(var(--u)*1.1);opacity:.55;pointer-events:none}
 .sticker{position:absolute;color:#fff;font-weight:900;letter-spacing:-.04em;line-height:.88;text-shadow:0 0 calc(var(--u)*.4) #555,calc(var(--u)*.7) calc(var(--u)*.7) 0 #8c8c90}
 #s9 .tx{right:calc(var(--u)*4);bottom:calc(var(--u)*32);text-align:right;font-size:calc(var(--u)*16)}
-#s10 .sls{position:absolute;inset:0}
-#s10 .sls>div{position:absolute;inset:0}
+#s10 .bloom{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.85),rgba(255,255,255,0) 65%);opacity:0;pointer-events:none}
 #s10 .fin{left:calc(var(--u)*5);bottom:calc(var(--u)*22);font-size:calc(var(--u)*13);font-style:italic;color:#111;transform:rotate(-3deg);transform-origin:0 100%;-webkit-text-stroke:calc(var(--u)*1.1) #fff;paint-order:stroke fill;text-shadow:none}
 #s10 .finbig{left:0;right:0;bottom:calc(var(--u)*5);text-align:center;font-size:calc(var(--u)*24);color:#dcdcdc;text-shadow:calc(var(--u)*-.5) calc(var(--u)*-.5) 0 #fff,calc(var(--u)*.8) calc(var(--u)*.8) calc(var(--u)*1) rgba(0,0,0,.28);opacity:0}
 
@@ -144,6 +152,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 <audio id="bgm" preload="auto" playsinline></audio>
 
 <div id="stage">
+  <div id="storyBar"><div id="storyFill"></div></div>
+
   <div id="cam">
 
     <!-- S1 -->
@@ -154,10 +164,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
       <div class="bw t2 hw" id="t2"></div>
     </section>
 
-    <!-- S2 : wajah glitch -->
+    <!-- S2 : Elastic Card Pop & Camera Shutter (tanpa glitch) -->
     <section class="scene" id="s2">
       <div class="rays hw" id="rays"></div>
-      <div class="fw" id="fw"></div>
+      <div class="fw" id="fw"><div class="inner av" data-av="shock"></div></div>
+      <div class="shutter" id="shutter"></div>
     </section>
 
     <!-- S3 : Instagram -->
@@ -203,7 +214,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
         <div class="streak" id="streak"></div>
         <div class="badge" id="badge"></div>
       </div>
-      <div class="cap20" id="cap20"></div>
+      <div class="capWrap" id="capWrap">
+        <span class="eq" id="eqL"><i></i><i></i><i></i></span>
+        <span class="cap20" id="cap20"></span>
+        <span class="eq" id="eqR"><i></i><i></i><i></i></span>
+      </div>
     </section>
 
     <!-- S7 : 3 Kartu Ponsel -->
@@ -223,15 +238,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 
     <!-- S9 -->
     <section class="scene" id="s9">
-      <div class="pp av" data-av="suit" id="pp9"></div><div class="haze"></div>
+      <div class="pp av" data-av="suit" id="pp9"></div>
+      <div class="grain" id="gr9"></div>
+      <div class="haze"></div>
       <div class="sticker tx hw" id="tx9"></div>
     </section>
 
     <!-- S10 -->
     <section class="scene" id="s10">
       <div class="pp av" data-av="tee" id="pp10"></div>
-      <div class="sls" id="sls"></div>
+      <div class="grain" id="gr10"></div>
       <div class="haze"></div>
+      <div class="bloom" id="bloom10"></div>
       <div class="sticker fin hw" id="fin"></div>
       <div class="sticker finbig hw" id="finbig"></div>
     </section>
@@ -449,16 +467,10 @@ const LAB=[
 ];
 LAB.forEach(l=>{l.el.textContent=l.txt;});
 
-/* slice glitch S2 & S10 */
-const SL2=[],SL10=[];
-function makeSlices(host,srcHTML,n,store,cls){for(let i=0;i<n;i++){const d=document.createElement("div");d.innerHTML=srcHTML;if(cls)d.className=cls;const a=(i/n)*100,b=100-((i+1)/n)*100;d.style.clipPath=`inset(${a}% 0 ${b}% 0)`;host.appendChild(d);store.push(d);}}
-makeSlices($("#fw"),avatar("shock"),8,SL2,"");
-makeSlices($("#sls"),'<div class="pp av" style="left:calc(var(--u)*-17);bottom:calc(var(--u)*-8);width:calc(var(--u)*134);height:calc(var(--u)*170)">'+avatar("tee")+"</div>",8,SL10,"");
-SL2.forEach(d=>{d.style.position="absolute";d.style.inset="0";});
-
 /* ---------- EFEK KAMERA & BEAT GLOBAL ---------- */
 const BEATS=[0.62,1.50,4.45,8.80,9.30,11.25,12.85];
 function updateBeatFX(T){
+  $("#storyFill").style.width=clamp(T/END_TIME)*100+"%";
   let pulse=0;
   for(const b of BEATS){
     if(T>=b && T<b+0.28){
@@ -468,11 +480,11 @@ function updateBeatFX(T){
   }
   const cam=$("#cam"),fl=$("#beatFlash");
   if(pulse>0.01){
-    const sc=1+pulse*0.032;
-    const dx=(rnd(Math.floor(T*60))-0.5)*1.4*U*pulse;
-    const dy=(rnd(Math.floor(T*60)+7)-0.5)*1.4*U*pulse;
+    const sc=1+pulse*0.028;
+    const dx=(rnd(Math.floor(T*60))-0.5)*1.1*U*pulse;
+    const dy=(rnd(Math.floor(T*60)+7)-0.5)*1.1*U*pulse;
     cam.style.transform=`translate3d(${dx.toFixed(1)}px,${dy.toFixed(1)}px,0) scale(${sc.toFixed(4)})`;
-    fl.style.opacity=(pulse*0.32).toFixed(2);
+    fl.style.opacity=(pulse*0.3).toFixed(2);
   }else{
     cam.style.transform="translate3d(0,0,0) scale(1)";
     fl.style.opacity="0";
@@ -489,13 +501,17 @@ function s1(t){
   sl.style.opacity=Math.sin(Math.PI*sp)*0.85;
   sl.style.transform=`translateX(${lerp(20,-45,sp)}%)`;
 }
+/* S2: Elastic Card Pop & Camera Shutter (menggantikan glitch) */
 function s2(t){
-  const k=Math.floor(t*22);
-  $("#rays").style.transform=`rotate(${t*50}deg)`;
-  const sc=lerp(.88,1.08,eo(prog(t,0,.55)));
-  $("#fw").style.transform=`translate(${(rnd(k)-.5)*2.5*U}px,${(rnd(k+9)-.5)*1.8*U}px) scale(${sc})`;
-  const g=t>.12?1:0;
-  SL2.forEach((d,i)=>{const r=rnd(k*8+i);d.style.transform=`translateX(${g*(r-.5)*(12+t*22)*U}px)`;d.style.filter=`saturate(2.2) hue-rotate(${Math.floor(rnd(k+i)*360)}deg) contrast(1.08)`;});
+  $("#rays").style.transform=`rotate(${t*55}deg)`;
+  const pop=eb(prog(t,0,.28));
+  const zoomOut=eio(prog(t,.34,.55));
+  const sc=lerp(0.55,1.02,pop)+zoomOut*0.24;
+  const rot=lerp(-8,3,eo(prog(t,0,.45)))*(1-zoomOut);
+  const fw=$("#fw");
+  fw.style.transform=`scale(${sc.toFixed(3)}) rotate(${rot.toFixed(2)}deg)`;
+  fw.style.opacity=1-prog(t,.44,.55);
+  $("#shutter").style.opacity=Math.max(0,1-prog(t,0,.18))*0.85;
 }
 /* Kamera post IG diatur agar foto terlihat utuh dulu, lalu geser ke like/caption */
 const CAM=[[0,46,66,1.85],[.5,46,74,1.65],[.95,26,126,2.05],[1.6,26,128,2.05]];
@@ -543,7 +559,15 @@ function s5(t,T){
   card.style.opacity=1-prog(T,5.95,6.25);
   card.style.filter=z>.05?`blur(${(z*6).toFixed(1)}px)`:"none";
   $("#badge").style.opacity=prog(T,5.5,5.7);
-  const c=$("#cap20");c.style.opacity=prog(T,5.55,5.75)*(1-prog(T,5.8,5.95));c.style.transform=`translateY(${(1-prog(T,5.55,5.75))*U}px)`;
+
+  /* Label 20 Min + Music Visualizer Bars */
+  const cw=$("#capWrap");
+  cw.style.opacity=prog(T,5.5,5.72)*(1-prog(T,5.8,5.95));
+  cw.style.transform=`translateY(${(1-prog(T,5.5,5.72))*U}px)`;
+  document.querySelectorAll(".eq i").forEach((bar,idx)=>{
+    const h=35+65*Math.abs(Math.sin(T*15+idx*1.4));
+    bar.style.height=h.toFixed(0)+"%";
+  });
 }
 function s6(t,T){
   $("#bk").style.transform=`scale(${1.04+(T-5)*.035}) translate(${Math.sin(T*.8)*1.2}%,${Math.cos(T*.7)*1})`;
@@ -571,12 +595,13 @@ function s6(t,T){
   big.style.filter=bp<1?`blur(${((1-bp)*10).toFixed(1)}px)`:"none";
 }
 function s7(t,T){
-  [["#ph0",-21,4,-9,0],["#ph2",21,6,9,.1],["#ph1",0,0,0,.2]].forEach(([id,x,y,r,d],i)=>{
+  const z=eio(prog(T,10.22,10.85));
+  [["#ph0",-21,4,-9,0,18],["#ph2",21,6,9,.1,-18],["#ph1",0,0,0,.2,0]].forEach(([id,x,y,r,d,ry],i)=>{
     const p=eb(prog(T,9.3+d,9.3+d+.48)),el=$(id);
-    el.style.transform=`translate3d(${x*U}px,${(y+(1-p)*80)*U}px,0) rotate(${r*(0.4+.6*p)}deg) scale(${i===2?1.08:1})`;
+    const curRy=ry*(1-z*0.7);
+    el.style.transform=`translate3d(${x*U}px,${(y+(1-p)*80)*U}px,0) rotateY(${curRy.toFixed(1)}deg) rotate(${r*(0.4+.6*p)}deg) scale(${i===2?1.08:1})`;
     el.style.opacity=clamp(p*4);
   });
-  const z=eio(prog(T,10.22,10.85));
   $("#zoomer").style.transform=`scale(${lerp(1.45,3.1,z)})`;
   LAB.forEach(l=>{
     const p=eb(prog(T,l.a,l.a+.22)),vis=(T>=l.a&&T<l.b)?1:0;
@@ -595,11 +620,16 @@ function s9(t){
   const a=eo(prog(t,.08,.48)),tx=$("#tx9");
   tx.style.transform=`translate3d(${(1-a)*60*U}px,0,0)`;tx.style.opacity=a;tx.style.filter=a<1?`blur(${((1-a)*8).toFixed(1)}px)`:"none";
   $("#pp9").style.transform=`scale(${1+t*.05})`;
+  const k=Math.floor(t*18);
+  $("#gr9").style.transform=`translate(${(rnd(k)-.5)*2*U}px,${(rnd(k+3)-.5)*2*U}px)`;
 }
+/* S10: Dreamy Bloom & Smooth Zoom (menggantikan glitch) */
 function s10(t,T){
-  $("#pp10").style.transform=`scale(${1+t*.05})`;
-  const k=Math.floor(T*24),g=(T>=12.15&&T<12.5)?1:0;
-  SL10.forEach((d,i)=>{d.style.opacity=g;d.style.transform=`translateX(${(rnd(k*8+i)-.5)*30*U}px)`;});
+  $("#pp10").style.transform=`scale(${1+t*.06})`;
+  const k=Math.floor(t*18);
+  $("#gr10").style.transform=`translate(${(rnd(k)-.5)*2*U}px,${(rnd(k+5)-.5)*2*U}px)`;
+  const bl=Math.sin(Math.PI*prog(T,12.15,12.75));
+  $("#bloom10").style.opacity=(bl*0.65).toFixed(2);
   const f=$("#fin"),fp=eo(prog(T,12.15,12.35))*(1-prog(T,12.65,12.85));
   f.style.opacity=fp;f.style.transform=`rotate(-3deg) translateY(${(1-eo(prog(T,12.15,12.35)))*6*U}px)`;
   const b=$("#finbig"),bp=eo(prog(T,12.85,13.1));
@@ -614,7 +644,7 @@ function s11(t,T){
 /* ---------- daftar scene ---------- */
 const SC=[
  {el:$("#s1"),a:0,b:1.55,fn:s1},
- {el:$("#s2"),a:1.5,b:2.05,fn:s2,fade:.06},
+ {el:$("#s2"),a:1.5,b:2.05,fn:s2,fade:.05},
  {el:$("#s3"),a:2.0,b:3.55,fn:s3,fade:.08},
  {el:$("#s4"),a:3.4,b:4.7,fn:s4,fade:.15},
  {el:$("#s6"),a:5.0,b:9.45,fn:s6,fade:.5},
