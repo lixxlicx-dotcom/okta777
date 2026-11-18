@@ -20,14 +20,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .av{width:100%;height:100%}
 .av svg,.av img{width:100%;height:100%;display:block}
 .av img{object-fit:contain;object-position:center bottom}
+.p-av img,.mini img{object-fit:cover;object-position:center top}
 .hw{will-change:transform,opacity}
 
-/* ---------- S1 : I HIT / FAST ---------- */
+/* ---------- S1 : I HIT IT / FAST ---------- */
 #s1{background:linear-gradient(150deg,#5a2ee0 0%,#7a4bf7 55%,#9566ff 100%)}
 #s1 .orb{position:absolute;left:calc(var(--u)*-26);bottom:calc(var(--u)*-22);width:calc(var(--u)*96);height:calc(var(--u)*96);border-radius:50%;background:radial-gradient(circle at 35% 30%,#cdb9ff,#8c5cff 60%,#6a3bea)}
 #s1 .band{position:absolute;left:0;right:0;top:calc(50% - var(--u)*40);height:calc(var(--u)*62);background:linear-gradient(90deg,rgba(255,255,255,.14),rgba(255,255,255,0))}
 .bw{position:absolute;color:#fff;font-weight:900;line-height:.85;letter-spacing:-.045em;white-space:nowrap}
-#s1 .t1{left:calc(var(--u)*8);top:calc(50% - var(--u)*22);font-size:calc(var(--u)*25)}
+#s1 .t1{left:calc(var(--u)*8);top:calc(50% - var(--u)*22);font-size:calc(var(--u)*21)}
 #s1 .t2{left:calc(var(--u)*3);top:calc(50% - var(--u)*26);font-size:calc(var(--u)*52)}
 
 /* ---------- S2 : wajah glitch ---------- */
@@ -86,7 +87,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .ly{position:absolute;left:calc(var(--u)*7);top:calc(50% - var(--u)*10);font-size:calc(var(--u)*10.5);font-weight:600;color:#fff;letter-spacing:-.025em;line-height:1.14;white-space:nowrap;text-shadow:0 0 calc(var(--u)*4) rgba(0,40,120,.35);opacity:0}
 .ly .w{display:inline-block;margin-right:.26em;opacity:0}
 #s6 .sweep{position:absolute;left:0;top:calc(50% - var(--u)*1);width:100%;height:calc(var(--u)*5);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95) 40%,rgba(255,255,255,0));opacity:0}
-#s6 .bigw{position:absolute;left:calc(var(--u)*-7);top:calc(50% - var(--u)*15);font-size:calc(var(--u)*29);font-weight:800;color:#fff;letter-spacing:-.045em;line-height:1;white-space:nowrap;opacity:0;text-shadow:0 0 calc(var(--u)*5) rgba(20,80,220,.45)}
+#s6 .bigw{position:absolute;left:calc(var(--u)*-3);top:calc(50% - var(--u)*15);font-size:calc(var(--u)*25);font-weight:800;color:#fff;letter-spacing:-.045em;line-height:1;white-space:nowrap;opacity:0;text-shadow:0 0 calc(var(--u)*5) rgba(20,80,220,.45)}
 
 /* ---------- S7 : kartu ponsel + label ---------- */
 #s7{background:radial-gradient(circle at 50% 45%,#fff 0,#efefef 100%)}
@@ -108,7 +109,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #s10 .pp{left:calc(var(--u)*-17);bottom:calc(var(--u)*-8);width:calc(var(--u)*134);height:calc(var(--u)*170)}
 .haze{position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.7),rgba(255,255,255,0) 60%)}
 .sticker{position:absolute;color:#fff;font-weight:900;letter-spacing:-.04em;line-height:.88;text-shadow:0 0 calc(var(--u)*.4) #555,calc(var(--u)*.7) calc(var(--u)*.7) 0 #8c8c90}
-#s9 .tx{right:calc(var(--u)*4);bottom:calc(var(--u)*32);text-align:right;font-size:calc(var(--u)*21)}
+#s9 .tx{right:calc(var(--u)*4);bottom:calc(var(--u)*32);text-align:right;font-size:calc(var(--u)*16)}
 #s10 .sls{position:absolute;inset:0}
 #s10 .sls>div{position:absolute;inset:0}
 #s10 .fin{left:calc(var(--u)*5);bottom:calc(var(--u)*22);font-size:calc(var(--u)*13);font-style:italic;color:#111;transform:rotate(-3deg);transform-origin:0 100%;-webkit-text-stroke:calc(var(--u)*1.1) #fff;paint-order:stroke fill;text-shadow:none}
@@ -236,32 +237,39 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
    >>> BAGIAN YANG MUDAH ANDA UBAH <<<
    ========================================================= */
 const CFG = {
-  USERNAME: "OKTA777",                              // nama di scene Instagram + tombol akhir
-  INSTAGRAM_URL: "https://www.instagram.com/okta777/", // GANTI dengan link Instagram Anda
-  LIKED_BY: "bocikematian",
+  USERNAME: "OKTA777",
+  INSTAGRAM_URL: "https://www.instagram.com/okta777/",
+  LIKED_BY: "shockvfx",
   LIKES: "67,020",
   COMMENTS: "1,204",
-  CAPTION: "Hit it ⚡",
-  BADGE: "BOCIL KEMATIAN",
+  CAPTION: "I hit it slow.",
+  BADGE: "PARENTAL ADVISORY",
   DURATION_LABEL: "20 Min",
 
-  INTRO: ["I HIT", "FAST"],
-  LYRIC_A: ["Here we go,", "tonight we shine"],
-  LYRIC_B: ["Hold tight,", "the best is next"],
-  BIG_WORD: "tonight",
-  STICKER_TOP: ["MAKE THE", "BIG", "MOVES"],
+  /* LIRIK SESUAI VIDEO (20 Min - Lil Uzi Vert) */
+  INTRO: ["I HIT IT", "FAST"],
+  LYRIC_A: ["Gotta get ready,", "tonight is my show."],
+  LYRIC_B: ["If you okay,", "you might open"],
+  BIG_WORD: "my show",
+  STICKER_TOP: ["GOT THE", "BIG", "POINTERS"],
   STICKER_LEFT: "RIGHT",
-  STICKER_NOW: "NOW",
-  STICKER_GO: ["LET'S", "GO"],
-  CREW: ["THE", "CREW"],
-  FINAL: ["KEEP", "IT", "ALL"],
-  FINAL_BIG: "MOVING",
+  STICKER_NOW: "UNDER",
+  STICKER_GO: ["MY", "NOSE"],
+  CREW: ["THESE GUYS", "MAD"],
+  FINAL: ["I GOT", "ALL", "THE"],
+  FINAL_BIG: "DOUGH",
 
-  /* Foto sendiri (opsional). Taruh file PNG transparan di folder yang sama dengan index.html,
-     lalu isi namanya, contoh: cap: "foto1.png". Kosong = memakai ilustrasi bawaan. */
-  IMAGES: { cap: "", shock: "", helmet: "", suit: "", tee: "" }
+  /* Upload foto PNG transparan ke folder GitHub yang sama dengan index.html.
+     Jika salah satu file belum di-upload, otomatis memakai avatar bawaan. */
+  IMAGES: {
+    cap: "foto1.png",     // 1. Foto Utama / Cutout
+    shock: "foto2.png",   // 2. Foto Post IG / Glitch
+    helmet: "foto3.png",  // 3. Foto Kartu / Mini
+    suit: "foto4.png",    // 4. Foto Hitam Putih 1
+    tee: "foto5.png"      // 5. Foto Hitam Putih 2
+  }
 };
-const END_TIME = 14.4;   // durasi total animasi (detik)
+const END_TIME = 14.83;   // durasi total sama seperti di video (14.83 detik)
 
 /* ---------- ilustrasi orang (SVG bawaan) ---------- */
 const PEOPLE = {
@@ -300,7 +308,8 @@ function personSVG(o){
   if(o.cap) s+=`<path d="M50 92C46 36 84 26 100 26s54 10 50 66z" fill="${o.cap}"/><path d="M40 94c40-8 80-8 120 0-6 10-30 13-60 11s-54-1-60-11z" fill="${shade(o.cap,-28)}"/>`;
   return s+"</svg>";
 }
-function avatar(k){const src=CFG.IMAGES[k];return src?`<img src="${src}" alt="">`:personSVG(PEOPLE[k]);}
+function fallbackAv(img,k){img.outerHTML=personSVG(PEOPLE[k]);}
+function avatar(k){const src=CFG.IMAGES[k];return src?`<img src="${src}" alt="" onerror="fallbackAv(this,'${k}')">`:personSVG(PEOPLE[k]);}
 
 /* ---------- helper animasi ---------- */
 const $=s=>document.querySelector(s);
@@ -341,7 +350,7 @@ CAL.forEach((row,r)=>row.forEach((n,c)=>{
 }));
 
 /* teks bokeh */
-const BLOCKS=[{a:5.95,b:7.35,lines:CFG.LYRIC_A},{a:7.55,b:8.6,lines:CFG.LYRIC_B}];
+const BLOCKS=[{a:5.85,b:7.2,lines:CFG.LYRIC_A},{a:7.35,b:8.45,lines:CFG.LYRIC_B}];
 BLOCKS.forEach(bl=>{
   const el=document.createElement("div");el.className="ly";bl.words=[];
   bl.lines.forEach(line=>{const ln=document.createElement("div");line.split(" ").forEach(w=>{const s=document.createElement("span");s.className="w";s.textContent=w;ln.appendChild(s);bl.words.push(s);});el.appendChild(ln);});
@@ -350,13 +359,13 @@ BLOCKS.forEach(bl=>{
 
 /* label merah S7 */
 const LAB=[
- {el:$("#la1"),txt:CFG.STICKER_TOP[0],fs:3.8,x:50,y:-46,rot:-2,a:9.65,b:10.28},
- {el:$("#la2"),txt:CFG.STICKER_TOP[1],fs:6.6,x:56,y:-40,rot:-1,a:9.75,b:10.28},
- {el:$("#la3"),txt:CFG.STICKER_TOP[2],fs:6.6,x:50,y:-30,rot:-2,a:9.85,b:10.28},
- {el:$("#la4"),txt:CFG.STICKER_LEFT,fs:10,x:6,y:34,rot:-2,a:10.0,b:10.28},
- {el:$("#lb1"),txt:CFG.STICKER_NOW,fs:10,x:58,y:-52,rot:-2,a:10.5,b:99},
- {el:$("#lb2"),txt:CFG.STICKER_GO[0],fs:15,x:3,y:30,rot:-2,a:10.62,b:99},
- {el:$("#lb3"),txt:CFG.STICKER_GO[1],fs:15,x:3,y:44,rot:-2,a:10.72,b:99}
+ {el:$("#la1"),txt:CFG.STICKER_TOP[0],fs:3.8,x:50,y:-46,rot:-2,a:9.55,b:10.22},
+ {el:$("#la2"),txt:CFG.STICKER_TOP[1],fs:6.6,x:56,y:-40,rot:-1,a:9.65,b:10.22},
+ {el:$("#la3"),txt:CFG.STICKER_TOP[2],fs:5.4,x:48,y:-30,rot:-2,a:9.75,b:10.22},
+ {el:$("#la4"),txt:CFG.STICKER_LEFT,fs:9.5,x:6,y:34,rot:-2,a:9.92,b:10.22},
+ {el:$("#lb1"),txt:CFG.STICKER_NOW,fs:8.5,x:54,y:-52,rot:-2,a:10.42,b:99},
+ {el:$("#lb2"),txt:CFG.STICKER_GO[0],fs:13.5,x:3,y:30,rot:-2,a:10.55,b:99},
+ {el:$("#lb3"),txt:CFG.STICKER_GO[1],fs:13.5,x:3,y:44,rot:-2,a:10.65,b:99}
 ];
 LAB.forEach(l=>{l.el.textContent=l.txt;});
 
@@ -364,7 +373,7 @@ LAB.forEach(l=>{l.el.textContent=l.txt;});
 const SL2=[],SL10=[];
 function makeSlices(host,srcHTML,n,store,cls){for(let i=0;i<n;i++){const d=document.createElement("div");d.innerHTML=srcHTML;if(cls)d.className=cls;const a=(i/n)*100,b=100-((i+1)/n)*100;d.style.clipPath=`inset(${a}% 0 ${b}% 0)`;host.appendChild(d);store.push(d);}}
 makeSlices($("#fw"),avatar("shock"),8,SL2,"");
-makeSlices($("#sls"),'<div class="pp av" style="'+'left:calc(var(--u)*-17);bottom:calc(var(--u)*-8);width:calc(var(--u)*134);height:calc(var(--u)*170)">'+avatar("tee")+"</div>",8,SL10,"");
+makeSlices($("#sls"),'<div class="pp av" style="left:calc(var(--u)*-17);bottom:calc(var(--u)*-8);width:calc(var(--u)*134);height:calc(var(--u)*170)">'+avatar("tee")+"</div>",8,SL10,"");
 SL2.forEach(d=>{d.style.position="absolute";d.style.inset="0";});
 
 /* ---------- SCENE FUNCTIONS (t = waktu lokal, T = waktu global) ---------- */
@@ -394,7 +403,6 @@ function s3(t){
 }
 function s4(t){
   const g=$("#grid");
-  // kamera: diam di "29" -> geser ke "1" -> zoom
   const p1=eq(prog(t,.3,.75)),p2=eio(prog(t,.75,1.2));
   const cx=lerp(12,84,p1),cy=36,s=lerp(1.1,1.5,p1)+p2*.5;
   g.style.transform=`translate3d(${W/2-cx*U*s}px,${H/2-cy*U*s}px,0) scale(${s})`;
@@ -410,30 +418,25 @@ function s5(t,T){
   $("#wash").style.opacity=prog(T,4.3,4.55)*(1-prog(T,5.3,5.5));
   card.style.backgroundColor=`rgba(255,255,255,${prog(T,4.35,4.55)})`;
   card.style.overflow=T<4.6?"visible":"hidden";
-  // cutout terbang masuk
   const p=prog(T,3.95,4.6),e=eb(p);
   const pers=$("#pers"),bl=lerp(4,0,p);
   pers.style.transform=`translate3d(${(1-e)*46*U}px,${-(1-e)*96*U}px,0) rotate(${(1-e)*38}deg) scale(${lerp(.3,1,e)})`;
   pers.style.opacity=clamp(p*6);pers.style.filter=bl>.2?`blur(${bl}px)`:"none";
-  // sunburst
   const bp=eb(prog(T,4.45,4.9)),b=$("#burst");
   b.style.opacity=bp>0?1:0;b.style.transform=`scale(${Math.max(bp,0)}) rotate(${T*12}deg)`;
-  // ring biru
   document.querySelectorAll("#ringG circle[pathLength]").forEach((c,i)=>{const pp=prog(T,4.6+i*.06,5.0+i*.06);c.style.strokeDasharray="1";c.style.strokeDashoffset=1-pp;});
   $("#ringDot").style.opacity=prog(T,4.9,5.1);
   $("#ringG").style.transformOrigin="50% 50%";$("#ringG").style.transform=`rotate(${(T-4.6)*24}deg)`;
-  // garis oranye
   const st=$("#streak");st.style.width=eo(prog(T,4.3,4.6))*34*U+"px";st.style.opacity=1-prog(T,4.7,4.9);
-  // menyusut jadi kartu, lalu zoom-out
-  const sh=eio(prog(T,5.15,5.65)),z=eio(prog(T,5.85,6.3));
-  let sc=lerp(1,.56,sh);if(T>5.85)sc=lerp(.56,3,z);
+  const sh=eio(prog(T,5.15,5.65)),z=eio(prog(T,5.8,6.2));
+  let sc=lerp(1,.56,sh);if(T>5.8)sc=lerp(.56,3,z);
   card.style.transform=`scale(${sc})`;
   card.style.borderRadius=lerp(0,6*U,sh)+"px";
   card.style.boxShadow=`0 ${2*U}px ${6*U}px rgba(0,0,0,${.22*sh*(1-z)})`;
-  card.style.opacity=1-prog(T,6.0,6.3);
+  card.style.opacity=1-prog(T,5.95,6.25);
   card.style.filter=z>.05?`blur(${(z*6).toFixed(1)}px)`:"none";
   $("#badge").style.opacity=prog(T,5.5,5.7);
-  const c=$("#cap20");c.style.opacity=prog(T,5.55,5.75)*(1-prog(T,5.85,6.0));c.style.transform=`translateY(${(1-prog(T,5.55,5.75))*U}px)`;
+  const c=$("#cap20");c.style.opacity=prog(T,5.55,5.75)*(1-prog(T,5.8,5.95));c.style.transform=`translateY(${(1-prog(T,5.55,5.75))*U}px)`;
 }
 function s6(t,T){
   $("#bk").style.transform=`scale(${1.04+(T-5)*.035}) translate(${Math.sin(T*.8)*1.2}%,${Math.cos(T*.7)*1})`;
@@ -442,56 +445,55 @@ function s6(t,T){
     bl.el.style.opacity=(T>=bl.a&&T<bl.b+.3)?1:0;
     bl.el.style.transform=`translateY(${-out*U}px)`;
     bl.words.forEach((w,i)=>{
-      const p=eo(prog(T,bl.a+i*.13,bl.a+i*.13+.4));
+      const p=eo(prog(T,bl.a+i*.12,bl.a+i*.12+.38));
       const bl2=(1-p)*8+out*10;
       w.style.opacity=p*(1-out);w.style.transform=`translateY(${(1-p)*1.6*U}px)`;
       w.style.filter=bl2>.2?`blur(${bl2.toFixed(1)}px)`:"none";
     });
   });
-  const sw=prog(T,8.55,8.95),sE=$("#sweep");
+  const sw=prog(T,8.4,8.8),sE=$("#sweep");
   sE.style.opacity=sw>0&&sw<1?1:0;sE.style.transform=`translateX(${lerp(-100,100,eio(sw))}%)`;
-  const bp=eo(prog(T,8.95,9.3)),big=$("#bigw");
-  big.style.opacity=bp;big.style.transform=`scale(${lerp(1.35,1,bp)+prog(T,9.3,9.5)*.1})`;
+  const bp=eo(prog(T,8.8,9.15)),big=$("#bigw");
+  big.style.opacity=bp;big.style.transform=`scale(${lerp(1.35,1,bp)+prog(T,9.15,9.4)*.1})`;
   big.style.filter=bp<1?`blur(${((1-bp)*10).toFixed(1)}px)`:"none";
 }
 function s7(t,T){
-  // kartu naik
   [["#ph0",-21,4,-9,0],["#ph2",21,6,9,.1],["#ph1",0,0,0,.2]].forEach(([id,x,y,r,d],i)=>{
-    const p=eb(prog(T,9.4+d,9.4+d+.5)),el=$(id);
+    const p=eb(prog(T,9.3+d,9.3+d+.48)),el=$(id);
     el.style.transform=`translate3d(${x*U}px,${(y+(1-p)*80)*U}px,0) rotate(${r*(0.4+.6*p)}deg) scale(${i===2?1.08:1})`;
     el.style.opacity=clamp(p*4);
   });
-  const z=eio(prog(T,10.3,10.9));
+  const z=eio(prog(T,10.22,10.85));
   $("#zoomer").style.transform=`scale(${lerp(1.45,3.1,z)})`;
   LAB.forEach(l=>{
-    const p=eb(prog(T,l.a,l.a+.25)),vis=(T>=l.a&&T<l.b)?1:0;
+    const p=eb(prog(T,l.a,l.a+.22)),vis=(T>=l.a&&T<l.b)?1:0;
     l.el.style.fontSize=l.fs*U+"px";
     l.el.style.left=l.x*U+"px";l.el.style.top=`calc(50% + ${l.y*U}px)`;
     l.el.style.opacity=vis;l.el.style.transform=`rotate(${l.rot}deg) scaleY(${Math.max(p,0)})`;
   });
-  $("#wo").style.opacity=prog(T,10.8,11.05);
+  $("#wo").style.opacity=prog(T,10.75,11.0);
 }
 function s8(t){
-  const p=prog(t,0,.55),f=$("#fall");
+  const p=prog(t,0,.5),f=$("#fall");
   f.style.transform=`translate3d(${p*5*U}px,${(eo(p)*36)*U}px,0) rotate(${20+p*280}deg) scale(${lerp(1,.6,p)})`;
-  f.style.opacity=1-prog(t,.35,.6);f.style.filter=`blur(${(p*4).toFixed(1)}px)`;
+  f.style.opacity=1-prog(t,.32,.52);f.style.filter=`blur(${(p*4).toFixed(1)}px)`;
 }
 function s9(t){
-  const a=eo(prog(t,.1,.55)),tx=$("#tx9");
+  const a=eo(prog(t,.08,.48)),tx=$("#tx9");
   tx.style.transform=`translate3d(${(1-a)*60*U}px,0,0)`;tx.style.opacity=a;tx.style.filter=a<1?`blur(${((1-a)*8).toFixed(1)}px)`:"none";
   $("#pp9").style.transform=`scale(${1+t*.05})`;
 }
 function s10(t,T){
   $("#pp10").style.transform=`scale(${1+t*.05})`;
-  const k=Math.floor(T*24),g=(T>=12.45&&T<12.8)?1:0;
+  const k=Math.floor(T*24),g=(T>=12.15&&T<12.5)?1:0;
   SL10.forEach((d,i)=>{d.style.opacity=g;d.style.transform=`translateX(${(rnd(k*8+i)-.5)*30*U}px)`;});
-  const f=$("#fin"),fp=eo(prog(T,12.45,12.65))*(1-prog(T,12.95,13.1));
-  f.style.opacity=fp;f.style.transform=`rotate(-3deg) translateY(${(1-eo(prog(T,12.45,12.65)))*6*U}px)`;
-  const b=$("#finbig"),bp=eo(prog(T,13.0,13.25));
+  const f=$("#fin"),fp=eo(prog(T,12.15,12.35))*(1-prog(T,12.65,12.85));
+  f.style.opacity=fp;f.style.transform=`rotate(-3deg) translateY(${(1-eo(prog(T,12.15,12.35)))*6*U}px)`;
+  const b=$("#finbig"),bp=eo(prog(T,12.85,13.1));
   b.style.opacity=bp;b.style.transform=`scale(${lerp(1.12,1,bp)})`;
 }
 function s11(t,T){
-  const e=$("#endUi"),p=prog(T,13.9,14.3);
+  const e=$("#endUi"),p=prog(T,13.5,14.0);
   e.style.opacity=p;e.style.pointerEvents=p>.5?"auto":"none";
 }
 
@@ -501,13 +503,13 @@ const SC=[
  {el:$("#s2"),a:1.5,b:2.05,fn:s2,fade:.06},
  {el:$("#s3"),a:2.0,b:3.55,fn:s3,fade:.08},
  {el:$("#s4"),a:3.4,b:4.7,fn:s4,fade:.15},
- {el:$("#s6"),a:5.0,b:9.6,fn:s6,fade:.5},
- {el:$("#s5"),a:3.9,b:6.35,fn:s5},
- {el:$("#s7"),a:9.35,b:11.1,fn:s7,fade:.2},
- {el:$("#s8"),a:10.9,b:11.6,fn:s8,fade:.15},
- {el:$("#s9"),a:11.4,b:12.15,fn:s9,fade:.2},
- {el:$("#s10"),a:12.0,b:13.7,fn:s10,fade:.2},
- {el:$("#s11"),a:13.35,b:999,fn:s11,fade:.5}
+ {el:$("#s6"),a:5.0,b:9.45,fn:s6,fade:.5},
+ {el:$("#s5"),a:3.9,b:6.3,fn:s5},
+ {el:$("#s7"),a:9.25,b:11.05,fn:s7,fade:.2},
+ {el:$("#s8"),a:10.85,b:11.4,fn:s8,fade:.12},
+ {el:$("#s9"),a:11.25,b:12.0,fn:s9,fade:.15},
+ {el:$("#s10"),a:11.85,b:13.4,fn:s10,fade:.15},
+ {el:$("#s11"),a:13.15,b:999,fn:s11,fade:.35}
 ];
 function render(T){
   for(const s of SC){
@@ -528,7 +530,7 @@ function loop(now){
   requestAnimationFrame(loop);
 }
 const q=new URLSearchParams(location.search);
-if(q.has("t")){T=parseFloat(q.get("t"))||0;playing=false;}   // contoh: index.html?t=5.2 (untuk cek frame)
+if(q.has("t")){T=parseFloat(q.get("t"))||0;playing=false;}
 window.addEventListener("resize",fit);window.addEventListener("orientationchange",()=>setTimeout(fit,200));
 fit();
 requestAnimationFrame(t=>{last=t;requestAnimationFrame(loop);});
