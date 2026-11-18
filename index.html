@@ -15,6 +15,7 @@
 html,body{width:100%;height:100%;background:#050505;overflow:hidden;overscroll-behavior:none;touch-action:manipulation;-webkit-user-select:none;user-select:none}
 body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Helvetica,Arial,sans-serif;color:#111;-webkit-font-smoothing:antialiased}
 #stage{position:fixed;left:50%;top:0;height:100vh;height:100dvh;width:min(100vw,calc(100vh*.5625));width:min(100vw,calc(100dvh*.5625));transform:translateX(-50%);overflow:hidden;background:#f3f2f0}
+#cam{position:absolute;inset:0;transform-origin:50% 50%;will-change:transform}
 .scene{position:absolute;inset:0;overflow:hidden;display:none;pointer-events:none}
 .av{width:100%;height:100%}
 .av svg,.av img{width:100%;height:100%;display:block}
@@ -22,11 +23,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .p-av img,.mini img,.p-img img,.ph img{object-fit:cover;object-position:45% 40%}
 .hw{will-change:transform,opacity}
 
-/* ---------- S1 : I HIT IT / FAST ---------- */
+/* Efek Flash Beat Global */
+#beatFlash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:85;mix-blend-mode:overlay}
+
+/* ---------- S1 : I HIT IT / FAST + Speed Lines ---------- */
 #s1{background:linear-gradient(150deg,#5a2ee0 0%,#7a4bf7 55%,#9566ff 100%)}
 #s1 .orb{position:absolute;left:calc(var(--u)*-26);bottom:calc(var(--u)*-22);width:calc(var(--u)*96);height:calc(var(--u)*96);border-radius:50%;background:radial-gradient(circle at 35% 30%,#cdb9ff,#8c5cff 60%,#6a3bea)}
 #s1 .band{position:absolute;left:0;right:0;top:calc(50% - var(--u)*40);height:calc(var(--u)*62);background:linear-gradient(90deg,rgba(255,255,255,.14),rgba(255,255,255,0))}
-.bw{position:absolute;color:#fff;font-weight:900;line-height:.85;letter-spacing:-.045em;white-space:nowrap}
+#s1 .slines{position:absolute;inset:0;opacity:0}
+#s1 .slines i{position:absolute;right:0;height:calc(var(--u)*.55);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.8));border-radius:99px}
+.bw{position:absolute;color:#fff;font-weight:900;line-height:.85;letter-spacing:-.045em;white-space:nowrap;text-shadow:0 calc(var(--u)*1.2) calc(var(--u)*3.5) rgba(35,10,110,.35)}
 #s1 .t1{left:calc(var(--u)*8);top:calc(50% - var(--u)*22);font-size:calc(var(--u)*21)}
 #s1 .t2{left:calc(var(--u)*3);top:calc(50% - var(--u)*26);font-size:calc(var(--u)*52)}
 
@@ -72,7 +78,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #s5 .badge{position:absolute;right:calc(var(--u)*3);bottom:calc(var(--u)*3);background:#111;color:#fff;font-size:calc(var(--u)*2.1);font-weight:800;line-height:1.15;text-align:center;padding:calc(var(--u)*1) calc(var(--u)*1.6);letter-spacing:.04em;opacity:0}
 #s5 .cap20{position:absolute;left:0;right:0;top:calc(50% + var(--u)*34);text-align:center;font-size:calc(var(--u)*3.3);font-weight:600;color:#8e8e93;opacity:0}
 
-/* ---------- S6 : bokeh + teks ---------- */
+/* ---------- S6 : bokeh + partikel dreamy + teks ---------- */
 #s6{background:#f5efe8}
 #s6 .bk{position:absolute;inset:0;will-change:transform}
 .bk i{position:absolute;display:block;border-radius:50%}
@@ -84,6 +90,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .bk .pk1{left:calc(var(--u)*-10);bottom:calc(var(--u)*-14);width:calc(var(--u)*80);height:calc(var(--u)*70);background:radial-gradient(circle,#ff8fa6 0,rgba(255,143,166,0) 70%)}
 .bk .pk2{right:calc(var(--u)*-16);bottom:calc(var(--u)*-6);width:calc(var(--u)*80);height:calc(var(--u)*70);background:radial-gradient(circle,#ffa38f 0,rgba(255,163,143,0) 70%)}
 .bk .gy{left:calc(var(--u)*20);bottom:calc(var(--u)*18);width:calc(var(--u)*44);height:calc(var(--u)*36);background:radial-gradient(circle,rgba(110,110,120,.55) 0,rgba(110,110,120,0) 70%)}
+#s6 .sparkles{position:absolute;inset:0;pointer-events:none}
+#s6 .sparkles span{position:absolute;border-radius:50%;background:radial-gradient(circle,#fff 0,rgba(255,255,255,0) 70%);box-shadow:0 0 calc(var(--u)*2) rgba(255,255,255,.8)}
 .ly{position:absolute;left:calc(var(--u)*7);top:calc(50% - var(--u)*10);font-size:calc(var(--u)*10.5);font-weight:600;color:#fff;letter-spacing:-.025em;line-height:1.14;white-space:nowrap;text-shadow:0 0 calc(var(--u)*4) rgba(0,40,120,.35);opacity:0}
 .ly .w{display:inline-block;margin-right:.26em;opacity:0}
 #s6 .sweep{position:absolute;left:0;top:calc(50% - var(--u)*1);width:100%;height:calc(var(--u)*5);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95) 40%,rgba(255,255,255,0));opacity:0}
@@ -95,12 +103,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .ph{position:absolute;left:calc(var(--u)*-15);top:calc(var(--u)*-27);width:calc(var(--u)*30);height:calc(var(--u)*54);border-radius:calc(var(--u)*4);background:#111;padding:calc(var(--u)*.9);box-shadow:0 calc(var(--u)*2) calc(var(--u)*5) rgba(0,0,0,.25)}
 .ph .in{width:100%;height:100%;border-radius:calc(var(--u)*3.2);overflow:hidden;position:relative}
 .ph .in .av{position:absolute;inset:0;width:100%;height:100%}
-.lab{position:absolute;background:#e63946;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;padding:calc(var(--u)*1) calc(var(--u)*2);white-space:nowrap;transform-origin:0 50%;opacity:0}
+.lab{position:absolute;background:#e63946;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;padding:calc(var(--u)*1) calc(var(--u)*2);white-space:nowrap;transform-origin:0 50%;opacity:0;box-shadow:0 calc(var(--u)*.8) calc(var(--u)*2) rgba(230,57,70,.35)}
 #s7 .wo{position:absolute;inset:0;background:#fff;opacity:0}
 
 /* ---------- S8 : kartu jatuh ---------- */
 #s8{background:#fff}
-#s8 .fall{position:absolute;left:calc(50% - var(--u)*11);top:calc(50% - var(--u)*20);width:calc(var(--u)*22);height:calc(var(--u)*40);border-radius:calc(var(--u)*3);background:#1b1b1f;box-shadow:calc(var(--u)*.8) 0 0 rgba(255,0,70,.55),calc(var(--u)*-.8) 0 0 rgba(0,220,255,.55)}
+#s8 .fall{position:absolute;left:calc(50% - var(--u)*11);top:calc(50% - var(--u)*20);width:calc(var(--u)*22);height:calc(var(--u)*40);border-radius:calc(var(--u)*3);background:#1b1b1f;box-shadow:calc(var(--u)*1.2) 0 0 rgba(255,0,70,.6),calc(var(--u)*-1.2) 0 0 rgba(0,220,255,.6)}
 
 /* ---------- S9 / S10 : grayscale ---------- */
 #s9,#s10{background:linear-gradient(180deg,#f2f2f4,#d8d8dc)}
@@ -115,12 +123,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #s10 .fin{left:calc(var(--u)*5);bottom:calc(var(--u)*22);font-size:calc(var(--u)*13);font-style:italic;color:#111;transform:rotate(-3deg);transform-origin:0 100%;-webkit-text-stroke:calc(var(--u)*1.1) #fff;paint-order:stroke fill;text-shadow:none}
 #s10 .finbig{left:0;right:0;bottom:calc(var(--u)*5);text-align:center;font-size:calc(var(--u)*24);color:#dcdcdc;text-shadow:calc(var(--u)*-.5) calc(var(--u)*-.5) 0 #fff,calc(var(--u)*.8) calc(var(--u)*.8) calc(var(--u)*1) rgba(0,0,0,.28);opacity:0}
 
-/* ---------- S11 : akhir (hitam) + tombol ---------- */
+/* ---------- S11 : akhir (hitam) + ambient glow + tombol ---------- */
 #s11{background:#000}
+#s11 .glow{position:absolute;left:50%;bottom:calc(var(--u)*-10);width:calc(var(--u)*110);height:calc(var(--u)*90);margin-left:calc(var(--u)*-55);border-radius:50%;background:radial-gradient(circle,rgba(122,75,247,.32) 0,rgba(44,118,255,.12) 45%,rgba(0,0,0,0) 72%);pointer-events:none}
 #s11 .end{position:absolute;left:0;right:0;bottom:0;padding:0 calc(var(--u)*6) calc(env(safe-area-inset-bottom) + var(--u)*12);display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*3.5);opacity:0}
 #s11 .end>*{pointer-events:inherit}
 .btn{appearance:none;-webkit-appearance:none;border:0;cursor:pointer;text-decoration:none;font:inherit;font-weight:700;font-size:calc(var(--u)*4);color:#fff;padding:calc(var(--u)*3.4) calc(var(--u)*8);border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);min-width:calc(var(--u)*46);text-align:center}
-.btn.main{background:#fff;color:#000;border-color:#fff}
+.btn.main{background:#fff;color:#000;border-color:#fff;box-shadow:0 0 calc(var(--u)*5) rgba(255,255,255,.28)}
 .btn:active{transform:scale(.97)}
 
 /* ikon pause & tombol tap mulai suara */
@@ -135,103 +144,110 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 <audio id="bgm" preload="auto" playsinline></audio>
 
 <div id="stage">
+  <div id="cam">
 
-  <!-- S1 -->
-  <section class="scene" id="s1">
-    <div class="band"></div><div class="orb"></div>
-    <div class="bw t1 hw" id="t1"></div>
-    <div class="bw t2 hw" id="t2"></div>
-  </section>
+    <!-- S1 -->
+    <section class="scene" id="s1">
+      <div class="band"></div><div class="orb"></div>
+      <div class="slines" id="slines"></div>
+      <div class="bw t1 hw" id="t1"></div>
+      <div class="bw t2 hw" id="t2"></div>
+    </section>
 
-  <!-- S2 : wajah glitch -->
-  <section class="scene" id="s2">
-    <div class="rays hw" id="rays"></div>
-    <div class="fw" id="fw"></div>
-  </section>
+    <!-- S2 : wajah glitch -->
+    <section class="scene" id="s2">
+      <div class="rays hw" id="rays"></div>
+      <div class="fw" id="fw"></div>
+    </section>
 
-  <!-- S3 : Instagram -->
-  <section class="scene" id="s3">
-    <div id="post" class="hw">
-      <div class="p-head"><i class="p-av"><span data-av="cap" class="av"></span></i><b data-user></b><span class="dots">•••</span></div>
-      <div class="p-img"><div class="big av" data-av="shock"></div></div>
-      <div class="p-act">
-        <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.6 3 5 6.3 5c2 0 3.7 1.2 4.7 2.8h2C14 6.2 15.7 5 17.7 5 21 5 22.8 8.6 21.5 11.8 19.5 16.4 12 21 12 21z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M22 3 2 10.5l7.5 3L12.5 21zM22 3 9.5 13.5"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg>
+    <!-- S3 : Instagram -->
+    <section class="scene" id="s3">
+      <div id="post" class="hw">
+        <div class="p-head"><i class="p-av"><span data-av="cap" class="av"></span></i><b data-user></b><span class="dots">•••</span></div>
+        <div class="p-img"><div class="big av" data-av="shock"></div></div>
+        <div class="p-act">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.6 3 5 6.3 5c2 0 3.7 1.2 4.7 2.8h2C14 6.2 15.7 5 17.7 5 21 5 22.8 8.6 21.5 11.8 19.5 16.4 12 21 12 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M22 3 2 10.5l7.5 3L12.5 21zM22 3 9.5 13.5"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg>
+        </div>
+        <div class="p-line"><span class="mini av" data-av="helmet"></span><span>Liked by <b id="likedBy"></b> and <b id="likes"></b> others</span></div>
+        <div class="p-line"><span><b data-user></b> <span id="caption"></span></span></div>
+        <div class="p-meta">View all <span id="comments"></span> comments<br>2 hours ago</div>
       </div>
-      <div class="p-line"><span class="mini av" data-av="helmet"></span><span>Liked by <b id="likedBy"></b> and <b id="likes"></b> others</span></div>
-      <div class="p-line"><span><b data-user></b> <span id="caption"></span></span></div>
-      <div class="p-meta">View all <span id="comments"></span> comments<br>2 hours ago</div>
-    </div>
-  </section>
+    </section>
 
-  <!-- S4 -->
-  <section class="scene" id="s4">
-    <div class="grid hw" id="grid"><div id="cells"></div><div id="todayWrap"></div></div>
-  </section>
+    <!-- S4 -->
+    <section class="scene" id="s4">
+      <div class="grid hw" id="grid"><div id="cells"></div><div id="todayWrap"></div></div>
+    </section>
 
-  <!-- S6 (di bawah S5 agar kartu menyusut di atas bokeh) -->
-  <section class="scene" id="s6">
-    <div class="bk" id="bk"><i class="or"></i><i class="r1"></i><i class="r2"></i><i class="dot"></i><i class="pk1"></i><i class="pk2"></i><i class="gy"></i></div>
-    <div id="lyrics"></div>
-    <div class="sweep" id="sweep"></div>
-    <div class="bigw" id="bigw"></div>
-  </section>
+    <!-- S6 (di bawah S5 agar kartu menyusut di atas bokeh) -->
+    <section class="scene" id="s6">
+      <div class="bk" id="bk"><i class="or"></i><i class="r1"></i><i class="r2"></i><i class="dot"></i><i class="pk1"></i><i class="pk2"></i><i class="gy"></i></div>
+      <div class="sparkles" id="sparkles"></div>
+      <div id="lyrics"></div>
+      <div class="sweep" id="sweep"></div>
+      <div class="bigw" id="bigw"></div>
+    </section>
 
-  <!-- S5 -->
-  <section class="scene" id="s5">
-    <div class="wash" id="wash"></div>
-    <div class="card" id="card">
-      <svg class="burst" id="burst" viewBox="-50 -50 100 100"><defs><radialGradient id="bgd"><stop offset="0" stop-color="#ffc233"/><stop offset="1" stop-color="#ff8a00"/></radialGradient></defs><path id="burstPath" fill="url(#bgd)"/></svg>
-      <div class="pers av" id="pers" data-av="cap"></div>
-      <svg class="rings" id="rings" viewBox="0 0 100 100">
-        <g id="ringG"><circle cx="50" cy="50" r="8" pathLength="1"/><circle cx="48" cy="52" r="17" pathLength="1"/><circle cx="46" cy="54" r="26" pathLength="1"/><circle cx="44" cy="56" r="35" pathLength="1"/><circle cx="42" cy="58" r="44" pathLength="1"/><circle id="ringDot" cx="50" cy="50" r="4" style="fill:#ff9a1a;stroke:none"/></g>
-      </svg>
-      <div class="streak" id="streak"></div>
-      <div class="badge" id="badge"></div>
-    </div>
-    <div class="cap20" id="cap20"></div>
-  </section>
+    <!-- S5 -->
+    <section class="scene" id="s5">
+      <div class="wash" id="wash"></div>
+      <div class="card" id="card">
+        <svg class="burst" id="burst" viewBox="-50 -50 100 100"><defs><radialGradient id="bgd"><stop offset="0" stop-color="#ffc233"/><stop offset="1" stop-color="#ff8a00"/></radialGradient></defs><path id="burstPath" fill="url(#bgd)"/></svg>
+        <div class="pers av" id="pers" data-av="cap"></div>
+        <svg class="rings" id="rings" viewBox="0 0 100 100">
+          <g id="ringG"><circle cx="50" cy="50" r="8" pathLength="1"/><circle cx="48" cy="52" r="17" pathLength="1"/><circle cx="46" cy="54" r="26" pathLength="1"/><circle cx="44" cy="56" r="35" pathLength="1"/><circle cx="42" cy="58" r="44" pathLength="1"/><circle id="ringDot" cx="50" cy="50" r="4" style="fill:#ff9a1a;stroke:none"/></g>
+        </svg>
+        <div class="streak" id="streak"></div>
+        <div class="badge" id="badge"></div>
+      </div>
+      <div class="cap20" id="cap20"></div>
+    </section>
 
-  <!-- S7 : 3 Kartu Ponsel -->
-  <section class="scene" id="s7">
-    <div class="zoomer" id="zoomer">
-      <div class="ph" id="ph0"><div class="in" style="background:linear-gradient(160deg,#cfd6c7,#8f9a86)"><div class="av" data-av="hp1"></div></div></div>
-      <div class="ph" id="ph2"><div class="in" style="background:linear-gradient(160deg,#efe1cd,#c9b08a)"><div class="av" data-av="hp3"></div></div></div>
-      <div class="ph" id="ph1"><div class="in" style="background:linear-gradient(160deg,#4a6dff,#141f5c)"><div class="av" data-av="hp2"></div></div></div>
-    </div>
-    <div class="lab" id="la1"></div><div class="lab" id="la2"></div><div class="lab" id="la3"></div><div class="lab" id="la4"></div>
-    <div class="lab" id="lb1"></div><div class="lab" id="lb2"></div><div class="lab" id="lb3"></div>
-    <div class="wo" id="wo"></div>
-  </section>
+    <!-- S7 : 3 Kartu Ponsel -->
+    <section class="scene" id="s7">
+      <div class="zoomer" id="zoomer">
+        <div class="ph" id="ph0"><div class="in" style="background:linear-gradient(160deg,#cfd6c7,#8f9a86)"><div class="av" data-av="hp1"></div></div></div>
+        <div class="ph" id="ph2"><div class="in" style="background:linear-gradient(160deg,#efe1cd,#c9b08a)"><div class="av" data-av="hp3"></div></div></div>
+        <div class="ph" id="ph1"><div class="in" style="background:linear-gradient(160deg,#4a6dff,#141f5c)"><div class="av" data-av="hp2"></div></div></div>
+      </div>
+      <div class="lab" id="la1"></div><div class="lab" id="la2"></div><div class="lab" id="la3"></div><div class="lab" id="la4"></div>
+      <div class="lab" id="lb1"></div><div class="lab" id="lb2"></div><div class="lab" id="lb3"></div>
+      <div class="wo" id="wo"></div>
+    </section>
 
-  <!-- S8 -->
-  <section class="scene" id="s8"><div class="fall hw" id="fall"></div></section>
+    <!-- S8 -->
+    <section class="scene" id="s8"><div class="fall hw" id="fall"></div></section>
 
-  <!-- S9 -->
-  <section class="scene" id="s9">
-    <div class="pp av" data-av="suit" id="pp9"></div><div class="haze"></div>
-    <div class="sticker tx hw" id="tx9"></div>
-  </section>
+    <!-- S9 -->
+    <section class="scene" id="s9">
+      <div class="pp av" data-av="suit" id="pp9"></div><div class="haze"></div>
+      <div class="sticker tx hw" id="tx9"></div>
+    </section>
 
-  <!-- S10 -->
-  <section class="scene" id="s10">
-    <div class="pp av" data-av="tee" id="pp10"></div>
-    <div class="sls" id="sls"></div>
-    <div class="haze"></div>
-    <div class="sticker fin hw" id="fin"></div>
-    <div class="sticker finbig hw" id="finbig"></div>
-  </section>
+    <!-- S10 -->
+    <section class="scene" id="s10">
+      <div class="pp av" data-av="tee" id="pp10"></div>
+      <div class="sls" id="sls"></div>
+      <div class="haze"></div>
+      <div class="sticker fin hw" id="fin"></div>
+      <div class="sticker finbig hw" id="finbig"></div>
+    </section>
 
-  <!-- S11 -->
-  <section class="scene" id="s11">
-    <div class="end" id="endUi">
-      <a class="btn main" id="igLink" target="_blank" rel="noopener noreferrer"></a>
-      <button class="btn" id="replay" type="button">↻ Putar ulang</button>
-    </div>
-  </section>
+    <!-- S11 -->
+    <section class="scene" id="s11">
+      <div class="glow" id="endGlow"></div>
+      <div class="end" id="endUi">
+        <a class="btn main" id="igLink" target="_blank" rel="noopener noreferrer"></a>
+        <button class="btn" id="replay" type="button">↻ Putar ulang</button>
+      </div>
+    </section>
 
+  </div>
+
+  <div id="beatFlash"></div>
   <div id="pauseIcon"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></div>
   <div id="tapStart"><span>🔊 Ketuk untuk Mulai</span></div>
 </div>
@@ -269,7 +285,7 @@ const CFG = {
   /* NAMA FILE FOTO */
   IMAGES: {
     cap: "Foto1.png",
-    shock: "foto2.PNG",
+    shock: "Foto2.PNG",
     helmet: "foto3.png",
     suit: "foto4.png",
     tee: "foto5.png",
@@ -320,8 +336,32 @@ function personSVG(o){
   if(o.cap) s+=`<path d="M50 92C46 36 84 26 100 26s54 10 50 66z" fill="${o.cap}"/><path d="M40 94c40-8 80-8 120 0-6 10-30 13-60 11s-54-1-60-11z" fill="${shade(o.cap,-28)}"/>`;
   return s+"</svg>";
 }
-function fallbackAv(img,k){img.outerHTML=personSVG(PEOPLE[k]);}
-function avatar(k){const src=CFG.IMAGES[k];return src?`<img src="${src}" alt="" onerror="fallbackAv(this,'${k}')">`:personSVG(PEOPLE[k]);}
+
+/* Deteksi otomatis ekstensi & huruf kapital agar gambar selalu ketemu */
+function getCandidates(base){
+  if(!base) return [];
+  const clean=base.replace(/\.(png|jpg|jpeg|webp)$/i,"");
+  const cap=clean.charAt(0).toUpperCase()+clean.slice(1);
+  const low=clean.toLowerCase();
+  const exts=["PNG","png","JPG","jpg","jpeg","JPEG","webp"];
+  const list=[base];
+  [clean,cap,low].forEach(n=>exts.forEach(e=>list.push(`${n}.${e}`)));
+  return [...new Set(list)];
+}
+function nextAv(img,k){
+  const list=getCandidates(CFG.IMAGES[k]);
+  const idx=parseInt(img.dataset.idx||"0",10)+1;
+  if(idx<list.length){
+    img.dataset.idx=idx;
+    img.src=list[idx];
+  }else{
+    img.outerHTML=personSVG(PEOPLE[k]);
+  }
+}
+function avatar(k){
+  const list=getCandidates(CFG.IMAGES[k]);
+  return list.length?`<img src="${list[0]}" data-idx="0" alt="" onerror="nextAv(this,'${k}')">`:personSVG(PEOPLE[k]);
+}
 
 /* ---------- helper animasi ---------- */
 const $=s=>document.querySelector(s);
@@ -349,6 +389,34 @@ $("#bigw").textContent=CFG.BIG_WORD;
 $("#tx9").innerHTML=`<div style="font-size:.82em">${CFG.CREW[0]}</div><div>${CFG.CREW[1]}</div>`;
 $("#fin").innerHTML=CFG.FINAL.join("<br>");$("#finbig").textContent=CFG.FINAL_BIG;
 const ig=$("#igLink");ig.href=CFG.INSTAGRAM_URL;ig.textContent=CFG.USERNAME;
+
+/* garis kecepatan S1 */
+(function(){
+  const host=$("#slines");
+  for(let i=0;i<10;i++){
+    const el=document.createElement("i");
+    el.style.top=(15+i*7.5)+"%";
+    el.style.width=(25+rnd(i)*45)+"%";
+    el.style.opacity=(0.35+rnd(i+5)*0.65).toFixed(2);
+    host.appendChild(el);
+  }
+})();
+
+/* partikel dreamy S6 */
+const SPARKS=[];
+(function(){
+  const host=$("#sparkles");
+  for(let i=0;i<16;i++){
+    const sp=document.createElement("span");
+    const sz=1.4+rnd(i)*2.6;
+    sp.style.width=`calc(var(--u)*${sz.toFixed(1)})`;
+    sp.style.height=`calc(var(--u)*${sz.toFixed(1)})`;
+    sp.style.left=(rnd(i+20)*94)+"%";
+    sp.style.top=(rnd(i+40)*94)+"%";
+    host.appendChild(sp);
+    SPARKS.push({el:sp,sp:0.6+rnd(i)*1.2,ph:rnd(i)*6.28});
+  }
+})();
 
 /* burst (matahari oranye) */
 (function(){let d="";for(let i=0;i<64;i++){const a=i/64*Math.PI*2-Math.PI/2,r=i%2?31:49;d+=(i?"L":"M")+(Math.cos(a)*r).toFixed(2)+" "+(Math.sin(a)*r).toFixed(2);}$("#burstPath").setAttribute("d",d+"Z");})();
@@ -388,12 +456,38 @@ makeSlices($("#fw"),avatar("shock"),8,SL2,"");
 makeSlices($("#sls"),'<div class="pp av" style="left:calc(var(--u)*-17);bottom:calc(var(--u)*-8);width:calc(var(--u)*134);height:calc(var(--u)*170)">'+avatar("tee")+"</div>",8,SL10,"");
 SL2.forEach(d=>{d.style.position="absolute";d.style.inset="0";});
 
+/* ---------- EFEK KAMERA & BEAT GLOBAL ---------- */
+const BEATS=[0.62,1.50,4.45,8.80,9.30,11.25,12.85];
+function updateBeatFX(T){
+  let pulse=0;
+  for(const b of BEATS){
+    if(T>=b && T<b+0.28){
+      const p=1-(T-b)/0.28;
+      pulse=Math.max(pulse,p*p);
+    }
+  }
+  const cam=$("#cam"),fl=$("#beatFlash");
+  if(pulse>0.01){
+    const sc=1+pulse*0.032;
+    const dx=(rnd(Math.floor(T*60))-0.5)*1.4*U*pulse;
+    const dy=(rnd(Math.floor(T*60)+7)-0.5)*1.4*U*pulse;
+    cam.style.transform=`translate3d(${dx.toFixed(1)}px,${dy.toFixed(1)}px,0) scale(${sc.toFixed(4)})`;
+    fl.style.opacity=(pulse*0.32).toFixed(2);
+  }else{
+    cam.style.transform="translate3d(0,0,0) scale(1)";
+    fl.style.opacity="0";
+  }
+}
+
 /* ---------- SCENE FUNCTIONS ---------- */
 function s1(t){
   const a=eo(prog(t,0,.4)),out=eio(prog(t,.55,.95)),b=eoq(prog(t,.6,1.12));
-  const t1=$("#t1"),t2=$("#t2");
+  const t1=$("#t1"),t2=$("#t2"),sl=$("#slines");
   t1.style.transform=`translate3d(0,${((1-a)*20-out*26)*U}px,0)`;t1.style.opacity=a*(1-out);
   t2.style.transform=`translate3d(${(1-b)*105*U}px,0,0) scale(${1+prog(t,1.1,1.55)*.12})`;t2.style.opacity=b>0?1:0;
+  const sp=prog(t,.62,1.35);
+  sl.style.opacity=Math.sin(Math.PI*sp)*0.85;
+  sl.style.transform=`translateX(${lerp(20,-45,sp)}%)`;
 }
 function s2(t){
   const k=Math.floor(t*22);
@@ -403,7 +497,7 @@ function s2(t){
   const g=t>.12?1:0;
   SL2.forEach((d,i)=>{const r=rnd(k*8+i);d.style.transform=`translateX(${g*(r-.5)*(12+t*22)*U}px)`;d.style.filter=`saturate(2.2) hue-rotate(${Math.floor(rnd(k+i)*360)}deg) contrast(1.08)`;});
 }
-/* Kamera post IG diatur agar orang di foto terlihat utuh dulu, lalu geser ke like/caption */
+/* Kamera post IG diatur agar foto terlihat utuh dulu, lalu geser ke like/caption */
 const CAM=[[0,46,66,1.85],[.5,46,74,1.65],[.95,26,126,2.05],[1.6,26,128,2.05]];
 function s3(t){
   let cx=CAM[3][1],cy=CAM[3][2],s=CAM[3][3];
@@ -453,6 +547,12 @@ function s5(t,T){
 }
 function s6(t,T){
   $("#bk").style.transform=`scale(${1.04+(T-5)*.035}) translate(${Math.sin(T*.8)*1.2}%,${Math.cos(T*.7)*1})`;
+  SPARKS.forEach(s=>{
+    const dy=-((t*s.sp*18)%40);
+    const op=0.35+0.55*Math.sin(T*3.2+s.ph);
+    s.el.style.transform=`translate3d(${Math.sin(T*1.5+s.ph)*2*U}px,${dy*U}px,0)`;
+    s.el.style.opacity=clamp(op,0,0.9);
+  });
   BLOCKS.forEach(bl=>{
     const out=prog(T,bl.b,bl.b+.3);
     bl.el.style.opacity=(T>=bl.a&&T<bl.b+.3)?1:0;
@@ -508,6 +608,7 @@ function s10(t,T){
 function s11(t,T){
   const e=$("#endUi"),p=prog(T,13.5,14.0);
   e.style.opacity=p;e.style.pointerEvents=p>.5?"auto":"none";
+  $("#endGlow").style.transform=`scale(${1+Math.sin(T*2.2)*0.08})`;
 }
 
 /* ---------- daftar scene ---------- */
@@ -525,6 +626,7 @@ const SC=[
  {el:$("#s11"),a:13.15,b:999,fn:s11,fade:.35}
 ];
 function render(T){
+  updateBeatFX(T);
   for(const s of SC){
     const on=T>=s.a&&T<s.b;
     if(on!==s.on){s.on=on;s.el.style.display=on?"block":"none";}
