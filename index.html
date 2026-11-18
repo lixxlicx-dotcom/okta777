@@ -113,14 +113,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #s6 .bigw{position:absolute;left:0;right:0;top:calc(50% - var(--u)*14);text-align:center;font-size:calc(var(--u)*22.5);font-weight:900;letter-spacing:-.045em;line-height:1;white-space:nowrap;opacity:0;background:linear-gradient(105deg,#ffffff 15%,#fff2c2 45%,#ffffff 65%,#ffd88a 90%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 calc(var(--u)*1.2) calc(var(--u)*3.5) rgba(160,70,5,.42));animation:shimmerTxt 2.2s linear infinite}
 @keyframes shimmerTxt{0%{background-position:120% 0}100%{background-position:-100% 0}}
 
-/* ---------- S7 : 3 kartu ponsel (3D perspective) + stamp label ---------- */
-#s7{background:radial-gradient(circle at 50% 45%,#fff 0,#efefef 100%);perspective:calc(var(--u)*220)}
+/* ---------- S7 : 3 kartu ponsel (3D layered, anti-tembus) + stamp label ---------- */
+#s7{background:radial-gradient(circle at 50% 45%,#fff 0,#efefef 100%);perspective:calc(var(--u)*240)}
 #s7 .zoomer{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
 .ph{position:absolute;left:calc(var(--u)*-15);top:calc(var(--u)*-27);width:calc(var(--u)*30);height:calc(var(--u)*54);border-radius:calc(var(--u)*4);background:#111;padding:calc(var(--u)*.9);box-shadow:0 calc(var(--u)*2.5) calc(var(--u)*6) rgba(0,0,0,.28);backface-visibility:hidden}
+#ph0,#ph2{z-index:1}
+#ph1{z-index:3;box-shadow:0 calc(var(--u)*3.2) calc(var(--u)*7.5) rgba(0,0,0,.38)}
 .ph .in{width:100%;height:100%;border-radius:calc(var(--u)*3.2);overflow:hidden;position:relative}
 .ph .in .av{position:absolute;inset:0;width:100%;height:100%}
-.lab{position:absolute;background:#e63946;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;padding:calc(var(--u)*1) calc(var(--u)*2);white-space:nowrap;transform-origin:50% 50%;opacity:0;box-shadow:0 calc(var(--u)*.8) calc(var(--u)*2) rgba(230,57,70,.35)}
-#s7 .wo{position:absolute;inset:0;background:#fff;opacity:0}
+.lab{position:absolute;background:#e63946;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;padding:calc(var(--u)*1) calc(var(--u)*2);white-space:nowrap;transform-origin:50% 50%;opacity:0;z-index:6;box-shadow:0 calc(var(--u)*.8) calc(var(--u)*2) rgba(230,57,70,.35)}
+#s7 .wo{position:absolute;inset:0;background:#fff;opacity:0;z-index:10}
 
 /* ---------- S8 : kartu jatuh ---------- */
 #s8{background:#fff}
@@ -469,7 +471,7 @@ CAL.forEach((row,r)=>row.forEach((n,c)=>{
   const d=document.createElement("div");d.className="cell";d.textContent=n;d.style.left=`calc(var(--u)*${c*24})`;d.style.top=`calc(var(--u)*${r*24})`;$("#cells").appendChild(d);calCells.push({el:d,dist:Math.abs(c-0)+Math.abs(r-1)});
 }));
 
-/* teks bokeh (dengan span kata untuk efek karaoke & sentuh) */
+/* teks bokeh */
 const BLOCKS=[{a:5.85,b:7.2,lines:CFG.LYRIC_A},{a:7.35,b:8.45,lines:CFG.LYRIC_B}];
 const ALL_WORDS=[];
 BLOCKS.forEach(bl=>{
@@ -637,7 +639,6 @@ function s1(t){
   const a=eo(prog(t,0,.4)),out=eio(prog(t,.55,.95)),b=eoq(prog(t,.6,1.12));
   const t1=$("#t1"),t2=$("#t2"),sl=$("#slines");
   t1.style.transform=`translate3d(${(tiltX*3)*U}px,${((1-a)*20-out*26+tiltY*2)*U}px,0)`;t1.style.opacity=a*(1-out);
-  /* Kinetic letter-spacing expand lalu mengunci rapat pada beat */
   const ls=lerp(0.18,-0.045,eo(prog(t,.62,1.02)));
   t2.style.letterSpacing=ls.toFixed(3)+"em";
   t2.style.transform=`translate3d(${((1-b)*105+tiltX*4)*U}px,${(tiltY*2.5)*U}px,0) scale(${1+prog(t,1.1,1.55)*.12})`;
@@ -755,7 +756,6 @@ function s6(t,T){
 
       const wStart=bl.a+i*span;
       const p=eo(prog(T,wStart,wStart+.32));
-      /* Active Word Karaoke Spotlight: menyala terang tepat saat dinyanyikan */
       const active=Math.sin(Math.PI*clamp((T-wStart)/(span*1.45)));
       const bassLift=active>0?active*bassLevel*0.14:0;
       const sc=1+active*0.09+bassLift+rip*0.24;
@@ -777,17 +777,17 @@ function s6(t,T){
   big.style.transform=`translate(${(tiltX*-3)*U}px,${(tiltY*-2)*U}px) scale(${(lerp(1.38,1,bp)*bigPulse).toFixed(3)})`;
   big.style.filter=bp<1?`blur(${((1-bp)*10).toFixed(1)}px) drop-shadow(0 ${1.2*U}px ${3.5*U}px rgba(160,70,5,.42))`:"";
 }
+/* S7: 3 Kartu Ponsel dengan jarak Z bertingkat agar kartu tengah tidak pernah tertembus */
 function s7(t,T){
   const z=eio(prog(T,10.22,10.85));
-  [["#ph0",-21,4,-9,0,18],["#ph2",21,6,9,.1,-18],["#ph1",0,0,0,.2,0]].forEach(([id,x,y,r,d,ry],i)=>{
+  [["#ph0",-21,4,-9,0,18,-22],["#ph2",21,6,9,.1,-18,-22],["#ph1",0,0,0,.2,0,34]].forEach(([id,x,y,r,d,ry,tz],i)=>{
     const p=eb(prog(T,9.3+d,9.3+d+.48)),el=$(id);
-    const curRy=ry*(1-z*0.7)+tiltX*12;
-    const curRx=-tiltY*10;
-    el.style.transform=`translate3d(${(x+tiltX*2.5)*U}px,${(y+(1-p)*80+tiltY*2.5)*U}px,0) rotateX(${curRx.toFixed(1)}deg) rotateY(${curRy.toFixed(1)}deg) rotate(${r*(0.4+.6*p)}deg) scale(${i===2?1.08:1})`;
+    const curRy=ry*(1-z*0.7)+tiltX*10;
+    const curRx=-tiltY*8;
+    el.style.transform=`translate3d(${(x+tiltX*2.5)*U}px,${(y+(1-p)*80+tiltY*2.5)*U}px,${tz}px) rotateX(${curRx.toFixed(1)}deg) rotateY(${curRy.toFixed(1)}deg) rotate(${r*(0.4+.6*p)}deg) scale(${i===2?1.08:1})`;
     el.style.opacity=clamp(p*4);
   });
   $("#zoomer").style.transform=`scale(${lerp(1.45,3.1,z)})`;
-  /* Stamp Impact & Shake pada stiker merah */
   LAB.forEach(l=>{
     const raw=prog(T,l.a,l.a+.22);
     const p=eb(raw);
@@ -821,7 +821,6 @@ function s10(t,T){
   $("#bloom10").style.opacity=(bl*0.65).toFixed(2);
   const f=$("#fin"),fp=eo(prog(T,12.15,12.35))*(1-prog(T,12.65,12.85));
   f.style.opacity=fp;f.style.transform=`rotate(-3deg) translateY(${(1-eo(prog(T,12.15,12.35)))*6*U}px)`;
-  /* Stamp Impact pada "DOUGH" */
   const rawB=prog(T,12.85,13.12);
   const bp=eb(rawB);
   const shakeB=rawB>0.6 && rawB<1 ? Math.sin((rawB-0.6)*40)*2.5*(1-rawB) : 0;
