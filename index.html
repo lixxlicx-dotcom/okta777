@@ -236,7 +236,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
    >>> BAGIAN YANG MUDAH ANDA UBAH <<<
    ========================================================= */
 const CFG = {
-  USERNAME: "OKTA777",                              // nama di scene Instagram
+  USERNAME: "OKTA777",                              // nama di scene Instagram + tombol akhir
   INSTAGRAM_URL: "https://www.instagram.com/okta777/", // GANTI dengan link Instagram Anda
   LIKED_BY: "bocikematian",
   LIKES: "67,020",
@@ -327,7 +327,7 @@ $("#badge").innerHTML=CFG.BADGE.replace(" ","<br>");$("#cap20").textContent=CFG.
 $("#bigw").textContent=CFG.BIG_WORD;
 $("#tx9").innerHTML=`<div style="font-size:.82em">${CFG.CREW[0]}</div><div>${CFG.CREW[1]}</div>`;
 $("#fin").innerHTML=CFG.FINAL.join("<br>");$("#finbig").textContent=CFG.FINAL_BIG;
-const ig=$("#igLink");ig.href=CFG.INSTAGRAM_URL;ig.textContent="Instagram @"+CFG.USERNAME;
+const ig=$("#igLink");ig.href=CFG.INSTAGRAM_URL;ig.textContent=CFG.USERNAME;
 
 /* burst (matahari oranye) */
 (function(){let d="";for(let i=0;i<64;i++){const a=i/64*Math.PI*2-Math.PI/2,r=i%2?31:49;d+=(i?"L":"M")+(Math.cos(a)*r).toFixed(2)+" "+(Math.sin(a)*r).toFixed(2);}$("#burstPath").setAttribute("d",d+"Z");})();
