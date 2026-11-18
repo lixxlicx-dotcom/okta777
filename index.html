@@ -27,7 +27,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #storyBar{position:absolute;left:calc(var(--u)*3);right:calc(var(--u)*3);top:calc(env(safe-area-inset-top) + var(--u)*2.2);height:calc(var(--u)*.65);border-radius:99px;background:rgba(130,130,140,.28);overflow:hidden;z-index:95;pointer-events:none}
 #storyFill{width:0%;height:100%;background:rgba(255,255,255,.92);box-shadow:0 0 calc(var(--u)*1.2) rgba(0,0,0,.25);border-radius:99px}
 
-/* Efek Flash Beat Global */
+/* Cinematic Edge Vignette & Beat Flash */
+#vignette{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,0,0,0) 52%,rgba(10,8,25,.48) 100%);opacity:0;pointer-events:none;z-index:82;transition:opacity .25s ease}
 #beatFlash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:85;mix-blend-mode:overlay}
 
 /* ---------- S1 : I HIT IT / FAST + Speed Lines ---------- */
@@ -48,7 +49,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #s2 .fw img{object-fit:cover;object-position:45% 42%}
 #s2 .shutter{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
 
-/* ---------- S3 : post Instagram ---------- */
+/* ---------- S3 : post Instagram + Double-Tap Heart Burst ---------- */
 #s3{background:#fff}
 #post{position:absolute;left:0;top:0;width:calc(var(--u)*100);transform-origin:0 0;background:#fff;color:#111}
 .p-head{height:calc(var(--u)*14);display:flex;align-items:center;padding:0 calc(var(--u)*3.5);gap:calc(var(--u)*2.5);font-size:calc(var(--u)*3.7);font-weight:600}
@@ -58,8 +59,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .p-img{position:relative;height:calc(var(--u)*100);overflow:hidden;background:#18181c}
 .p-img .big{position:absolute;inset:0;width:100%;height:100%}
 .p-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,60,120,.12),rgba(255,120,40,.1));pointer-events:none}
+#bigHeart{position:absolute;left:50%;top:50%;width:calc(var(--u)*26);height:calc(var(--u)*26);margin:calc(var(--u)*-13) 0 0 calc(var(--u)*-13);fill:#fff;filter:drop-shadow(0 calc(var(--u)*1.5) calc(var(--u)*3.5) rgba(0,0,0,.35));opacity:0;transform:scale(0);z-index:4;pointer-events:none}
+#floatHearts{position:absolute;left:calc(var(--u)*6.8);top:calc(var(--u)*115);width:0;height:0;pointer-events:none;z-index:5}
+#floatHearts svg{position:absolute;width:calc(var(--u)*4.2);height:calc(var(--u)*4.2);fill:#ff3040;opacity:0}
 .p-act{height:calc(var(--u)*12);display:flex;align-items:center;padding:0 calc(var(--u)*3.5);gap:calc(var(--u)*4)}
-.p-act svg{width:calc(var(--u)*6.6);height:calc(var(--u)*6.6);fill:none;stroke:#111;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.p-act svg{width:calc(var(--u)*6.6);height:calc(var(--u)*6.6);fill:none;stroke:#111;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round;transform-origin:50% 50%}
+.p-act svg.liked{fill:#ff3040;stroke:#ff3040}
 .p-act svg:last-child{margin-left:auto}
 .p-line{height:calc(var(--u)*8);display:flex;align-items:center;gap:calc(var(--u)*1.6);padding:0 calc(var(--u)*3.5);font-size:calc(var(--u)*3.7);white-space:nowrap}
 .p-line .mini{width:calc(var(--u)*5);height:calc(var(--u)*5);border-radius:50%;overflow:hidden;background:#d8d1ff;flex:none}
@@ -83,7 +88,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #s5 .badge{position:absolute;right:calc(var(--u)*3);bottom:calc(var(--u)*3);background:#111;color:#fff;font-size:calc(var(--u)*2.1);font-weight:800;line-height:1.15;text-align:center;padding:calc(var(--u)*1) calc(var(--u)*1.6);letter-spacing:.04em;opacity:0}
 #s5 .capWrap{position:absolute;left:0;right:0;top:calc(50% + var(--u)*33.5);display:flex;align-items:center;justify-content:center;gap:calc(var(--u)*2);opacity:0}
 #s5 .cap20{font-size:calc(var(--u)*3.3);font-weight:700;color:#6e6e73}
-.eq{display:flex;align-items:flex-end;gap:calc(var(--u)*.6);height:calc(var(--u)*3)}
+.eq{display:flex;align-items:flex-end;gap:calc(var(--u)*.6);height:calc(var(--u)*3.2)}
 .eq i{display:block;width:calc(var(--u)*.65);height:40%;background:#ff8a00;border-radius:99px}
 
 /* ---------- S6 : bokeh + partikel dreamy + teks ---------- */
@@ -131,12 +136,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #s10 .fin{left:calc(var(--u)*5);bottom:calc(var(--u)*22);font-size:calc(var(--u)*13);font-style:italic;color:#111;transform:rotate(-3deg);transform-origin:0 100%;-webkit-text-stroke:calc(var(--u)*1.1) #fff;paint-order:stroke fill;text-shadow:none}
 #s10 .finbig{left:0;right:0;bottom:calc(var(--u)*5);text-align:center;font-size:calc(var(--u)*24);color:#dcdcdc;text-shadow:calc(var(--u)*-.5) calc(var(--u)*-.5) 0 #fff,calc(var(--u)*.8) calc(var(--u)*.8) calc(var(--u)*1) rgba(0,0,0,.28);opacity:0}
 
-/* ---------- S11 : akhir (hitam) + ambient glow + tombol ---------- */
+/* ---------- S11 : akhir (hitam) + interactive glow + tombol ---------- */
 #s11{background:#000}
-#s11 .glow{position:absolute;left:50%;bottom:calc(var(--u)*-10);width:calc(var(--u)*110);height:calc(var(--u)*90);margin-left:calc(var(--u)*-55);border-radius:50%;background:radial-gradient(circle,rgba(122,75,247,.32) 0,rgba(44,118,255,.12) 45%,rgba(0,0,0,0) 72%);pointer-events:none}
-#s11 .end{position:absolute;left:0;right:0;bottom:0;padding:0 calc(var(--u)*6) calc(env(safe-area-inset-bottom) + var(--u)*12);display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*3.5);opacity:0}
+#s11 .glow{position:absolute;left:50%;top:50%;width:calc(var(--u)*115);height:calc(var(--u)*115);margin:calc(var(--u)*-57.5) 0 0 calc(var(--u)*-57.5);border-radius:50%;background:radial-gradient(circle,rgba(122,75,247,.38) 0,rgba(44,118,255,.16) 45%,rgba(0,0,0,0) 72%);pointer-events:none;transition:transform .18s ease-out}
+#s11 .end{position:absolute;left:0;right:0;bottom:0;padding:0 calc(var(--u)*6) calc(env(safe-area-inset-bottom) + var(--u)*10);display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*3);opacity:0}
 #s11 .end>*{pointer-events:inherit}
-.btn{appearance:none;-webkit-appearance:none;border:0;cursor:pointer;text-decoration:none;font:inherit;font-weight:700;font-size:calc(var(--u)*4);color:#fff;padding:calc(var(--u)*3.4) calc(var(--u)*8);border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);min-width:calc(var(--u)*46);text-align:center}
+.btn{appearance:none;-webkit-appearance:none;border:0;cursor:pointer;text-decoration:none;font:inherit;font-weight:700;font-size:calc(var(--u)*3.9);color:#fff;padding:calc(var(--u)*3.2) calc(var(--u)*7.5);border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);min-width:calc(var(--u)*48);text-align:center}
 .btn.main{background:#fff;color:#000;border-color:#fff;box-shadow:0 0 calc(var(--u)*5) rgba(255,255,255,.28)}
 .btn:active{transform:scale(.97)}
 
@@ -171,13 +176,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
       <div class="shutter" id="shutter"></div>
     </section>
 
-    <!-- S3 : Instagram -->
+    <!-- S3 : Instagram + Auto Double-Tap Heart Burst -->
     <section class="scene" id="s3">
       <div id="post" class="hw">
         <div class="p-head"><i class="p-av"><span data-av="cap" class="av"></span></i><b data-user></b><span class="dots">•••</span></div>
-        <div class="p-img"><div class="big av" data-av="shock"></div></div>
+        <div class="p-img">
+          <div class="big av" data-av="shock"></div>
+          <svg id="bigHeart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+        <div id="floatHearts"></div>
         <div class="p-act">
-          <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.6 3 5 6.3 5c2 0 3.7 1.2 4.7 2.8h2C14 6.2 15.7 5 17.7 5 21 5 22.8 8.6 21.5 11.8 19.5 16.4 12 21 12 21z"/></svg>
+          <svg id="likeHeart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.6 3 5 6.3 5c2 0 3.7 1.2 4.7 2.8h2C14 6.2 15.7 5 17.7 5 21 5 22.8 8.6 21.5 11.8 19.5 16.4 12 21 12 21z"/></svg>
           <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>
           <svg viewBox="0 0 24 24"><path d="M22 3 2 10.5l7.5 3L12.5 21zM22 3 9.5 13.5"/></svg>
           <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg>
@@ -260,11 +269,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
       <div class="end" id="endUi">
         <a class="btn main" id="igLink" target="_blank" rel="noopener noreferrer"></a>
         <button class="btn" id="replay" type="button">↻ Putar ulang</button>
+        <button class="btn" id="shareBtn" type="button">↗ Bagikan</button>
       </div>
     </section>
 
   </div>
 
+  <div id="vignette"></div>
   <div id="beatFlash"></div>
   <div id="pauseIcon"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></div>
   <div id="tapStart"><span>🔊 Ketuk untuk Mulai</span></div>
@@ -420,6 +431,16 @@ const ig=$("#igLink");ig.href=CFG.INSTAGRAM_URL;ig.textContent=CFG.USERNAME;
   }
 })();
 
+/* mini floating hearts untuk S3 */
+const FHEARTS=[];
+(function(){
+  const host=$("#floatHearts");
+  for(let i=0;i<6;i++){
+    host.insertAdjacentHTML("beforeend",'<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+    FHEARTS.push({el:host.lastElementChild,dx:(rnd(i)-0.5)*14,sp:14+rnd(i+3)*10,sc:0.65+rnd(i+7)*0.55});
+  }
+})();
+
 /* partikel dreamy S6 */
 const SPARKS=[];
 (function(){
@@ -467,10 +488,53 @@ const LAB=[
 ];
 LAB.forEach(l=>{l.el.textContent=l.txt;});
 
-/* ---------- EFEK KAMERA & BEAT GLOBAL ---------- */
+/* ---------- REAL-TIME WEB AUDIO ANALYSER ---------- */
+const bgm=$("#bgm");
+let audioCtx=null,analyser=null,freqData=null,bassLevel=0,midLevel=0,highLevel=0;
+function initWebAudio(){
+  if(audioCtx || !CFG.AUDIO) return;
+  try{
+    const AC=window.AudioContext||window.webkitAudioContext;
+    if(!AC) return;
+    audioCtx=new AC();
+    const src=audioCtx.createMediaElementSource(bgm);
+    analyser=audioCtx.createAnalyser();
+    analyser.fftSize=128;
+    analyser.smoothingTimeConstant=0.78;
+    src.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    freqData=new Uint8Array(analyser.frequencyBinCount);
+  }catch(e){
+    analyser=null;
+  }
+}
+function sampleAudio(T){
+  if(analyser && freqData && !bgm.paused){
+    analyser.getByteFrequencyData(freqData);
+    let b=0,m=0,h=0;
+    for(let i=0;i<5;i++) b+=freqData[i];
+    for(let i=5;i<16;i++) m+=freqData[i];
+    for(let i=16;i<32;i++) h+=freqData[i];
+    bassLevel=(b/(5*255));
+    midLevel=(m/(11*255));
+    highLevel=(h/(16*255));
+  }else{
+    bassLevel=0.45+0.45*Math.abs(Math.sin(T*8.5));
+    midLevel=0.4+0.5*Math.abs(Math.sin(T*13.2+1.1));
+    highLevel=0.35+0.55*Math.abs(Math.cos(T*17.5));
+  }
+}
+
+/* ---------- EFEK KAMERA, VIGNETTE & BEAT GLOBAL ---------- */
 const BEATS=[0.62,1.50,4.45,8.80,9.30,11.25,12.85];
 function updateBeatFX(T){
+  sampleAudio(T);
   $("#storyFill").style.width=clamp(T/END_TIME)*100+"%";
+
+  /* Vignette menebal saat adegan teks putih (S1 & S6) */
+  const vigOn=(T<1.52)||(T>=5.4 && T<9.42);
+  $("#vignette").style.opacity=vigOn?"1":"0";
+
   let pulse=0;
   for(const b of BEATS){
     if(T>=b && T<b+0.28){
@@ -478,13 +542,15 @@ function updateBeatFX(T){
       pulse=Math.max(pulse,p*p);
     }
   }
+  const rtBoost=Math.max(0,(bassLevel-0.68)*1.4);
+  const totalPulse=clamp(pulse+rtBoost*0.45,0,1.2);
   const cam=$("#cam"),fl=$("#beatFlash");
-  if(pulse>0.01){
-    const sc=1+pulse*0.028;
-    const dx=(rnd(Math.floor(T*60))-0.5)*1.1*U*pulse;
-    const dy=(rnd(Math.floor(T*60)+7)-0.5)*1.1*U*pulse;
+  if(totalPulse>0.02){
+    const sc=1+totalPulse*0.026;
+    const dx=(rnd(Math.floor(T*60))-0.5)*1.05*U*pulse;
+    const dy=(rnd(Math.floor(T*60)+7)-0.5)*1.05*U*pulse;
     cam.style.transform=`translate3d(${dx.toFixed(1)}px,${dy.toFixed(1)}px,0) scale(${sc.toFixed(4)})`;
-    fl.style.opacity=(pulse*0.3).toFixed(2);
+    fl.style.opacity=(pulse*0.28).toFixed(2);
   }else{
     cam.style.transform="translate3d(0,0,0) scale(1)";
     fl.style.opacity="0";
@@ -501,7 +567,7 @@ function s1(t){
   sl.style.opacity=Math.sin(Math.PI*sp)*0.85;
   sl.style.transform=`translateX(${lerp(20,-45,sp)}%)`;
 }
-/* S2: Elastic Card Pop & Camera Shutter (menggantikan glitch) */
+/* S2: Elastic Card Pop & Camera Shutter (tanpa glitch) */
 function s2(t){
   $("#rays").style.transform=`rotate(${t*55}deg)`;
   const pop=eb(prog(t,0,.28));
@@ -513,7 +579,7 @@ function s2(t){
   fw.style.opacity=1-prog(t,.44,.55);
   $("#shutter").style.opacity=Math.max(0,1-prog(t,0,.18))*0.85;
 }
-/* Kamera post IG diatur agar foto terlihat utuh dulu, lalu geser ke like/caption */
+/* S3: Post IG + Auto Double-Tap Heart Burst */
 const CAM=[[0,46,66,1.85],[.5,46,74,1.65],[.95,26,126,2.05],[1.6,26,128,2.05]];
 function s3(t){
   let cx=CAM[3][1],cy=CAM[3][2],s=CAM[3][3];
@@ -523,6 +589,30 @@ function s3(t){
   const ex=prog(t,1.2,1.55),blur=Math.max(2.4*Math.sin(Math.PI*prog(t,.45,.95)),ex*10);
   post.style.filter=blur>.3?`blur(${blur.toFixed(1)}px)`:"none";
   post.style.opacity=1-ex;
+
+  /* Double-tap heart pop di foto (t = 0.25 -> 0.85) */
+  const bh=$("#bigHeart");
+  const hpIn=eb(prog(t,0.25,0.48));
+  const hpOut=prog(t,0.68,0.88);
+  bh.style.opacity=clamp(prog(t,0.25,0.34))*(1-hpOut)*0.94;
+  bh.style.transform=`scale(${(hpIn*(1+hpOut*0.25)).toFixed(3)})`;
+
+  /* Ikon love merah memantul & percikan hati kecil naik (t >= 0.72) */
+  const lh=$("#likeHeart");
+  if(t>=0.72){
+    lh.classList.add("liked");
+    const lp=eb(prog(t,0.72,0.96));
+    lh.style.transform=`scale(${lerp(0.75,1,lp).toFixed(3)})`;
+  }else{
+    lh.classList.remove("liked");
+    lh.style.transform="scale(1)";
+  }
+  const fp=prog(t,0.72,1.45);
+  FHEARTS.forEach((h,i)=>{
+    const p=clamp((fp-i*0.06)/0.65);
+    h.el.style.opacity=p>0&&p<1?Math.sin(Math.PI*p)*0.95:0;
+    h.el.style.transform=`translate3d(${(h.dx*p).toFixed(1)}px,${(-h.sp*p*U).toFixed(1)}px,0) scale(${h.sc})`;
+  });
 }
 function s4(t){
   const g=$("#grid");
@@ -560,13 +650,14 @@ function s5(t,T){
   card.style.filter=z>.05?`blur(${(z*6).toFixed(1)}px)`:"none";
   $("#badge").style.opacity=prog(T,5.5,5.7);
 
-  /* Label 20 Min + Music Visualizer Bars */
+  /* Label 20 Min + Real-Time Music Visualizer Bars */
   const cw=$("#capWrap");
   cw.style.opacity=prog(T,5.5,5.72)*(1-prog(T,5.8,5.95));
   cw.style.transform=`translateY(${(1-prog(T,5.5,5.72))*U}px)`;
+  const lvls=[bassLevel,midLevel,highLevel,midLevel,bassLevel,highLevel];
   document.querySelectorAll(".eq i").forEach((bar,idx)=>{
-    const h=35+65*Math.abs(Math.sin(T*15+idx*1.4));
-    bar.style.height=h.toFixed(0)+"%";
+    const h=22+lvls[idx%lvls.length]*78;
+    bar.style.height=clamp(h,20,100).toFixed(0)+"%";
   });
 }
 function s6(t,T){
@@ -623,7 +714,6 @@ function s9(t){
   const k=Math.floor(t*18);
   $("#gr9").style.transform=`translate(${(rnd(k)-.5)*2*U}px,${(rnd(k+3)-.5)*2*U}px)`;
 }
-/* S10: Dreamy Bloom & Smooth Zoom (menggantikan glitch) */
 function s10(t,T){
   $("#pp10").style.transform=`scale(${1+t*.06})`;
   const k=Math.floor(t*18);
@@ -635,11 +725,45 @@ function s10(t,T){
   const b=$("#finbig"),bp=eo(prog(T,12.85,13.1));
   b.style.opacity=bp;b.style.transform=`scale(${lerp(1.12,1,bp)})`;
 }
+let glowX=0,glowY=22;
 function s11(t,T){
   const e=$("#endUi"),p=prog(T,13.5,14.0);
   e.style.opacity=p;e.style.pointerEvents=p>.5?"auto":"none";
-  $("#endGlow").style.transform=`scale(${1+Math.sin(T*2.2)*0.08})`;
+  const sc=1+Math.sin(T*2.2)*0.08;
+  $("#endGlow").style.transform=`translate3d(${glowX*U}px,${glowY*U}px,0) scale(${sc.toFixed(3)})`;
 }
+
+/* Interactive Glow mengikuti sentuhan jari/kursor di layar akhir */
+function moveEndGlow(e){
+  if(!ended && T<13.15) return;
+  const pt=e.touches?e.touches[0]:e;
+  if(!pt) return;
+  const r=stage.getBoundingClientRect();
+  glowX=((pt.clientX-r.left)/r.width-0.5)*46;
+  glowY=((pt.clientY-r.top)/r.height-0.5)*46;
+  render(T);
+}
+stage.addEventListener("pointermove",moveEndGlow);
+stage.addEventListener("touchmove",moveEndGlow,{passive:true});
+
+/* Tombol Bagikan / Salin Link */
+$("#shareBtn").addEventListener("click",async()=>{
+  const btn=$("#shareBtn");
+  const url=location.href.split("?")[0];
+  if(navigator.share){
+    try{
+      await navigator.share({title:CFG.USERNAME,text:CFG.USERNAME+" — "+CFG.DURATION_LABEL,url});
+      return;
+    }catch(e){}
+  }
+  try{
+    await navigator.clipboard.writeText(url);
+    btn.textContent="✓ Link disalin!";
+    setTimeout(()=>{btn.textContent="↗ Bagikan";},2000);
+  }catch(e){
+    btn.textContent=url.replace(/^https?:\/\//,"");
+  }
+});
 
 /* ---------- daftar scene ---------- */
 const SC=[
@@ -670,13 +794,14 @@ function render(T){
 function fit(){W=stage.clientWidth;H=stage.clientHeight;U=W/100;document.documentElement.style.setProperty("--u",U+"px");render(T);}
 let T=0,playing=true,ended=false,last=0;
 
-const bgm=$("#bgm");
 const tapStart=$("#tapStart");
 if(CFG.AUDIO) bgm.src=CFG.AUDIO;
 
 function tryPlayAudio(){
   if(!CFG.AUDIO)return;
   bgm.play().then(()=>{
+    initWebAudio();
+    if(audioCtx && audioCtx.state==="suspended") audioCtx.resume();
     tapStart.style.display="none";
   }).catch(()=>{
     playing=false;
@@ -689,7 +814,12 @@ tapStart.addEventListener("click",e=>{
   tapStart.style.display="none";
   T=0;ended=false;playing=true;
   last=performance.now();
-  if(CFG.AUDIO){bgm.currentTime=0;bgm.play().catch(()=>{});}
+  if(CFG.AUDIO){
+    initWebAudio();
+    if(audioCtx && audioCtx.state==="suspended") audioCtx.resume();
+    bgm.currentTime=0;
+    bgm.play().catch(()=>{});
+  }
   render(0);
 });
 
@@ -723,8 +853,13 @@ stage.addEventListener("click",e=>{
   playing=!playing;
   const ic=$("#pauseIcon");ic.style.opacity=playing?0:1;
   if(CFG.AUDIO){
-    if(playing){bgm.currentTime=T;bgm.play().catch(()=>{});}
-    else{bgm.pause();}
+    if(playing){
+      initWebAudio();
+      if(audioCtx && audioCtx.state==="suspended") audioCtx.resume();
+      bgm.currentTime=T;bgm.play().catch(()=>{});
+    }else{
+      bgm.pause();
+    }
   }
 });
 document.addEventListener("visibilitychange",()=>{
@@ -736,7 +871,11 @@ $("#replay").addEventListener("click",()=>{
   T=0;ended=false;playing=true;
   $("#pauseIcon").style.opacity=0;
   SC.forEach(s=>{s.on=null;});
-  if(CFG.AUDIO){bgm.currentTime=0;bgm.play().catch(()=>{});}
+  if(CFG.AUDIO){
+    initWebAudio();
+    if(audioCtx && audioCtx.state==="suspended") audioCtx.resume();
+    bgm.currentTime=0;bgm.play().catch(()=>{});
+  }
   render(0);
 });
 </script>
