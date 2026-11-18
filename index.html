@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f3f2f0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>OKTA777</title>
+<style>
+/* =========================================================
+   STYLE  —  semua ukuran memakai var(--u) = 1% lebar layar
+   (di-set otomatis oleh JavaScript, jadi otomatis responsif)
+   ========================================================= */
+:root{--u:3.9px}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;background:#050505;overflow:hidden;overscroll-behavior:none;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Helvetica,Arial,sans-serif;color:#111;-webkit-font-smoothing:antialiased}
+#stage{position:fixed;left:50%;top:0;height:100vh;height:100dvh;width:min(100vw,calc(100vh*.5625));width:min(100vw,calc(100dvh*.5625));transform:translateX(-50%);overflow:hidden;background:#f3f2f0}
+.scene{position:absolute;inset:0;overflow:hidden;display:none;pointer-events:none}
+.av{width:100%;height:100%}
+.av svg,.av img{width:100%;height:100%;display:block}
+.av img{object-fit:contain;object-position:center bottom}
+.hw{will-change:transform,opacity}
+
+/* ---------- S1 : I HIT / FAST ---------- */
+#s1{background:linear-gradient(150deg,#5a2ee0 0%,#7a4bf7 55%,#9566ff 100%)}
+#s1 .orb{position:absolute;left:calc(var(--u)*-26);bottom:calc(var(--u)*-22);width:calc(var(--u)*96);height:calc(var(--u)*96);border-radius:50%;background:radial-gradient(circle at 35% 30%,#cdb9ff,#8c5cff 60%,#6a3bea)}
+#s1 .band{position:absolute;left:0;right:0;top:calc(50% - var(--u)*40);height:calc(var(--u)*62);background:linear-gradient(90deg,rgba(255,255,255,.14),rgba(255,255,255,0))}
+.bw{position:absolute;color:#fff;font-weight:900;line-height:.85;letter-spacing:-.045em;white-space:nowrap}
+#s1 .t1{left:calc(var(--u)*8);top:calc(50% - var(--u)*22);font-size:calc(var(--u)*25)}
+#s1 .t2{left:calc(var(--u)*3);top:calc(50% - var(--u)*26);font-size:calc(var(--u)*52)}
+
+/* ---------- S2 : wajah glitch ---------- */
+#s2{background:#efeef5}
+#s2 .rays{position:absolute;left:50%;top:50%;width:calc(var(--u)*320);height:calc(var(--u)*320);margin:calc(var(--u)*-160) 0 0 calc(var(--u)*-160);background:repeating-conic-gradient(from 0deg,#fff 0 6deg,#8f88b9 6deg 12deg)}
+#s2 .fw{position:absolute;left:50%;top:50%;width:calc(var(--u)*150);height:calc(var(--u)*195);margin:calc(var(--u)*-84) 0 0 calc(var(--u)*-75)}
+#s2 .fw>*{position:absolute;inset:0}
+
+/* ---------- S3 : post Instagram ---------- */
+#s3{background:#fff}
+#post{position:absolute;left:0;top:0;width:calc(var(--u)*100);transform-origin:0 0;background:#fff;color:#111}
+.p-head{height:calc(var(--u)*14);display:flex;align-items:center;padding:0 calc(var(--u)*3.5);gap:calc(var(--u)*2.5);font-size:calc(var(--u)*3.7);font-weight:600}
+.p-head .dots{margin-left:auto;letter-spacing:.1em;font-weight:700}
+.p-av{display:block;width:calc(var(--u)*9);height:calc(var(--u)*9);border-radius:50%;padding:calc(var(--u)*.6);background:conic-gradient(#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75)}
+.p-av span{display:block;width:100%;height:100%;border-radius:50%;border:calc(var(--u)*.6) solid #fff;background:#e9e2ff;overflow:hidden}
+.p-img{position:relative;height:calc(var(--u)*100);overflow:hidden;background:linear-gradient(155deg,#ff4f9a 0%,#9a3cf0 55%,#ff7a45 100%)}
+.p-img .big{position:absolute;left:calc(var(--u)*-8);top:calc(var(--u)*6);width:calc(var(--u)*116);height:calc(var(--u)*150)}
+.p-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,60,120,.25),rgba(255,120,40,.2))}
+.p-act{height:calc(var(--u)*12);display:flex;align-items:center;padding:0 calc(var(--u)*3.5);gap:calc(var(--u)*4)}
+.p-act svg{width:calc(var(--u)*6.6);height:calc(var(--u)*6.6);fill:none;stroke:#111;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.p-act svg:last-child{margin-left:auto}
+.p-line{height:calc(var(--u)*8);display:flex;align-items:center;gap:calc(var(--u)*1.6);padding:0 calc(var(--u)*3.5);font-size:calc(var(--u)*3.7);white-space:nowrap}
+.p-line .mini{width:calc(var(--u)*5);height:calc(var(--u)*5);border-radius:50%;overflow:hidden;background:#d8d1ff;flex:none}
+.p-meta{padding:0 calc(var(--u)*3.5);font-size:calc(var(--u)*3.4);color:#8e8e93;line-height:1.9}
+
+/* ---------- S4 : kalender ---------- */
+#s4{background:#f5f5f6}
+#s4 .grid{position:absolute;left:0;top:0;transform-origin:0 0}
+.cell{position:absolute;width:calc(var(--u)*24);height:calc(var(--u)*24);display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*7);font-weight:600;color:#9b9ba1}
+.today{position:absolute;width:calc(var(--u)*24);height:calc(var(--u)*24);display:flex;align-items:center;justify-content:center}
+.today b{display:flex;align-items:center;justify-content:center;width:calc(var(--u)*15);height:calc(var(--u)*15);border-radius:50%;background:#ff3b30;color:#fff;font-size:calc(var(--u)*7.6);font-weight:600}
+
+/* ---------- S5 : cutout + sunburst ---------- */
+#s5 .wash{position:absolute;inset:0;background:#fff;opacity:0}
+#s5 .card{position:absolute;left:0;top:50%;width:calc(var(--u)*100);height:calc(var(--u)*108);margin-top:calc(var(--u)*-54);transform-origin:50% 50%;background:rgba(255,255,255,0)}
+#s5 .burst{position:absolute;left:0;top:calc(var(--u)*2);width:calc(var(--u)*100);height:calc(var(--u)*100);opacity:0}
+#s5 .pers{position:absolute;left:calc(var(--u)*1);bottom:calc(var(--u)*-3);width:calc(var(--u)*98);height:calc(var(--u)*112)}
+#s5 .rings{position:absolute;left:calc(var(--u)*30);top:calc(var(--u)*26);width:calc(var(--u)*70);height:calc(var(--u)*70)}
+#s5 .rings circle{fill:none;stroke:#1f6bff;stroke-width:4.6}
+#s5 .streak{position:absolute;right:0;top:calc(var(--u)*56);height:calc(var(--u)*.7);width:0;background:#ff8a1a}
+#s5 .badge{position:absolute;right:calc(var(--u)*3);bottom:calc(var(--u)*3);background:#111;color:#fff;font-size:calc(var(--u)*2.1);font-weight:800;line-height:1.15;text-align:center;padding:calc(var(--u)*1) calc(var(--u)*1.6);letter-spacing:.04em;opacity:0}
+#s5 .cap20{position:absolute;left:0;right:0;top:calc(50% + var(--u)*34);text-align:center;font-size:calc(var(--u)*3.3);font-weight:600;color:#8e8e93;opacity:0}
+
+/* ---------- S6 : bokeh + teks ---------- */
+#s6{background:#f5efe8}
+#s6 .bk{position:absolute;inset:0;will-change:transform}
+.bk i{position:absolute;display:block;border-radius:50%}
+.bk .or{left:calc(var(--u)*-10);top:calc(var(--u)*-34);width:calc(var(--u)*120);height:calc(var(--u)*100);background:radial-gradient(ellipse at 50% 45%,#ffa21c 0,#ffb94a 38%,rgba(255,200,120,0) 72%)}
+.bk .r1,.bk .r2{width:calc(var(--u)*86);height:calc(var(--u)*86);background:repeating-radial-gradient(circle at 50% 50%,#2c76ff 0,#a6cbff calc(var(--u)*3.6),#2c76ff calc(var(--u)*7.2));-webkit-mask-image:radial-gradient(circle,#000 52%,transparent 70%);mask-image:radial-gradient(circle,#000 52%,transparent 70%)}
+.bk .r1{left:calc(var(--u)*-34);top:calc(50% - var(--u)*34)}
+.bk .r2{left:calc(var(--u)*46);top:calc(50% - var(--u)*40)}
+.bk .dot{left:calc(var(--u)*72);top:calc(50% - var(--u)*14);width:calc(var(--u)*30);height:calc(var(--u)*30);background:radial-gradient(circle,#ff9a1a 0,#ff9a1a 38%,rgba(255,154,26,0) 72%)}
+.bk .pk1{left:calc(var(--u)*-10);bottom:calc(var(--u)*-14);width:calc(var(--u)*80);height:calc(var(--u)*70);background:radial-gradient(circle,#ff8fa6 0,rgba(255,143,166,0) 70%)}
+.bk .pk2{right:calc(var(--u)*-16);bottom:calc(var(--u)*-6);width:calc(var(--u)*80);height:calc(var(--u)*70);background:radial-gradient(circle,#ffa38f 0,rgba(255,163,143,0) 70%)}
+.bk .gy{left:calc(var(--u)*20);bottom:calc(var(--u)*18);width:calc(var(--u)*44);height:calc(var(--u)*36);background:radial-gradient(circle,rgba(110,110,120,.55) 0,rgba(110,110,120,0) 70%)}
+.ly{position:absolute;left:calc(var(--u)*7);top:calc(50% - var(--u)*10);font-size:calc(var(--u)*10.5);font-weight:600;color:#fff;letter-spacing:-.025em;line-height:1.14;white-space:nowrap;text-shadow:0 0 calc(var(--u)*4) rgba(0,40,120,.35);opacity:0}
+.ly .w{display:inline-block;margin-right:.26em;opacity:0}
+#s6 .sweep{position:absolute;left:0;top:calc(50% - var(--u)*1);width:100%;height:calc(var(--u)*5);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95) 40%,rgba(255,255,255,0));opacity:0}
+#s6 .bigw{position:absolute;left:calc(var(--u)*-7);top:calc(50% - var(--u)*15);font-size:calc(var(--u)*29);font-weight:800;color:#fff;letter-spacing:-.045em;line-height:1;white-space:nowrap;opacity:0;text-shadow:0 0 calc(var(--u)*5) rgba(20,80,220,.45)}
+
+/* ---------- S7 : kartu ponsel + label ---------- */
+#s7{background:radial-gradient(circle at 50% 45%,#fff 0,#efefef 100%)}
+#s7 .zoomer{position:absolute;left:50%;top:50%;width:0;height:0}
+.ph{position:absolute;left:calc(var(--u)*-15);top:calc(var(--u)*-27);width:calc(var(--u)*30);height:calc(var(--u)*54);border-radius:calc(var(--u)*4);background:#111;padding:calc(var(--u)*.9);box-shadow:0 calc(var(--u)*2) calc(var(--u)*5) rgba(0,0,0,.25)}
+.ph .in{width:100%;height:100%;border-radius:calc(var(--u)*3.2);overflow:hidden;position:relative}
+.ph .in .av{position:absolute;left:-8%;bottom:-4%;width:116%;height:92%}
+.lab{position:absolute;background:#e63946;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;padding:calc(var(--u)*1) calc(var(--u)*2);white-space:nowrap;transform-origin:0 50%;opacity:0}
+#s7 .wo{position:absolute;inset:0;background:#fff;opacity:0}
+
+/* ---------- S8 : kartu jatuh ---------- */
+#s8{background:#fff}
+#s8 .fall{position:absolute;left:calc(50% - var(--u)*11);top:calc(50% - var(--u)*20);width:calc(var(--u)*22);height:calc(var(--u)*40);border-radius:calc(var(--u)*3);background:#1b1b1f;box-shadow:calc(var(--u)*.8) 0 0 rgba(255,0,70,.55),calc(var(--u)*-.8) 0 0 rgba(0,220,255,.55)}
+
+/* ---------- S9 / S10 : grayscale ---------- */
+#s9,#s10{background:linear-gradient(180deg,#f2f2f4,#d8d8dc)}
+.pp{position:absolute;filter:grayscale(1) contrast(.95) brightness(1.08)}
+#s9 .pp{left:calc(var(--u)*-8);bottom:0;width:calc(var(--u)*100);height:calc(var(--u)*130)}
+#s10 .pp{left:calc(var(--u)*-17);bottom:calc(var(--u)*-8);width:calc(var(--u)*134);height:calc(var(--u)*170)}
+.haze{position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.7),rgba(255,255,255,0) 60%)}
+.sticker{position:absolute;color:#fff;font-weight:900;letter-spacing:-.04em;line-height:.88;text-shadow:0 0 calc(var(--u)*.4) #555,calc(var(--u)*.7) calc(var(--u)*.7) 0 #8c8c90}
+#s9 .tx{right:calc(var(--u)*4);bottom:calc(var(--u)*32);text-align:right;font-size:calc(var(--u)*21)}
+#s10 .sls{position:absolute;inset:0}
+#s10 .sls>div{position:absolute;inset:0}
+#s10 .fin{left:calc(var(--u)*5);bottom:calc(var(--u)*22);font-size:calc(var(--u)*13);font-style:italic;color:#111;transform:rotate(-3deg);transform-origin:0 100%;-webkit-text-stroke:calc(var(--u)*1.1) #fff;paint-order:stroke fill;text-shadow:none}
+#s10 .finbig{left:0;right:0;bottom:calc(var(--u)*5);text-align:center;font-size:calc(var(--u)*24);color:#dcdcdc;text-shadow:calc(var(--u)*-.5) calc(var(--u)*-.5) 0 #fff,calc(var(--u)*.8) calc(var(--u)*.8) calc(var(--u)*1) rgba(0,0,0,.28);opacity:0}
+
+/* ---------- S11 : akhir (hitam) + tombol ---------- */
+#s11{background:#000}
+#s11 .end{position:absolute;left:0;right:0;bottom:0;padding:0 calc(var(--u)*6) calc(env(safe-area-inset-bottom) + var(--u)*12);display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*3.5);opacity:0}
+#s11 .end>*{pointer-events:inherit}
+.btn{appearance:none;-webkit-appearance:none;border:0;cursor:pointer;text-decoration:none;font:inherit;font-weight:700;font-size:calc(var(--u)*4);color:#fff;padding:calc(var(--u)*3.4) calc(var(--u)*8);border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);min-width:calc(var(--u)*46);text-align:center}
+.btn.main{background:#fff;color:#000;border-color:#fff}
+.btn:active{transform:scale(.97)}
+
+/* ikon pause */
+#pauseIcon{position:absolute;left:50%;top:50%;width:calc(var(--u)*16);height:calc(var(--u)*16);margin:calc(var(--u)*-8) 0 0 calc(var(--u)*-8);border-radius:50%;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s;pointer-events:none;z-index:99}
+#pauseIcon svg{width:45%;height:45%;fill:#fff}
+</style>
+</head>
+<body>
+
+<div id="stage">
+
+  <!-- S1 -->
+  <section class="scene" id="s1">
+    <div class="band"></div><div class="orb"></div>
+    <div class="bw t1 hw" id="t1"></div>
+    <div class="bw t2 hw" id="t2"></div>
+  </section>
+
+  <!-- S2 -->
+  <section class="scene" id="s2">
+    <div class="rays hw" id="rays"></div>
+    <div class="fw" id="fw"></div>
+  </section>
+
+  <!-- S3 : Instagram -->
+  <section class="scene" id="s3">
+    <div id="post" class="hw">
+      <div class="p-head"><i class="p-av"><span data-av="cap" class="av"></span></i><b data-user></b><span class="dots">•••</span></div>
+      <div class="p-img"><div class="big av" data-av="shock"></div></div>
+      <div class="p-act">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.6 3 5 6.3 5c2 0 3.7 1.2 4.7 2.8h2C14 6.2 15.7 5 17.7 5 21 5 22.8 8.6 21.5 11.8 19.5 16.4 12 21 12 21z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M22 3 2 10.5l7.5 3L12.5 21zM22 3 9.5 13.5"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg>
+      </div>
+      <div class="p-line"><span class="mini av" data-av="helmet"></span><span>Liked by <b id="likedBy"></b> and <b id="likes"></b> others</span></div>
+      <div class="p-line"><span><b data-user></b> <span id="caption"></span></span></div>
+      <div class="p-meta">View all <span id="comments"></span> comments<br>2 hours ago</div>
+    </div>
+  </section>
+
+  <!-- S4 -->
+  <section class="scene" id="s4">
+    <div class="grid hw" id="grid"><div id="cells"></div><div id="todayWrap"></div></div>
+  </section>
+
+  <!-- S6 (di bawah S5 agar kartu menyusut di atas bokeh) -->
+  <section class="scene" id="s6">
+    <div class="bk" id="bk"><i class="or"></i><i class="r1"></i><i class="r2"></i><i class="dot"></i><i class="pk1"></i><i class="pk2"></i><i class="gy"></i></div>
+    <div id="lyrics"></div>
+    <div class="sweep" id="sweep"></div>
+    <div class="bigw" id="bigw"></div>
+  </section>
+
+  <!-- S5 -->
+  <section class="scene" id="s5">
+    <div class="wash" id="wash"></div>
+    <div class="card" id="card">
+      <svg class="burst" id="burst" viewBox="-50 -50 100 100"><defs><radialGradient id="bgd"><stop offset="0" stop-color="#ffc233"/><stop offset="1" stop-color="#ff8a00"/></radialGradient></defs><path id="burstPath" fill="url(#bgd)"/></svg>
+      <div class="pers av" id="pers" data-av="cap"></div>
+      <svg class="rings" id="rings" viewBox="0 0 100 100">
+        <g id="ringG"><circle cx="50" cy="50" r="8" pathLength="1"/><circle cx="48" cy="52" r="17" pathLength="1"/><circle cx="46" cy="54" r="26" pathLength="1"/><circle cx="44" cy="56" r="35" pathLength="1"/><circle cx="42" cy="58" r="44" pathLength="1"/><circle id="ringDot" cx="50" cy="50" r="4" style="fill:#ff9a1a;stroke:none"/></g>
+      </svg>
+      <div class="streak" id="streak"></div>
+      <div class="badge" id="badge"></div>
+    </div>
+    <div class="cap20" id="cap20"></div>
+  </section>
+
+  <!-- S7 -->
+  <section class="scene" id="s7">
+    <div class="zoomer" id="zoomer">
+      <div class="ph" id="ph0"><div class="in" style="background:linear-gradient(160deg,#cfd6c7,#8f9a86)"><div class="av" data-av="helmet"></div></div></div>
+      <div class="ph" id="ph2"><div class="in" style="background:linear-gradient(160deg,#efe1cd,#c9b08a)"><div class="av" data-av="cap"></div></div></div>
+      <div class="ph" id="ph1"><div class="in" style="background:linear-gradient(160deg,#4a6dff,#141f5c)"><div class="av" data-av="shock"></div></div></div>
+    </div>
+    <div class="lab" id="la1"></div><div class="lab" id="la2"></div><div class="lab" id="la3"></div><div class="lab" id="la4"></div>
+    <div class="lab" id="lb1"></div><div class="lab" id="lb2"></div><div class="lab" id="lb3"></div>
+    <div class="wo" id="wo"></div>
+  </section>
+
+  <!-- S8 -->
+  <section class="scene" id="s8"><div class="fall hw" id="fall"></div></section>
+
+  <!-- S9 -->
+  <section class="scene" id="s9">
+    <div class="pp av" data-av="suit" id="pp9"></div><div class="haze"></div>
+    <div class="sticker tx hw" id="tx9"></div>
+  </section>
+
+  <!-- S10 -->
+  <section class="scene" id="s10">
+    <div class="pp av" data-av="tee" id="pp10"></div>
+    <div class="sls" id="sls"></div>
+    <div class="haze"></div>
+    <div class="sticker fin hw" id="fin"></div>
+    <div class="sticker finbig hw" id="finbig"></div>
+  </section>
+
+  <!-- S11 -->
+  <section class="scene" id="s11">
+    <div class="end" id="endUi">
+      <a class="btn main" id="igLink" target="_blank" rel="noopener noreferrer"></a>
+      <button class="btn" id="replay" type="button">↻ Putar ulang</button>
+    </div>
+  </section>
+
+  <div id="pauseIcon"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></div>
+</div>
+
+<script>
+"use strict";
+/* =========================================================
+   >>> BAGIAN YANG MUDAH ANDA UBAH <<<
+   ========================================================= */
+const CFG = {
+  USERNAME: "OKTA777",                              // nama di scene Instagram
+  INSTAGRAM_URL: "https://www.instagram.com/okta777/", // GANTI dengan link Instagram Anda
+  LIKED_BY: "bocikematian",
+  LIKES: "67,020",
+  COMMENTS: "1,204",
+  CAPTION: "Hit it ⚡",
+  BADGE: "BOCIL KEMATIAN",
+  DURATION_LABEL: "20 Min",
+
+  INTRO: ["I HIT", "FAST"],
+  LYRIC_A: ["Here we go,", "tonight we shine"],
+  LYRIC_B: ["Hold tight,", "the best is next"],
+  BIG_WORD: "tonight",
+  STICKER_TOP: ["MAKE THE", "BIG", "MOVES"],
+  STICKER_LEFT: "RIGHT",
+  STICKER_NOW: "NOW",
+  STICKER_GO: ["LET'S", "GO"],
+  CREW: ["THE", "CREW"],
+  FINAL: ["KEEP", "IT", "ALL"],
+  FINAL_BIG: "MOVING",
+
+  /* Foto sendiri (opsional). Taruh file PNG transparan di folder yang sama dengan index.html,
+     lalu isi namanya, contoh: cap: "foto1.png". Kosong = memakai ilustrasi bawaan. */
+  IMAGES: { cap: "", shock: "", helmet: "", suit: "", tee: "" }
+};
+const END_TIME = 14.4;   // durasi total animasi (detik)
+
+/* ---------- ilustrasi orang (SVG bawaan) ---------- */
+const PEOPLE = {
+  cap:   {skin:"#e9b896",cap:"#2b2f3a",jacket:"#6f6c4c",expr:"smile"},
+  shock: {skin:"#dba37d",hair:"#14141a",phones:true,jacket:"#1d2b4d",expr:"shock"},
+  helmet:{skin:"#e2b08c",cap:"#8c917c",jacket:"#5a615b",expr:"neutral"},
+  suit:  {skin:"#dcb08e",hair:"#16161a",jacket:"#2b2b30",tie:true,expr:"neutral"},
+  tee:   {skin:"#d8ac88",hair:"#222226",jacket:"#74747a",expr:"talk"}
+};
+function shade(hex,d){const n=parseInt(hex.slice(1),16);const f=v=>Math.max(0,Math.min(255,v+d));return "#"+[(n>>16)&255,(n>>8)&255,n&255].map(f).map(v=>v.toString(16).padStart(2,"0")).join("");}
+function personSVG(o){
+  const sk=o.skin,sh=shade(sk,-22);
+  let s='<svg viewBox="0 0 200 260" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">';
+  s+=`<path d="M8 262C8 204 44 180 100 180s92 24 92 82z" fill="${o.jacket}"/>`;
+  if(o.tie) s+='<path d="M76 182l24 44 24-44z" fill="#f4f4f4"/><path d="M94 196h12l5 44-11 12-11-12z" fill="#1d1d22"/>';
+  else s+=`<path d="M78 181q22 28 44 0z" fill="${sh}"/>`;
+  s+=`<rect x="84" y="148" width="32" height="40" rx="12" fill="${sh}"/>`;
+  s+=`<ellipse cx="53" cy="112" rx="8" ry="14" fill="${sk}"/><ellipse cx="147" cy="112" rx="8" ry="14" fill="${sk}"/>`;
+  s+=`<ellipse cx="100" cy="105" rx="48" ry="58" fill="${sk}"/>`;
+  if(o.hair) s+=`<path d="M51 100C46 48 78 36 100 36s56 12 49 64c-6-22-24-34-49-34S57 78 51 100z" fill="${o.hair}"/>`;
+  const ink='#222',st='stroke-linecap="round" fill="none"';
+  if(o.expr==="shock"){
+    s+=`<path d="M64 86q16-10 30-2M106 84q14-8 30 2" stroke="${ink}" stroke-width="5" ${st}/>`;
+    s+='<ellipse cx="80" cy="108" rx="11" ry="13" fill="#fff" stroke="#222" stroke-width="3"/><ellipse cx="120" cy="108" rx="11" ry="13" fill="#fff" stroke="#222" stroke-width="3"/><circle cx="80" cy="109" r="5" fill="#222"/><circle cx="120" cy="109" r="5" fill="#222"/>';
+    s+='<ellipse cx="100" cy="144" rx="13" ry="16" fill="#5a1d1d"/>';
+  }else if(o.expr==="smile"){
+    s+=`<path d="M70 111q10-9 20 0M110 111q10-9 20 0" stroke="${ink}" stroke-width="5" ${st}/>`;
+    s+='<path d="M76 134q24 26 48 0z" fill="#7a2a2a"/><path d="M82 136q18 8 36 0v4q-18 8-36 0z" fill="#fff"/>';
+  }else{
+    s+=`<path d="M68 94h24M108 94h24" stroke="${ink}" stroke-width="5" ${st}/>`;
+    s+='<ellipse cx="82" cy="110" rx="4.5" ry="5.5" fill="#222"/><ellipse cx="118" cy="110" rx="4.5" ry="5.5" fill="#222"/>';
+    s+= o.expr==="talk" ? '<ellipse cx="100" cy="142" rx="11" ry="7" fill="#6a2b2b"/>' : '<path d="M84 142h32" stroke="#7a3a3a" stroke-width="4" stroke-linecap="round" fill="none"/>';
+  }
+  s+=`<path d="M100 112v18q-7 4-11 0" stroke="${sh}" stroke-width="4" ${st}/>`;
+  if(o.phones) s+='<path d="M50 104C48 30 152 30 150 104" fill="none" stroke="#1a1a1e" stroke-width="9"/><rect x="38" y="92" width="18" height="40" rx="8" fill="#26262c"/><rect x="144" y="92" width="18" height="40" rx="8" fill="#26262c"/>';
+  if(o.cap) s+=`<path d="M50 92C46 36 84 26 100 26s54 10 50 66z" fill="${o.cap}"/><path d="M40 94c40-8 80-8 120 0-6 10-30 13-60 11s-54-1-60-11z" fill="${shade(o.cap,-28)}"/>`;
+  return s+"</svg>";
+}
+function avatar(k){const src=CFG.IMAGES[k];return src?`<img src="${src}" alt="">`:personSVG(PEOPLE[k]);}
+
+/* ---------- helper animasi ---------- */
+const $=s=>document.querySelector(s);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const prog=(t,a,b)=>clamp((t-a)/(b-a));
+const eo=t=>1-Math.pow(1-t,3);
+const eoq=t=>1-Math.pow(1-t,5);
+const eio=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const eq=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+const eb=t=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2);};
+const rnd=n=>{const x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x);};
+let U=3.9,W=390,H=844;
+const stage=$("#stage");
+
+/* ---------- isi konten dari CFG ---------- */
+document.title=CFG.USERNAME;
+document.querySelectorAll("[data-av]").forEach(e=>{e.innerHTML=avatar(e.dataset.av);});
+document.querySelectorAll("[data-user]").forEach(e=>{e.textContent=CFG.USERNAME;});
+$("#likedBy").textContent=CFG.LIKED_BY;$("#likes").textContent=CFG.LIKES;
+$("#comments").textContent=CFG.COMMENTS;$("#caption").textContent=CFG.CAPTION;
+$("#t1").textContent=CFG.INTRO[0];$("#t2").textContent=CFG.INTRO[1];
+$("#badge").innerHTML=CFG.BADGE.replace(" ","<br>");$("#cap20").textContent=CFG.DURATION_LABEL;
+$("#bigw").textContent=CFG.BIG_WORD;
+$("#tx9").innerHTML=`<div style="font-size:.82em">${CFG.CREW[0]}</div><div>${CFG.CREW[1]}</div>`;
+$("#fin").innerHTML=CFG.FINAL.join("<br>");$("#finbig").textContent=CFG.FINAL_BIG;
+const ig=$("#igLink");ig.href=CFG.INSTAGRAM_URL;ig.textContent="Instagram @"+CFG.USERNAME;
+
+/* burst (matahari oranye) */
+(function(){let d="";for(let i=0;i<64;i++){const a=i/64*Math.PI*2-Math.PI/2,r=i%2?31:49;d+=(i?"L":"M")+(Math.cos(a)*r).toFixed(2)+" "+(Math.sin(a)*r).toFixed(2);}$("#burstPath").setAttribute("d",d+"Z");})();
+
+/* kalender */
+const CAL=[[22,23,24,25,26,27,28],[29,30,31,1,2,3,4],[5,6,7,8,9,10,11]];
+const calCells=[];
+CAL.forEach((row,r)=>row.forEach((n,c)=>{
+  if(r===1&&c===3){const t=document.createElement("div");t.className="today";t.style.left=`calc(var(--u)*${c*24})`;t.style.top=`calc(var(--u)*${r*24})`;t.innerHTML="<b>1</b>";$("#todayWrap").appendChild(t);window.todayEl=t.firstChild;return;}
+  const d=document.createElement("div");d.className="cell";d.textContent=n;d.style.left=`calc(var(--u)*${c*24})`;d.style.top=`calc(var(--u)*${r*24})`;$("#cells").appendChild(d);calCells.push({el:d,dist:Math.abs(c-0)+Math.abs(r-1)});
+}));
+
+/* teks bokeh */
+const BLOCKS=[{a:5.95,b:7.35,lines:CFG.LYRIC_A},{a:7.55,b:8.6,lines:CFG.LYRIC_B}];
+BLOCKS.forEach(bl=>{
+  const el=document.createElement("div");el.className="ly";bl.words=[];
+  bl.lines.forEach(line=>{const ln=document.createElement("div");line.split(" ").forEach(w=>{const s=document.createElement("span");s.className="w";s.textContent=w;ln.appendChild(s);bl.words.push(s);});el.appendChild(ln);});
+  $("#lyrics").appendChild(el);bl.el=el;
+});
+
+/* label merah S7 */
+const LAB=[
+ {el:$("#la1"),txt:CFG.STICKER_TOP[0],fs:3.8,x:50,y:-46,rot:-2,a:9.65,b:10.28},
+ {el:$("#la2"),txt:CFG.STICKER_TOP[1],fs:6.6,x:56,y:-40,rot:-1,a:9.75,b:10.28},
+ {el:$("#la3"),txt:CFG.STICKER_TOP[2],fs:6.6,x:50,y:-30,rot:-2,a:9.85,b:10.28},
+ {el:$("#la4"),txt:CFG.STICKER_LEFT,fs:10,x:6,y:34,rot:-2,a:10.0,b:10.28},
+ {el:$("#lb1"),txt:CFG.STICKER_NOW,fs:10,x:58,y:-52,rot:-2,a:10.5,b:99},
+ {el:$("#lb2"),txt:CFG.STICKER_GO[0],fs:15,x:3,y:30,rot:-2,a:10.62,b:99},
+ {el:$("#lb3"),txt:CFG.STICKER_GO[1],fs:15,x:3,y:44,rot:-2,a:10.72,b:99}
+];
+LAB.forEach(l=>{l.el.textContent=l.txt;});
+
+/* slice glitch (wajah S2 dan S10) */
+const SL2=[],SL10=[];
+function makeSlices(host,srcHTML,n,store,cls){for(let i=0;i<n;i++){const d=document.createElement("div");d.innerHTML=srcHTML;if(cls)d.className=cls;const a=(i/n)*100,b=100-((i+1)/n)*100;d.style.clipPath=`inset(${a}% 0 ${b}% 0)`;host.appendChild(d);store.push(d);}}
+makeSlices($("#fw"),avatar("shock"),8,SL2,"");
+makeSlices($("#sls"),'<div class="pp av" style="'+'left:calc(var(--u)*-17);bottom:calc(var(--u)*-8);width:calc(var(--u)*134);height:calc(var(--u)*170)">'+avatar("tee")+"</div>",8,SL10,"");
+SL2.forEach(d=>{d.style.position="absolute";d.style.inset="0";});
+
+/* ---------- SCENE FUNCTIONS (t = waktu lokal, T = waktu global) ---------- */
+function s1(t){
+  const a=eo(prog(t,0,.4)),out=eio(prog(t,.55,.95)),b=eoq(prog(t,.6,1.12));
+  const t1=$("#t1"),t2=$("#t2");
+  t1.style.transform=`translate3d(0,${((1-a)*20-out*26)*U}px,0)`;t1.style.opacity=a*(1-out);
+  t2.style.transform=`translate3d(${(1-b)*105*U}px,0,0) scale(${1+prog(t,1.1,1.55)*.12})`;t2.style.opacity=b>0?1:0;
+}
+function s2(t){
+  const k=Math.floor(t*22);
+  $("#rays").style.transform=`rotate(${t*50}deg)`;
+  const sc=lerp(.8,1.1,eo(prog(t,0,.55)));
+  $("#fw").style.transform=`translate(${(rnd(k)-.5)*3*U}px,${(rnd(k+9)-.5)*2*U}px) scale(${sc})`;
+  const g=t>.12?1:0;
+  SL2.forEach((d,i)=>{const r=rnd(k*8+i);d.style.transform=`translateX(${g*(r-.5)*(14+t*26)*U}px)`;d.style.filter=`saturate(2.4) hue-rotate(${Math.floor(rnd(k+i)*360)}deg) contrast(1.1)`;});
+}
+const CAM=[[0,50,82,2.9],[.5,46,98,2.4],[.95,26,132,2.15],[1.6,26,134,2.15]];
+function s3(t){
+  let cx=CAM[3][1],cy=CAM[3][2],s=CAM[3][3];
+  for(let i=0;i<3;i++){if(t<=CAM[i+1][0]){const A=CAM[i],B=CAM[i+1],p=eq(prog(t,A[0],B[0]));cx=lerp(A[1],B[1],p);cy=lerp(A[2],B[2],p);s=lerp(A[3],B[3],p);break;}}
+  const post=$("#post");
+  post.style.transform=`translate3d(${W/2-cx*U*s}px,${H/2-cy*U*s}px,0) scale(${s})`;
+  const ex=prog(t,1.2,1.55),blur=Math.max(2.4*Math.sin(Math.PI*prog(t,.45,.95)),ex*10);
+  post.style.filter=blur>.3?`blur(${blur.toFixed(1)}px)`:"none";
+  post.style.opacity=1-ex;
+}
+function s4(t){
+  const g=$("#grid");
+  // kamera: diam di "29" -> geser ke "1" -> zoom
+  const p1=eq(prog(t,.3,.75)),p2=eio(prog(t,.75,1.2));
+  const cx=lerp(12,84,p1),cy=36,s=lerp(1.1,1.5,p1)+p2*.5;
+  g.style.transform=`translate3d(${W/2-cx*U*s}px,${H/2-cy*U*s}px,0) scale(${s})`;
+  g.style.opacity=1-prog(t,.95,1.2);
+  const blur=2.6*Math.sin(Math.PI*prog(t,.3,.8));
+  $("#cells").style.filter=blur>.3?`blur(${blur.toFixed(1)}px)`:"none";
+  calCells.forEach(c=>{c.el.style.opacity=clamp((t-.05-c.dist*.035)/.2);});
+  const pop=eb(prog(t,.55,.85));
+  window.todayEl.style.transform=`scale(${pop})`;window.todayEl.style.opacity=pop>0?1:0;
+}
+function s5(t,T){
+  const card=$("#card");
+  $("#wash").style.opacity=prog(T,4.3,4.55)*(1-prog(T,5.3,5.5));
+  card.style.backgroundColor=`rgba(255,255,255,${prog(T,4.35,4.55)})`;
+  card.style.overflow=T<4.6?"visible":"hidden";
+  // cutout terbang masuk
+  const p=prog(T,3.95,4.6),e=eb(p);
+  const pers=$("#pers"),bl=lerp(4,0,p);
+  pers.style.transform=`translate3d(${(1-e)*46*U}px,${-(1-e)*96*U}px,0) rotate(${(1-e)*38}deg) scale(${lerp(.3,1,e)})`;
+  pers.style.opacity=clamp(p*6);pers.style.filter=bl>.2?`blur(${bl}px)`:"none";
+  // sunburst
+  const bp=eb(prog(T,4.45,4.9)),b=$("#burst");
+  b.style.opacity=bp>0?1:0;b.style.transform=`scale(${Math.max(bp,0)}) rotate(${T*12}deg)`;
+  // ring biru
+  document.querySelectorAll("#ringG circle[pathLength]").forEach((c,i)=>{const pp=prog(T,4.6+i*.06,5.0+i*.06);c.style.strokeDasharray="1";c.style.strokeDashoffset=1-pp;});
+  $("#ringDot").style.opacity=prog(T,4.9,5.1);
+  $("#ringG").style.transformOrigin="50% 50%";$("#ringG").style.transform=`rotate(${(T-4.6)*24}deg)`;
+  // garis oranye
+  const st=$("#streak");st.style.width=eo(prog(T,4.3,4.6))*34*U+"px";st.style.opacity=1-prog(T,4.7,4.9);
+  // menyusut jadi kartu, lalu zoom-out
+  const sh=eio(prog(T,5.15,5.65)),z=eio(prog(T,5.85,6.3));
+  let sc=lerp(1,.56,sh);if(T>5.85)sc=lerp(.56,3,z);
+  card.style.transform=`scale(${sc})`;
+  card.style.borderRadius=lerp(0,6*U,sh)+"px";
+  card.style.boxShadow=`0 ${2*U}px ${6*U}px rgba(0,0,0,${.22*sh*(1-z)})`;
+  card.style.opacity=1-prog(T,6.0,6.3);
+  card.style.filter=z>.05?`blur(${(z*6).toFixed(1)}px)`:"none";
+  $("#badge").style.opacity=prog(T,5.5,5.7);
+  const c=$("#cap20");c.style.opacity=prog(T,5.55,5.75)*(1-prog(T,5.85,6.0));c.style.transform=`translateY(${(1-prog(T,5.55,5.75))*U}px)`;
+}
+function s6(t,T){
+  $("#bk").style.transform=`scale(${1.04+(T-5)*.035}) translate(${Math.sin(T*.8)*1.2}%,${Math.cos(T*.7)*1})`;
+  BLOCKS.forEach(bl=>{
+    const out=prog(T,bl.b,bl.b+.3);
+    bl.el.style.opacity=(T>=bl.a&&T<bl.b+.3)?1:0;
+    bl.el.style.transform=`translateY(${-out*U}px)`;
+    bl.words.forEach((w,i)=>{
+      const p=eo(prog(T,bl.a+i*.13,bl.a+i*.13+.4));
+      const bl2=(1-p)*8+out*10;
+      w.style.opacity=p*(1-out);w.style.transform=`translateY(${(1-p)*1.6*U}px)`;
+      w.style.filter=bl2>.2?`blur(${bl2.toFixed(1)}px)`:"none";
+    });
+  });
+  const sw=prog(T,8.55,8.95),sE=$("#sweep");
+  sE.style.opacity=sw>0&&sw<1?1:0;sE.style.transform=`translateX(${lerp(-100,100,eio(sw))}%)`;
+  const bp=eo(prog(T,8.95,9.3)),big=$("#bigw");
+  big.style.opacity=bp;big.style.transform=`scale(${lerp(1.35,1,bp)+prog(T,9.3,9.5)*.1})`;
+  big.style.filter=bp<1?`blur(${((1-bp)*10).toFixed(1)}px)`:"none";
+}
+function s7(t,T){
+  // kartu naik
+  [["#ph0",-21,4,-9,0],["#ph2",21,6,9,.1],["#ph1",0,0,0,.2]].forEach(([id,x,y,r,d],i)=>{
+    const p=eb(prog(T,9.4+d,9.4+d+.5)),el=$(id);
+    el.style.transform=`translate3d(${x*U}px,${(y+(1-p)*80)*U}px,0) rotate(${r*(0.4+.6*p)}deg) scale(${i===2?1.08:1})`;
+    el.style.opacity=clamp(p*4);
+  });
+  const z=eio(prog(T,10.3,10.9));
+  $("#zoomer").style.transform=`scale(${lerp(1.45,3.1,z)})`;
+  LAB.forEach(l=>{
+    const p=eb(prog(T,l.a,l.a+.25)),vis=(T>=l.a&&T<l.b)?1:0;
+    l.el.style.fontSize=l.fs*U+"px";
+    l.el.style.left=l.x*U+"px";l.el.style.top=`calc(50% + ${l.y*U}px)`;
+    l.el.style.opacity=vis;l.el.style.transform=`rotate(${l.rot}deg) scaleY(${Math.max(p,0)})`;
+  });
+  $("#wo").style.opacity=prog(T,10.8,11.05);
+}
+function s8(t){
+  const p=prog(t,0,.55),f=$("#fall");
+  f.style.transform=`translate3d(${p*5*U}px,${(eo(p)*36)*U}px,0) rotate(${20+p*280}deg) scale(${lerp(1,.6,p)})`;
+  f.style.opacity=1-prog(t,.35,.6);f.style.filter=`blur(${(p*4).toFixed(1)}px)`;
+}
+function s9(t){
+  const a=eo(prog(t,.1,.55)),tx=$("#tx9");
+  tx.style.transform=`translate3d(${(1-a)*60*U}px,0,0)`;tx.style.opacity=a;tx.style.filter=a<1?`blur(${((1-a)*8).toFixed(1)}px)`:"none";
+  $("#pp9").style.transform=`scale(${1+t*.05})`;
+}
+function s10(t,T){
+  $("#pp10").style.transform=`scale(${1+t*.05})`;
+  const k=Math.floor(T*24),g=(T>=12.45&&T<12.8)?1:0;
+  SL10.forEach((d,i)=>{d.style.opacity=g;d.style.transform=`translateX(${(rnd(k*8+i)-.5)*30*U}px)`;});
+  const f=$("#fin"),fp=eo(prog(T,12.45,12.65))*(1-prog(T,12.95,13.1));
+  f.style.opacity=fp;f.style.transform=`rotate(-3deg) translateY(${(1-eo(prog(T,12.45,12.65)))*6*U}px)`;
+  const b=$("#finbig"),bp=eo(prog(T,13.0,13.25));
+  b.style.opacity=bp;b.style.transform=`scale(${lerp(1.12,1,bp)})`;
+}
+function s11(t,T){
+  const e=$("#endUi"),p=prog(T,13.9,14.3);
+  e.style.opacity=p;e.style.pointerEvents=p>.5?"auto":"none";
+}
+
+/* ---------- daftar scene (urutan = lapisan dari bawah ke atas) ---------- */
+const SC=[
+ {el:$("#s1"),a:0,b:1.55,fn:s1},
+ {el:$("#s2"),a:1.5,b:2.05,fn:s2,fade:.06},
+ {el:$("#s3"),a:2.0,b:3.55,fn:s3,fade:.08},
+ {el:$("#s4"),a:3.4,b:4.7,fn:s4,fade:.15},
+ {el:$("#s6"),a:5.0,b:9.6,fn:s6,fade:.5},
+ {el:$("#s5"),a:3.9,b:6.35,fn:s5},
+ {el:$("#s7"),a:9.35,b:11.1,fn:s7,fade:.2},
+ {el:$("#s8"),a:10.9,b:11.6,fn:s8,fade:.15},
+ {el:$("#s9"),a:11.4,b:12.15,fn:s9,fade:.2},
+ {el:$("#s10"),a:12.0,b:13.7,fn:s10,fade:.2},
+ {el:$("#s11"),a:13.35,b:999,fn:s11,fade:.5}
+];
+function render(T){
+  for(const s of SC){
+    const on=T>=s.a&&T<s.b;
+    if(on!==s.on){s.on=on;s.el.style.display=on?"block":"none";}
+    if(!on)continue;
+    s.el.style.opacity=s.fade?clamp((T-s.a)/s.fade):1;
+    s.fn(T-s.a,T);
+  }
+}
+
+/* ---------- ukuran & jam utama ---------- */
+function fit(){W=stage.clientWidth;H=stage.clientHeight;U=W/100;document.documentElement.style.setProperty("--u",U+"px");render(T);}
+let T=0,playing=true,ended=false,last=0;
+function loop(now){
+  const dt=Math.min(.1,(now-last)/1000);last=now;
+  if(playing&&!ended){T+=dt;if(T>=END_TIME){T=END_TIME;ended=true;}render(T);}
+  requestAnimationFrame(loop);
+}
+const q=new URLSearchParams(location.search);
+if(q.has("t")){T=parseFloat(q.get("t"))||0;playing=false;}   // contoh: index.html?t=5.2 (untuk cek frame)
+window.addEventListener("resize",fit);window.addEventListener("orientationchange",()=>setTimeout(fit,200));
+fit();
+requestAnimationFrame(t=>{last=t;requestAnimationFrame(loop);});
+
+/* tap = pause / lanjut */
+let pt;
+stage.addEventListener("click",e=>{
+  if(e.target.closest("a,button")||ended)return;
+  playing=!playing;
+  const ic=$("#pauseIcon");ic.style.opacity=playing?0:1;
+  if(playing){clearTimeout(pt);}
+});
+document.addEventListener("visibilitychange",()=>{last=performance.now();});
+$("#replay").addEventListener("click",()=>{T=0;ended=false;playing=true;$("#pauseIcon").style.opacity=0;SC.forEach(s=>{s.on=null;});render(0);});
+</script>
+</body>
+</html>
