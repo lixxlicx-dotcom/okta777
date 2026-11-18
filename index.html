@@ -19,7 +19,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .av{width:100%;height:100%}
 .av svg,.av img{width:100%;height:100%;display:block}
 .av img{object-fit:contain;object-position:center bottom}
-.p-av img,.mini img,.p-img img,.ph img{object-fit:cover;object-position:center top}
+.p-av img,.mini img,.p-img img,.ph img{object-fit:cover;object-position:45% 40%}
 .hw{will-change:transform,opacity}
 
 /* ---------- S1 : I HIT IT / FAST ---------- */
@@ -30,11 +30,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #s1 .t1{left:calc(var(--u)*8);top:calc(50% - var(--u)*22);font-size:calc(var(--u)*21)}
 #s1 .t2{left:calc(var(--u)*3);top:calc(50% - var(--u)*26);font-size:calc(var(--u)*52)}
 
-/* ---------- S2 : wajah glitch ---------- */
+/* ---------- S2 : wajah glitch (bingkai pas 1:1 agar tidak terpotong) ---------- */
 #s2{background:#efeef5}
 #s2 .rays{position:absolute;left:50%;top:50%;width:calc(var(--u)*320);height:calc(var(--u)*320);margin:calc(var(--u)*-160) 0 0 calc(var(--u)*-160);background:repeating-conic-gradient(from 0deg,#fff 0 6deg,#8f88b9 6deg 12deg)}
-#s2 .fw{position:absolute;left:50%;top:50%;width:calc(var(--u)*150);height:calc(var(--u)*195);margin:calc(var(--u)*-84) 0 0 calc(var(--u)*-75)}
+#s2 .fw{position:absolute;left:50%;top:50%;width:calc(var(--u)*104);height:calc(var(--u)*104);margin:calc(var(--u)*-52) 0 0 calc(var(--u)*-52)}
 #s2 .fw>*{position:absolute;inset:0}
+#s2 .fw img{object-fit:cover;object-position:45% 45%}
 
 /* ---------- S3 : post Instagram ---------- */
 #s3{background:#fff}
@@ -43,9 +44,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .p-head .dots{margin-left:auto;letter-spacing:.1em;font-weight:700}
 .p-av{display:block;width:calc(var(--u)*9);height:calc(var(--u)*9);border-radius:50%;padding:calc(var(--u)*.6);background:conic-gradient(#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75)}
 .p-av span{display:block;width:100%;height:100%;border-radius:50%;border:calc(var(--u)*.6) solid #fff;background:#e9e2ff;overflow:hidden}
-.p-img{position:relative;height:calc(var(--u)*100);overflow:hidden;background:linear-gradient(155deg,#ff4f9a 0%,#9a3cf0 55%,#ff7a45 100%)}
+.p-img{position:relative;height:calc(var(--u)*100);overflow:hidden;background:#18181c}
 .p-img .big{position:absolute;inset:0;width:100%;height:100%}
-.p-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,60,120,.15),rgba(255,120,40,.12));pointer-events:none}
+.p-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,60,120,.14),rgba(255,120,40,.12));pointer-events:none}
 .p-act{height:calc(var(--u)*12);display:flex;align-items:center;padding:0 calc(var(--u)*3.5);gap:calc(var(--u)*4)}
 .p-act svg{width:calc(var(--u)*6.6);height:calc(var(--u)*6.6);fill:none;stroke:#111;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
 .p-act svg:last-child{margin-left:auto}
@@ -142,7 +143,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
     <div class="bw t2 hw" id="t2"></div>
   </section>
 
-  <!-- S2 -->
+  <!-- S2 : wajah glitch -->
   <section class="scene" id="s2">
     <div class="rays hw" id="rays"></div>
     <div class="fw" id="fw"></div>
@@ -265,9 +266,9 @@ const CFG = {
   FINAL: ["I GOT", "ALL", "THE"],
   FINAL_BIG: "DOUGH",
 
-  /* SESUAI NAMA FILE DI GITHUB ANDA (huruf besar/kecil sama persis) */
+  /* NAMA FILE FOTO */
   IMAGES: {
-    cap: "foto1.png",
+    cap: "Foto1.png",
     shock: "foto2.PNG",
     helmet: "foto3.png",
     suit: "foto4.png",
@@ -380,7 +381,7 @@ const LAB=[
 ];
 LAB.forEach(l=>{l.el.textContent=l.txt;});
 
-/* slice glitch */
+/* slice glitch S2 & S10 */
 const SL2=[],SL10=[];
 function makeSlices(host,srcHTML,n,store,cls){for(let i=0;i<n;i++){const d=document.createElement("div");d.innerHTML=srcHTML;if(cls)d.className=cls;const a=(i/n)*100,b=100-((i+1)/n)*100;d.style.clipPath=`inset(${a}% 0 ${b}% 0)`;host.appendChild(d);store.push(d);}}
 makeSlices($("#fw"),avatar("shock"),8,SL2,"");
@@ -397,12 +398,13 @@ function s1(t){
 function s2(t){
   const k=Math.floor(t*22);
   $("#rays").style.transform=`rotate(${t*50}deg)`;
-  const sc=lerp(.8,1.1,eo(prog(t,0,.55)));
-  $("#fw").style.transform=`translate(${(rnd(k)-.5)*3*U}px,${(rnd(k+9)-.5)*2*U}px) scale(${sc})`;
+  const sc=lerp(.88,1.08,eo(prog(t,0,.55)));
+  $("#fw").style.transform=`translate(${(rnd(k)-.5)*2.5*U}px,${(rnd(k+9)-.5)*1.8*U}px) scale(${sc})`;
   const g=t>.12?1:0;
-  SL2.forEach((d,i)=>{const r=rnd(k*8+i);d.style.transform=`translateX(${g*(r-.5)*(14+t*26)*U}px)`;d.style.filter=`saturate(2.4) hue-rotate(${Math.floor(rnd(k+i)*360)}deg) contrast(1.1)`;});
+  SL2.forEach((d,i)=>{const r=rnd(k*8+i);d.style.transform=`translateX(${g*(r-.5)*(12+t*22)*U}px)`;d.style.filter=`saturate(2.2) hue-rotate(${Math.floor(rnd(k+i)*360)}deg) contrast(1.08)`;});
 }
-const CAM=[[0,50,82,2.9],[.5,46,98,2.4],[.95,26,132,2.15],[1.6,26,134,2.15]];
+/* Kamera post IG diatur agar orang di foto terlihat utuh dulu, lalu geser ke like/caption */
+const CAM=[[0,46,66,1.85],[.5,46,74,1.65],[.95,26,126,2.05],[1.6,26,128,2.05]];
 function s3(t){
   let cx=CAM[3][1],cy=CAM[3][2],s=CAM[3][3];
   for(let i=0;i<3;i++){if(t<=CAM[i+1][0]){const A=CAM[i],B=CAM[i+1],p=eq(prog(t,A[0],B[0]));cx=lerp(A[1],B[1],p);cy=lerp(A[2],B[2],p);s=lerp(A[3],B[3],p);break;}}
