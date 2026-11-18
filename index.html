@@ -19,7 +19,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .av{width:100%;height:100%}
 .av svg,.av img{width:100%;height:100%;display:block}
 .av img{object-fit:contain;object-position:center bottom}
-.p-av img,.mini img{object-fit:cover;object-position:center top}
+.p-av img,.mini img,.p-img img,.ph img{object-fit:cover;object-position:center top}
 .hw{will-change:transform,opacity}
 
 /* ---------- S1 : I HIT IT / FAST ---------- */
@@ -44,8 +44,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .p-av{display:block;width:calc(var(--u)*9);height:calc(var(--u)*9);border-radius:50%;padding:calc(var(--u)*.6);background:conic-gradient(#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75)}
 .p-av span{display:block;width:100%;height:100%;border-radius:50%;border:calc(var(--u)*.6) solid #fff;background:#e9e2ff;overflow:hidden}
 .p-img{position:relative;height:calc(var(--u)*100);overflow:hidden;background:linear-gradient(155deg,#ff4f9a 0%,#9a3cf0 55%,#ff7a45 100%)}
-.p-img .big{position:absolute;left:calc(var(--u)*-8);top:calc(var(--u)*6);width:calc(var(--u)*116);height:calc(var(--u)*150)}
-.p-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,60,120,.25),rgba(255,120,40,.2))}
+.p-img .big{position:absolute;inset:0;width:100%;height:100%}
+.p-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,60,120,.15),rgba(255,120,40,.12));pointer-events:none}
 .p-act{height:calc(var(--u)*12);display:flex;align-items:center;padding:0 calc(var(--u)*3.5);gap:calc(var(--u)*4)}
 .p-act svg{width:calc(var(--u)*6.6);height:calc(var(--u)*6.6);fill:none;stroke:#111;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
 .p-act svg:last-child{margin-left:auto}
@@ -93,7 +93,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 #s7 .zoomer{position:absolute;left:50%;top:50%;width:0;height:0}
 .ph{position:absolute;left:calc(var(--u)*-15);top:calc(var(--u)*-27);width:calc(var(--u)*30);height:calc(var(--u)*54);border-radius:calc(var(--u)*4);background:#111;padding:calc(var(--u)*.9);box-shadow:0 calc(var(--u)*2) calc(var(--u)*5) rgba(0,0,0,.25)}
 .ph .in{width:100%;height:100%;border-radius:calc(var(--u)*3.2);overflow:hidden;position:relative}
-.ph .in .av{position:absolute;left:-8%;bottom:-4%;width:116%;height:92%}
+.ph .in .av{position:absolute;inset:0;width:100%;height:100%}
 .lab{position:absolute;background:#e63946;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;padding:calc(var(--u)*1) calc(var(--u)*2);white-space:nowrap;transform-origin:0 50%;opacity:0}
 #s7 .wo{position:absolute;inset:0;background:#fff;opacity:0}
 
@@ -250,7 +250,6 @@ const CFG = {
   BADGE: "PARENTAL ADVISORY",
   DURATION_LABEL: "20 Min",
 
-  /* FILE LAGU: Upload lagu.mp3 ke folder GitHub yang sama dengan index.html */
   AUDIO: "lagu.mp3",
 
   /* LIRIK SESUAI VIDEO (20 Min - Lil Uzi Vert) */
@@ -266,16 +265,16 @@ const CFG = {
   FINAL: ["I GOT", "ALL", "THE"],
   FINAL_BIG: "DOUGH",
 
-  /* FOTO: Upload ke folder GitHub yang sama dengan index.html */
+  /* SESUAI NAMA FILE DI GITHUB ANDA (huruf besar/kecil sama persis) */
   IMAGES: {
-    cap: "foto1.png",     // 1. Foto Utama (cutout + sunburst) & foto profil IG
-    shock: "foto2.png",   // 2. Foto Post IG & wajah glitch
-    helmet: "foto3.png",  // 3. Foto ikon like mini di IG
-    suit: "foto4.png",    // 4. Foto Hitam Putih 1 ("THESE GUYS MAD")
-    tee: "foto5.png",     // 5. Foto Hitam Putih 2 ("I GOT ALL THE DOUGH")
-    hp1: "hp1.png",       // 6. Ponsel kiri
-    hp2: "hp2.png",       // 7. Ponsel tengah
-    hp3: "hp3.png"        // 8. Ponsel kanan
+    cap: "foto1.png",
+    shock: "foto2.PNG",
+    helmet: "foto3.png",
+    suit: "foto4.png",
+    tee: "foto5.png",
+    hp1: "hp1.PNG",
+    hp2: "hp2.PNG",
+    hp3: "hp3.PNG"
   }
 };
 const END_TIME = 14.83;
@@ -546,7 +545,6 @@ function tryPlayAudio(){
   bgm.play().then(()=>{
     tapStart.style.display="none";
   }).catch(()=>{
-    // Jika browser HP memblokir autoplay suara, tahan animasi & munculkan tombol tap mulai
     playing=false;
     tapStart.style.display="flex";
   });
@@ -564,7 +562,6 @@ tapStart.addEventListener("click",e=>{
 function loop(now){
   const dt=Math.min(.1,(now-last)/1000);last=now;
   if(playing&&!ended){
-    // Sinkronkan waktu animasi langsung ke detak lagu jika lagu sedang berputar
     if(CFG.AUDIO && !bgm.paused && bgm.readyState>=2){
       T=bgm.currentTime;
     }else{
