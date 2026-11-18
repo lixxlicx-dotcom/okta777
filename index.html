@@ -9,7 +9,6 @@
 <style>
 /* =========================================================
    STYLE  —  semua ukuran memakai var(--u) = 1% lebar layar
-   (di-set otomatis oleh JavaScript, jadi otomatis responsif)
    ========================================================= */
 :root{--u:3.9px}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -123,12 +122,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .btn.main{background:#fff;color:#000;border-color:#fff}
 .btn:active{transform:scale(.97)}
 
-/* ikon pause */
+/* ikon pause & tombol tap mulai suara */
 #pauseIcon{position:absolute;left:50%;top:50%;width:calc(var(--u)*16);height:calc(var(--u)*16);margin:calc(var(--u)*-8) 0 0 calc(var(--u)*-8);border-radius:50%;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s;pointer-events:none;z-index:99}
 #pauseIcon svg{width:45%;height:45%;fill:#fff}
+#tapStart{position:absolute;inset:0;z-index:120;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+#tapStart span{background:#fff;color:#000;font-weight:800;font-size:calc(var(--u)*4.2);padding:calc(var(--u)*3.2) calc(var(--u)*7);border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
 </style>
 </head>
 <body>
+
+<audio id="bgm" preload="auto" playsinline></audio>
 
 <div id="stage">
 
@@ -190,7 +193,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
     <div class="cap20" id="cap20"></div>
   </section>
 
-  <!-- S7 : 3 Kartu Ponsel (bisa beda-beda fotonya) -->
+  <!-- S7 : 3 Kartu Ponsel -->
   <section class="scene" id="s7">
     <div class="zoomer" id="zoomer">
       <div class="ph" id="ph0"><div class="in" style="background:linear-gradient(160deg,#cfd6c7,#8f9a86)"><div class="av" data-av="hp1"></div></div></div>
@@ -229,6 +232,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
   </section>
 
   <div id="pauseIcon"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></div>
+  <div id="tapStart"><span>🔊 Ketuk untuk Mulai</span></div>
 </div>
 
 <script>
@@ -246,6 +250,9 @@ const CFG = {
   BADGE: "PARENTAL ADVISORY",
   DURATION_LABEL: "20 Min",
 
+  /* FILE LAGU: Upload lagu.mp3 ke folder GitHub yang sama dengan index.html */
+  AUDIO: "lagu.mp3",
+
   /* LIRIK SESUAI VIDEO (20 Min - Lil Uzi Vert) */
   INTRO: ["I HIT IT", "FAST"],
   LYRIC_A: ["Gotta get ready,", "tonight is my show."],
@@ -259,22 +266,19 @@ const CFG = {
   FINAL: ["I GOT", "ALL", "THE"],
   FINAL_BIG: "DOUGH",
 
-  /* Upload foto PNG transparan ke folder GitHub yang sama dengan index.html.
-     Jika salah satu file belum di-upload, otomatis memakai avatar bawaan. */
+  /* FOTO: Upload ke folder GitHub yang sama dengan index.html */
   IMAGES: {
     cap: "foto1.png",     // 1. Foto Utama (cutout + sunburst) & foto profil IG
     shock: "foto2.png",   // 2. Foto Post IG & wajah glitch
     helmet: "foto3.png",  // 3. Foto ikon like mini di IG
     suit: "foto4.png",    // 4. Foto Hitam Putih 1 ("THESE GUYS MAD")
     tee: "foto5.png",     // 5. Foto Hitam Putih 2 ("I GOT ALL THE DOUGH")
-
-    /* 3 FOTO KHUSUS DI KARTU PONSEL (bisa beda semua) */
-    hp1: "hp1.png",       // Ponsel kiri
-    hp2: "hp2.png",       // Ponsel tengah (utama yang di-zoom)
-    hp3: "hp3.png"        // Ponsel kanan
+    hp1: "hp1.png",       // 6. Ponsel kiri
+    hp2: "hp2.png",       // 7. Ponsel tengah
+    hp3: "hp3.png"        // 8. Ponsel kanan
   }
 };
-const END_TIME = 14.83;   // durasi total sama seperti di video (14.83 detik)
+const END_TIME = 14.83;
 
 /* ---------- ilustrasi orang (SVG bawaan) ---------- */
 const PEOPLE = {
@@ -377,14 +381,14 @@ const LAB=[
 ];
 LAB.forEach(l=>{l.el.textContent=l.txt;});
 
-/* slice glitch (wajah S2 dan S10) */
+/* slice glitch */
 const SL2=[],SL10=[];
 function makeSlices(host,srcHTML,n,store,cls){for(let i=0;i<n;i++){const d=document.createElement("div");d.innerHTML=srcHTML;if(cls)d.className=cls;const a=(i/n)*100,b=100-((i+1)/n)*100;d.style.clipPath=`inset(${a}% 0 ${b}% 0)`;host.appendChild(d);store.push(d);}}
 makeSlices($("#fw"),avatar("shock"),8,SL2,"");
 makeSlices($("#sls"),'<div class="pp av" style="left:calc(var(--u)*-17);bottom:calc(var(--u)*-8);width:calc(var(--u)*134);height:calc(var(--u)*170)">'+avatar("tee")+"</div>",8,SL10,"");
 SL2.forEach(d=>{d.style.position="absolute";d.style.inset="0";});
 
-/* ---------- SCENE FUNCTIONS (t = waktu lokal, T = waktu global) ---------- */
+/* ---------- SCENE FUNCTIONS ---------- */
 function s1(t){
   const a=eo(prog(t,0,.4)),out=eio(prog(t,.55,.95)),b=eoq(prog(t,.6,1.12));
   const t1=$("#t1"),t2=$("#t2");
@@ -505,7 +509,7 @@ function s11(t,T){
   e.style.opacity=p;e.style.pointerEvents=p>.5?"auto":"none";
 }
 
-/* ---------- daftar scene (urutan = lapisan dari bawah ke atas) ---------- */
+/* ---------- daftar scene ---------- */
 const SC=[
  {el:$("#s1"),a:0,b:1.55,fn:s1},
  {el:$("#s2"),a:1.5,b:2.05,fn:s2,fade:.06},
@@ -529,30 +533,81 @@ function render(T){
   }
 }
 
-/* ---------- ukuran & jam utama ---------- */
+/* ---------- ukuran, audio & jam utama ---------- */
 function fit(){W=stage.clientWidth;H=stage.clientHeight;U=W/100;document.documentElement.style.setProperty("--u",U+"px");render(T);}
 let T=0,playing=true,ended=false,last=0;
+
+const bgm=$("#bgm");
+const tapStart=$("#tapStart");
+if(CFG.AUDIO) bgm.src=CFG.AUDIO;
+
+function tryPlayAudio(){
+  if(!CFG.AUDIO)return;
+  bgm.play().then(()=>{
+    tapStart.style.display="none";
+  }).catch(()=>{
+    // Jika browser HP memblokir autoplay suara, tahan animasi & munculkan tombol tap mulai
+    playing=false;
+    tapStart.style.display="flex";
+  });
+}
+
+tapStart.addEventListener("click",e=>{
+  e.stopPropagation();
+  tapStart.style.display="none";
+  T=0;ended=false;playing=true;
+  last=performance.now();
+  if(CFG.AUDIO){bgm.currentTime=0;bgm.play().catch(()=>{});}
+  render(0);
+});
+
 function loop(now){
   const dt=Math.min(.1,(now-last)/1000);last=now;
-  if(playing&&!ended){T+=dt;if(T>=END_TIME){T=END_TIME;ended=true;}render(T);}
+  if(playing&&!ended){
+    // Sinkronkan waktu animasi langsung ke detak lagu jika lagu sedang berputar
+    if(CFG.AUDIO && !bgm.paused && bgm.readyState>=2){
+      T=bgm.currentTime;
+    }else{
+      T+=dt;
+    }
+    if(T>=END_TIME){
+      T=END_TIME;ended=true;
+      if(CFG.AUDIO) bgm.pause();
+    }
+    render(T);
+  }
   requestAnimationFrame(loop);
 }
+
 const q=new URLSearchParams(location.search);
 if(q.has("t")){T=parseFloat(q.get("t"))||0;playing=false;}
 window.addEventListener("resize",fit);window.addEventListener("orientationchange",()=>setTimeout(fit,200));
 fit();
+if(playing) tryPlayAudio();
 requestAnimationFrame(t=>{last=t;requestAnimationFrame(loop);});
 
 /* tap = pause / lanjut */
-let pt;
 stage.addEventListener("click",e=>{
-  if(e.target.closest("a,button")||ended)return;
+  if(e.target.closest("a,button,#tapStart")||ended)return;
   playing=!playing;
   const ic=$("#pauseIcon");ic.style.opacity=playing?0:1;
-  if(playing){clearTimeout(pt);}
+  if(CFG.AUDIO){
+    if(playing){bgm.currentTime=T;bgm.play().catch(()=>{});}
+    else{bgm.pause();}
+  }
 });
-document.addEventListener("visibilitychange",()=>{last=performance.now();});
-$("#replay").addEventListener("click",()=>{T=0;ended=false;playing=true;$("#pauseIcon").style.opacity=0;SC.forEach(s=>{s.on=null;});render(0);});
+document.addEventListener("visibilitychange",()=>{
+  last=performance.now();
+  if(document.hidden && CFG.AUDIO) bgm.pause();
+  else if(!document.hidden && playing && !ended && CFG.AUDIO) bgm.play().catch(()=>{});
+});
+$("#replay").addEventListener("click",()=>{
+  T=0;ended=false;playing=true;
+  $("#pauseIcon").style.opacity=0;
+  SC.forEach(s=>{s.on=null;});
+  if(CFG.AUDIO){bgm.currentTime=0;bgm.play().catch(()=>{});}
+  render(0);
+});
 </script>
 </body>
 </html>
