@@ -25,31 +25,36 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 
 /* Story Progress Bar di atas layar */
 #storyBar{position:absolute;left:calc(var(--u)*3);right:calc(var(--u)*3);top:calc(env(safe-area-inset-top) + var(--u)*2.2);height:calc(var(--u)*.65);border-radius:99px;background:rgba(130,130,140,.28);overflow:hidden;z-index:95;pointer-events:none}
-#storyFill{width:0%;height:100%;background:rgba(255,255,255,.92);box-shadow:0 0 calc(var(--u)*1.2) rgba(0,0,0,.25);border-radius:99px}
+#storyFill{width:0%;height:100%;background:linear-gradient(90deg,#ff5ca8,#ffffff,#70e4ff);box-shadow:0 0 calc(var(--u)*1.2) rgba(255,92,168,.55);border-radius:99px}
 
 /* Cinematic Edge Vignette & Beat Flash */
-#vignette{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,0,0,0) 52%,rgba(10,8,25,.48) 100%);opacity:0;pointer-events:none;z-index:82;transition:opacity .25s ease}
+#vignette{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,0,0,0) 52%,rgba(16,6,32,.48) 100%);opacity:0;pointer-events:none;z-index:82;transition:opacity .25s ease}
 #beatFlash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:85;mix-blend-mode:overlay}
 
-/* Jejak Cahaya Sentuhan HP */
+/* Jejak Cahaya Sentuhan HP (Pink-Cyan Diamond Spark) */
 #touchTrail{position:absolute;inset:0;pointer-events:none;z-index:92;overflow:hidden}
-#touchTrail i{position:absolute;width:calc(var(--u)*3.2);height:calc(var(--u)*3.2);margin:calc(var(--u)*-1.6) 0 0 calc(var(--u)*-1.6);border-radius:50%;background:radial-gradient(circle,#fff 0,#ffd27d 45%,rgba(255,160,60,0) 75%);pointer-events:none;animation:sparkFade .55s ease-out forwards}
-@keyframes sparkFade{0%{transform:scale(.4);opacity:.95}100%{transform:scale(2.1);opacity:0}}
+#touchTrail i{position:absolute;width:calc(var(--u)*3.4);height:calc(var(--u)*3.4);margin:calc(var(--u)*-1.7) 0 0 calc(var(--u)*-1.7);border-radius:50%;background:radial-gradient(circle,#fff 0,#ff7eb9 45%,rgba(112,228,255,0) 75%);pointer-events:none;animation:sparkFade .55s ease-out forwards}
+@keyframes sparkFade{0%{transform:scale(.4);opacity:.95}100%{transform:scale(2.2);opacity:0}}
 
-/* ---------- S1 : I HIT IT / FAST + Kinetic Tracking ---------- */
-#s1{background:linear-gradient(150deg,#5a2ee0 0%,#7a4bf7 55%,#9566ff 100%)}
-#s1 .orb{position:absolute;left:calc(var(--u)*-26);bottom:calc(var(--u)*-22);width:calc(var(--u)*96);height:calc(var(--u)*96);border-radius:50%;background:radial-gradient(circle at 35% 30%,#cdb9ff,#8c5cff 60%,#6a3bea)}
-#s1 .band{position:absolute;left:0;right:0;top:calc(50% - var(--u)*40);height:calc(var(--u)*62);background:linear-gradient(90deg,rgba(255,255,255,.14),rgba(255,255,255,0))}
+/* Kilatan Berlian 4-Sisi (Lil Uzi Pink Diamond Glint) */
+.uzi-star{position:absolute;pointer-events:none;font-style:normal;color:#fff;text-shadow:0 0 calc(var(--u)*2) #ff4da6,0 0 calc(var(--u)*4) #5ce1e6;line-height:1}
+@keyframes starSpin{0%{transform:scale(.6) rotate(0deg)}50%{transform:scale(1.2) rotate(90deg)}100%{transform:scale(.6) rotate(180deg)}}
+
+/* ---------- S1 : I HIT IT / FAST + Lil Uzi Chromatic & Diamond Glint ---------- */
+#s1{background:linear-gradient(150deg,#4a1fd1 0%,#7a3ff2 55%,#a64dff 100%)}
+#s1 .orb{position:absolute;left:calc(var(--u)*-26);bottom:calc(var(--u)*-22);width:calc(var(--u)*96);height:calc(var(--u)*96);border-radius:50%;background:radial-gradient(circle at 35% 30%,#f5b8ff,#9a5cff 55%,#5b2be0)}
+#s1 .band{position:absolute;left:0;right:0;top:calc(50% - var(--u)*40);height:calc(var(--u)*62);background:linear-gradient(90deg,rgba(255,110,190,.2),rgba(255,255,255,0))}
 #s1 .slines{position:absolute;inset:0;opacity:0}
-#s1 .slines i{position:absolute;right:0;height:calc(var(--u)*.55);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.8));border-radius:99px}
-.bw{position:absolute;color:#fff;font-weight:900;line-height:.85;letter-spacing:-.045em;white-space:nowrap;text-shadow:0 calc(var(--u)*1.2) calc(var(--u)*3.5) rgba(35,10,110,.35)}
-#s1 .t1{left:calc(var(--u)*8);top:calc(50% - var(--u)*22);font-size:calc(var(--u)*21)}
-#s1 .t2{left:calc(var(--u)*3);top:calc(50% - var(--u)*26);font-size:calc(var(--u)*52);transform-origin:15% 50%}
+#s1 .slines i{position:absolute;right:0;height:calc(var(--u)*.55);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,210,245,.9));border-radius:99px}
+.bw{position:absolute;color:#fff;font-weight:900;line-height:.85;letter-spacing:-.045em;white-space:nowrap}
+#s1 .t1{left:calc(var(--u)*8);top:calc(50% - var(--u)*22);font-size:calc(var(--u)*21);text-shadow:calc(var(--u)*-.6) 0 0 rgba(255,65,165,.75),calc(var(--u)*.6) 0 0 rgba(65,235,255,.75),0 calc(var(--u)*1.2) calc(var(--u)*3.5) rgba(35,10,110,.35)}
+#s1 .t2{left:calc(var(--u)*3);top:calc(50% - var(--u)*26);font-size:calc(var(--u)*52);transform-origin:15% 50%;text-shadow:calc(var(--u)*-.9) 0 0 rgba(255,65,165,.85),calc(var(--u)*.9) 0 0 rgba(65,235,255,.85),0 calc(var(--u)*1.5) calc(var(--u)*4) rgba(30,5,90,.4)}
+#s1 .glint{right:calc(var(--u)*7);top:calc(50% - var(--u)*30);font-size:calc(var(--u)*11);opacity:0}
 
 /* ---------- S2 : Elastic Card Pop & Camera Shutter ---------- */
 #s2{background:#efeef5}
-#s2 .rays{position:absolute;left:50%;top:50%;width:calc(var(--u)*320);height:calc(var(--u)*320);margin:calc(var(--u)*-160) 0 0 calc(var(--u)*-160);background:repeating-conic-gradient(from 0deg,#fff 0 6deg,#9e96c7 6deg 12deg)}
-#s2 .fw{position:absolute;left:50%;top:50%;width:calc(var(--u)*92);height:calc(var(--u)*92);margin:calc(var(--u)*-46) 0 0 calc(var(--u)*-46);border-radius:calc(var(--u)*5);padding:calc(var(--u)*1.5);background:#fff;box-shadow:0 calc(var(--u)*3) calc(var(--u)*8) rgba(30,20,70,.28);will-change:transform,opacity}
+#s2 .rays{position:absolute;left:50%;top:50%;width:calc(var(--u)*320);height:calc(var(--u)*320);margin:calc(var(--u)*-160) 0 0 calc(var(--u)*-160);background:repeating-conic-gradient(from 0deg,#fff 0 6deg,#a895d1 6deg 12deg)}
+#s2 .fw{position:absolute;left:50%;top:50%;width:calc(var(--u)*92);height:calc(var(--u)*92);margin:calc(var(--u)*-46) 0 0 calc(var(--u)*-46);border-radius:calc(var(--u)*5);padding:calc(var(--u)*1.5);background:#fff;box-shadow:0 calc(var(--u)*3) calc(var(--u)*8) rgba(45,15,90,.28);will-change:transform,opacity}
 #s2 .fw .inner{width:100%;height:100%;border-radius:calc(var(--u)*3.8);overflow:hidden;background:#18181c}
 #s2 .fw img{object-fit:cover;object-position:45% 42%}
 #s2 .shutter{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
@@ -94,60 +99,74 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
 .eq{display:flex;align-items:flex-end;gap:calc(var(--u)*.6);height:calc(var(--u)*3.2)}
 .eq i{display:block;width:calc(var(--u)*.65);height:40%;background:#ff8a00;border-radius:99px}
 
-/* ---------- S6 : warm dreamy bokeh + karaoke lyric spotlight ---------- */
+/* ---------- S6 : warm dreamy bokeh + Lil Uzi Pink Diamond Lyrics ---------- */
 #s6{background:#f5efe8}
 #s6 .bk{position:absolute;inset:0;will-change:transform}
 .bk i{position:absolute;display:block;border-radius:50%}
 .bk .or{left:calc(var(--u)*-10);top:calc(var(--u)*-34);width:calc(var(--u)*120);height:calc(var(--u)*100);background:radial-gradient(ellipse at 50% 45%,#ffa21c 0,#ffb94a 38%,rgba(255,200,120,0) 72%)}
 .bk .w1{left:calc(var(--u)*-26);top:calc(50% - var(--u)*32);width:calc(var(--u)*82);height:calc(var(--u)*82);background:radial-gradient(circle,#ffbe55 0,rgba(255,190,85,0) 70%)}
-.bk .w2{left:calc(var(--u)*48);top:calc(50% - var(--u)*38);width:calc(var(--u)*82);height:calc(var(--u)*82);background:radial-gradient(circle,#ff9b7a 0,rgba(255,155,122,0) 70%)}
+.bk .w2{left:calc(var(--u)*48);top:calc(50% - var(--u)*38);width:calc(var(--u)*82);height:calc(var(--u)*82);background:radial-gradient(circle,#ff85c0 0,rgba(255,133,192,0) 70%)}
 .bk .dot{left:calc(var(--u)*72);top:calc(50% - var(--u)*14);width:calc(var(--u)*30);height:calc(var(--u)*30);background:radial-gradient(circle,#ff9a1a 0,#ff9a1a 38%,rgba(255,154,26,0) 72%)}
-.bk .pk1{left:calc(var(--u)*-10);bottom:calc(var(--u)*-14);width:calc(var(--u)*80);height:calc(var(--u)*70);background:radial-gradient(circle,#ff8fa6 0,rgba(255,143,166,0) 70%)}
-.bk .pk2{right:calc(var(--u)*-16);bottom:calc(var(--u)*-6);width:calc(var(--u)*80);height:calc(var(--u)*70);background:radial-gradient(circle,#ffa38f 0,rgba(255,163,143,0) 70%)}
+.bk .pk1{left:calc(var(--u)*-10);bottom:calc(var(--u)*-14);width:calc(var(--u)*80);height:calc(var(--u)*70);background:radial-gradient(circle,#ff70b8 0,rgba(255,112,184,0) 70%)}
+.bk .pk2{right:calc(var(--u)*-16);bottom:calc(var(--u)*-6);width:calc(var(--u)*80);height:calc(var(--u)*70);background:radial-gradient(circle,#b88cff 0,rgba(184,140,255,0) 70%)}
 .bk .gy{left:calc(var(--u)*20);bottom:calc(var(--u)*18);width:calc(var(--u)*44);height:calc(var(--u)*36);background:radial-gradient(circle,rgba(140,125,120,.45) 0,rgba(140,125,120,0) 70%)}
 #s6 .sparkles{position:absolute;inset:0;pointer-events:none}
-#s6 .sparkles span{position:absolute;border-radius:50%;background:radial-gradient(circle,#fff 0,rgba(255,255,255,0) 70%);box-shadow:0 0 calc(var(--u)*2) rgba(255,255,255,.8)}
-.ly{position:absolute;left:calc(var(--u)*7);top:calc(50% - var(--u)*11);font-size:calc(var(--u)*10.2);font-weight:700;color:#fff;letter-spacing:-.025em;line-height:1.16;white-space:nowrap;opacity:0}
+#s6 .sparkles span{position:absolute;color:#fff;font-size:calc(var(--u)*3.5);text-shadow:0 0 calc(var(--u)*1.8) #ff4da6,0 0 calc(var(--u)*3) #5ce1e6;line-height:1}
+.ly{position:absolute;left:calc(var(--u)*7);top:calc(50% - var(--u)*11);font-size:calc(var(--u)*10.2);font-weight:800;color:#fff;letter-spacing:-.025em;line-height:1.16;white-space:nowrap;opacity:0}
 .ly .w{display:inline-block;margin-right:.26em;opacity:0;transform-origin:50% 65%;will-change:transform,opacity,filter}
-#s6 .sweep{position:absolute;left:0;top:calc(50% - var(--u)*1);width:100%;height:calc(var(--u)*5);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95) 40%,rgba(255,255,255,0));opacity:0}
-#s6 .bigw{position:absolute;left:0;right:0;top:calc(50% - var(--u)*14);text-align:center;font-size:calc(var(--u)*22.5);font-weight:900;letter-spacing:-.045em;line-height:1;white-space:nowrap;opacity:0;background:linear-gradient(105deg,#ffffff 15%,#fff2c2 45%,#ffffff 65%,#ffd88a 90%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 calc(var(--u)*1.2) calc(var(--u)*3.5) rgba(160,70,5,.42));animation:shimmerTxt 2.2s linear infinite}
+#s6 .sweep{position:absolute;left:0;top:calc(50% - var(--u)*1);width:100%;height:calc(var(--u)*5);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,180,230,.95) 35%,rgba(255,255,255,1) 50%,rgba(140,240,255,.95) 65%,rgba(255,255,255,0));opacity:0}
+#s6 .bigWrap{position:absolute;left:0;right:0;top:calc(50% - var(--u)*14);text-align:center;opacity:0;pointer-events:none}
+#s6 .bigw{display:inline-block;font-size:calc(var(--u)*22.5);font-weight:900;letter-spacing:-.045em;line-height:1;white-space:nowrap;background:linear-gradient(105deg,#ffffff 12%,#ff8ad8 38%,#ffffff 55%,#7ceeff 82%,#ffffff 96%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 calc(var(--u)*1.2) calc(var(--u)*3.5) rgba(145,35,120,.48));animation:shimmerTxt 2s linear infinite}
+#s6 .bigWrap .stL{left:calc(var(--u)*5);top:calc(var(--u)*-4);font-size:calc(var(--u)*6.5);animation:starSpin 2.4s ease-in-out infinite}
+#s6 .bigWrap .stR{right:calc(var(--u)*5);bottom:calc(var(--u)*-3);font-size:calc(var(--u)*7.5);animation:starSpin 2.4s ease-in-out infinite reverse}
 @keyframes shimmerTxt{0%{background-position:120% 0}100%{background-position:-100% 0}}
 
-/* ---------- S7 : 3 kartu ponsel (3D layered, anti-tembus) + stamp label ---------- */
-#s7{background:radial-gradient(circle at 50% 45%,#fff 0,#efefef 100%);perspective:calc(var(--u)*240)}
-#s7 .zoomer{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
-.ph{position:absolute;left:calc(var(--u)*-15);top:calc(var(--u)*-27);width:calc(var(--u)*30);height:calc(var(--u)*54);border-radius:calc(var(--u)*4);background:#111;padding:calc(var(--u)*.9);box-shadow:0 calc(var(--u)*2.5) calc(var(--u)*6) rgba(0,0,0,.28);backface-visibility:hidden}
-#ph0,#ph2{z-index:1}
-#ph1{z-index:3;box-shadow:0 calc(var(--u)*3.2) calc(var(--u)*7.5) rgba(0,0,0,.38)}
+/* ---------- S7 : 3 kartu ponsel (2D Cosmic Levitation Fan-Out, 100% bebas tembus) ---------- */
+#s7{background:radial-gradient(circle at 50% 45%,#ffffff 0%,#f2ecff 58%,#e7e2f5 100%)}
+#s7 .aura{position:absolute;left:50%;top:50%;width:calc(var(--u)*110);height:calc(var(--u)*110);margin:calc(var(--u)*-55) 0 0 calc(var(--u)*-55);border-radius:50%;background:radial-gradient(circle,rgba(255,77,166,.22) 0,rgba(122,75,247,.16) 45%,rgba(255,255,255,0) 72%);pointer-events:none}
+#s7 .zoomer{position:absolute;left:50%;top:50%;width:0;height:0}
+.ph{position:absolute;left:calc(var(--u)*-15);top:calc(var(--u)*-27);width:calc(var(--u)*30);height:calc(var(--u)*54);border-radius:calc(var(--u)*4);background:#111;padding:calc(var(--u)*.9);box-shadow:0 calc(var(--u)*2.5) calc(var(--u)*6) rgba(25,10,55,.28);will-change:transform,opacity}
+#ph0{z-index:1}
+#ph2{z-index:2}
+#ph1{z-index:3;box-shadow:0 calc(var(--u)*3.5) calc(var(--u)*8.5) rgba(35,10,75,.42)}
 .ph .in{width:100%;height:100%;border-radius:calc(var(--u)*3.2);overflow:hidden;position:relative}
 .ph .in .av{position:absolute;inset:0;width:100%;height:100%}
-.lab{position:absolute;background:#e63946;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;padding:calc(var(--u)*1) calc(var(--u)*2);white-space:nowrap;transform-origin:50% 50%;opacity:0;z-index:6;box-shadow:0 calc(var(--u)*.8) calc(var(--u)*2) rgba(230,57,70,.35)}
+
+/* Stiker Lirik Lil Uzi (Eternal Atake / Luv Is Rage 2 Badge) */
+.lab{position:absolute;background:linear-gradient(135deg,#ff2a85 0%,#8b3dff 100%);border:calc(var(--u)*.35) solid rgba(255,255,255,.88);color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;padding:calc(var(--u)*1.1) calc(var(--u)*2.2);white-space:nowrap;transform-origin:50% 50%;opacity:0;z-index:6;box-shadow:0 calc(var(--u)*.9) calc(var(--u)*2.6) rgba(180,30,120,.45),0 0 calc(var(--u)*1.6) rgba(92,225,230,.35)}
+.lab::after{content:"✦";margin-left:.28em;font-size:.72em;color:#aef6ff;vertical-align:middle}
 #s7 .wo{position:absolute;inset:0;background:#fff;opacity:0;z-index:10}
 
 /* ---------- S8 : kartu jatuh ---------- */
 #s8{background:#fff}
 #s8 .fall{position:absolute;left:calc(50% - var(--u)*11);top:calc(50% - var(--u)*20);width:calc(var(--u)*22);height:calc(var(--u)*40);border-radius:calc(var(--u)*3);background:#1b1b1f;box-shadow:0 calc(var(--u)*2) calc(var(--u)*5) rgba(0,0,0,.25)}
 
-/* ---------- S9 / S10 : grayscale + film grain + dreamy bloom ---------- */
+/* ---------- S9 / S10 : grayscale + film grain + Lil Uzi Rockstar & Diamond Lyrics ---------- */
 #s9,#s10{background:linear-gradient(180deg,#f2f2f4,#d8d8dc)}
 .pp{position:absolute;filter:grayscale(1) contrast(.98) brightness(1.06)}
 #s9 .pp{left:calc(var(--u)*-8);bottom:0;width:calc(var(--u)*100);height:calc(var(--u)*130)}
 #s10 .pp{left:calc(var(--u)*-17);bottom:calc(var(--u)*-8);width:calc(var(--u)*134);height:calc(var(--u)*170)}
 .haze{position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.7),rgba(255,255,255,0) 60%)}
 .grain{position:absolute;inset:-20%;background-image:radial-gradient(rgba(0,0,0,.09) 1px,transparent 0);background-size:calc(var(--u)*1.1) calc(var(--u)*1.1);opacity:.55;pointer-events:none}
-.sticker{position:absolute;color:#fff;font-weight:900;letter-spacing:-.04em;line-height:.88;text-shadow:0 0 calc(var(--u)*.4) #555,calc(var(--u)*.7) calc(var(--u)*.7) 0 #8c8c90}
-#s9 .tx{right:calc(var(--u)*4);bottom:calc(var(--u)*32);text-align:right;font-size:calc(var(--u)*16)}
-#s10 .bloom{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.85),rgba(255,255,255,0) 65%);opacity:0;pointer-events:none}
-#s10 .fin{left:calc(var(--u)*5);bottom:calc(var(--u)*22);font-size:calc(var(--u)*13);font-style:italic;color:#111;transform:rotate(-3deg);transform-origin:0 100%;-webkit-text-stroke:calc(var(--u)*1.1) #fff;paint-order:stroke fill;text-shadow:none}
-#s10 .finbig{left:0;right:0;bottom:calc(var(--u)*5);text-align:center;font-size:calc(var(--u)*24);color:#dcdcdc;text-shadow:calc(var(--u)*-.5) calc(var(--u)*-.5) 0 #fff,calc(var(--u)*.8) calc(var(--u)*.8) calc(var(--u)*1) rgba(0,0,0,.28);opacity:0}
+.sticker{position:absolute;color:#fff;font-weight:900;letter-spacing:-.04em;line-height:.88}
+
+/* S9: THESE GUYS MAD — Rockstar Chromatic Glitch Split */
+#s9 .tx{right:calc(var(--u)*4);bottom:calc(var(--u)*32);text-align:right;font-size:calc(var(--u)*16);text-shadow:calc(var(--u)*-.8) 0 0 #ff2a85,calc(var(--u)*.8) 0 0 #00e5ff,0 calc(var(--u)*.8) calc(var(--u)*2) rgba(0,0,0,.45)}
+
+/* S10: I GOT ALL THE DOUGH — Pink & Ice Diamond Shine */
+#s10 .bloom{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,225,245,.88),rgba(255,255,255,0) 65%);opacity:0;pointer-events:none}
+#s10 .fin{left:calc(var(--u)*5);bottom:calc(var(--u)*22);font-size:calc(var(--u)*13);font-style:italic;color:#111;transform:rotate(-3deg);transform-origin:0 100%;-webkit-text-stroke:calc(var(--u)*1.1) #fff;paint-order:stroke fill;filter:drop-shadow(calc(var(--u)*-.4) 0 0 rgba(255,42,133,.55)) drop-shadow(calc(var(--u)*.4) 0 0 rgba(0,229,255,.55))}
+#s10 .finbig{left:0;right:0;bottom:calc(var(--u)*5);text-align:center;font-size:calc(var(--u)*24);background:linear-gradient(110deg,#ffffff 15%,#ffb3dc 38%,#ffffff 52%,#9ef3ff 75%,#ffffff 92%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:calc(var(--u)*.45) rgba(255,255,255,.85);filter:drop-shadow(0 calc(var(--u)*1) calc(var(--u)*2.4) rgba(255,42,133,.45)) drop-shadow(0 calc(var(--u)*.5) calc(var(--u)*1.2) rgba(0,0,0,.35));opacity:0;animation:shimmerTxt 1.8s linear infinite}
+#s10 .d1{left:calc(var(--u)*8);bottom:calc(var(--u)*19);font-size:calc(var(--u)*7);opacity:0}
+#s10 .d2{right:calc(var(--u)*8);bottom:calc(var(--u)*18);font-size:calc(var(--u)*8.5);opacity:0}
 
 /* ---------- S11 : akhir (hitam) + interactive glow + tombol ---------- */
 #s11{background:#000}
-#s11 .glow{position:absolute;left:50%;top:50%;width:calc(var(--u)*115);height:calc(var(--u)*115);margin:calc(var(--u)*-57.5) 0 0 calc(var(--u)*-57.5);border-radius:50%;background:radial-gradient(circle,rgba(255,155,40,.32) 0,rgba(130,80,255,.16) 45%,rgba(0,0,0,0) 72%);pointer-events:none;transition:transform .18s ease-out}
+#s11 .glow{position:absolute;left:50%;top:50%;width:calc(var(--u)*115);height:calc(var(--u)*115);margin:calc(var(--u)*-57.5) 0 0 calc(var(--u)*-57.5);border-radius:50%;background:radial-gradient(circle,rgba(255,65,165,.34) 0,rgba(122,75,247,.22) 45%,rgba(0,0,0,0) 72%);pointer-events:none;transition:transform .18s ease-out}
 #s11 .end{position:absolute;left:0;right:0;bottom:0;padding:0 calc(var(--u)*6) calc(env(safe-area-inset-bottom) + var(--u)*12);display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*3.5);opacity:0}
 #s11 .end>*{pointer-events:inherit}
 .btn{appearance:none;-webkit-appearance:none;border:0;cursor:pointer;text-decoration:none;font:inherit;font-weight:700;font-size:calc(var(--u)*4);color:#fff;padding:calc(var(--u)*3.4) calc(var(--u)*8);border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);min-width:calc(var(--u)*48);text-align:center}
-.btn.main{background:#fff;color:#000;border-color:#fff;box-shadow:0 0 calc(var(--u)*5) rgba(255,255,255,.28)}
+.btn.main{background:#fff;color:#000;border-color:#fff;box-shadow:0 0 calc(var(--u)*5) rgba(255,110,190,.42)}
 .btn:active{transform:scale(.97)}
 
 /* ikon pause & tombol tap mulai suara */
@@ -172,6 +191,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
       <div class="slines" id="slines"></div>
       <div class="bw t1 hw" id="t1"></div>
       <div class="bw t2 hw" id="t2"></div>
+      <i class="uzi-star glint" id="s1Glint">✦</i>
     </section>
 
     <!-- S2 : Elastic Card Pop & Camera Shutter -->
@@ -213,7 +233,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
       <div class="sparkles" id="sparkles"></div>
       <div id="lyrics"></div>
       <div class="sweep" id="sweep"></div>
-      <div class="bigw" id="bigw"></div>
+      <div class="bigWrap" id="bigWrap">
+        <i class="uzi-star stL">✦</i>
+        <div class="bigw" id="bigw"></div>
+        <i class="uzi-star stR">✦</i>
+      </div>
     </section>
 
     <!-- S5 (tanpa spiral biru, foto diperbesar) -->
@@ -232,8 +256,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
       </div>
     </section>
 
-    <!-- S7 : 3 Kartu Ponsel -->
+    <!-- S7 : 3 Kartu Ponsel (2D Cosmic Levitation Fan-Out, anti-bug) -->
     <section class="scene" id="s7">
+      <div class="aura" id="s7Aura"></div>
       <div class="zoomer" id="zoomer">
         <div class="ph" id="ph0"><div class="in" style="background:linear-gradient(160deg,#cfd6c7,#8f9a86)"><div class="av" data-av="hp1"></div></div></div>
         <div class="ph" id="ph2"><div class="in" style="background:linear-gradient(160deg,#efe1cd,#c9b08a)"><div class="av" data-av="hp3"></div></div></div>
@@ -262,6 +287,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Ne
       <div class="haze"></div>
       <div class="bloom" id="bloom10"></div>
       <div class="sticker fin hw" id="fin"></div>
+      <i class="uzi-star d1" id="d10a">✦</i>
+      <i class="uzi-star d2" id="d10b">✦</i>
       <div class="sticker finbig hw" id="finbig"></div>
     </section>
 
@@ -443,15 +470,14 @@ const FHEARTS=[];
   }
 })();
 
-/* partikel dreamy S6 */
+/* partikel berlian kosmik S6 (Lil Uzi Diamond Dust) */
 const SPARKS=[];
 (function(){
   const host=$("#sparkles");
-  for(let i=0;i<16;i++){
+  for(let i=0;i<18;i++){
     const sp=document.createElement("span");
-    const sz=1.4+rnd(i)*2.6;
-    sp.style.width=`calc(var(--u)*${sz.toFixed(1)})`;
-    sp.style.height=`calc(var(--u)*${sz.toFixed(1)})`;
+    sp.textContent=i%3===0?"✦":"•";
+    sp.style.fontSize=`calc(var(--u)*${(1.8+rnd(i)*2.4).toFixed(1)})`;
     sp.style.left=(rnd(i+20)*94)+"%";
     sp.style.top=(rnd(i+40)*94)+"%";
     host.appendChild(sp);
@@ -490,13 +516,13 @@ BLOCKS.forEach(bl=>{
   $("#lyrics").appendChild(el);bl.el=el;
 });
 
-/* label merah S7 */
+/* label lirik S7 */
 const LAB=[
- {el:$("#la1"),txt:CFG.STICKER_TOP[0],fs:3.8,x:50,y:-46,rot:-2,a:9.55,b:10.22},
- {el:$("#la2"),txt:CFG.STICKER_TOP[1],fs:6.6,x:56,y:-40,rot:-1,a:9.65,b:10.22},
- {el:$("#la3"),txt:CFG.STICKER_TOP[2],fs:5.4,x:48,y:-30,rot:-2,a:9.75,b:10.22},
+ {el:$("#la1"),txt:CFG.STICKER_TOP[0],fs:3.8,x:48,y:-46,rot:-2,a:9.55,b:10.22},
+ {el:$("#la2"),txt:CFG.STICKER_TOP[1],fs:6.6,x:54,y:-40,rot:-1,a:9.65,b:10.22},
+ {el:$("#la3"),txt:CFG.STICKER_TOP[2],fs:5.2,x:45,y:-30,rot:-2,a:9.75,b:10.22},
  {el:$("#la4"),txt:CFG.STICKER_LEFT,fs:9.5,x:6,y:34,rot:-2,a:9.92,b:10.22},
- {el:$("#lb1"),txt:CFG.STICKER_NOW,fs:8.5,x:54,y:-52,rot:-2,a:10.42,b:99},
+ {el:$("#lb1"),txt:CFG.STICKER_NOW,fs:8.5,x:50,y:-52,rot:-2,a:10.42,b:99},
  {el:$("#lb2"),txt:CFG.STICKER_GO[0],fs:13.5,x:3,y:30,rot:-2,a:10.55,b:99},
  {el:$("#lb3"),txt:CFG.STICKER_GO[1],fs:13.5,x:3,y:44,rot:-2,a:10.65,b:99}
 ];
@@ -637,12 +663,16 @@ function updateBeatFX(T){
 /* ---------- SCENE FUNCTIONS ---------- */
 function s1(t){
   const a=eo(prog(t,0,.4)),out=eio(prog(t,.55,.95)),b=eoq(prog(t,.6,1.12));
-  const t1=$("#t1"),t2=$("#t2"),sl=$("#slines");
+  const t1=$("#t1"),t2=$("#t2"),sl=$("#slines"),gl=$("#s1Glint");
   t1.style.transform=`translate3d(${(tiltX*3)*U}px,${((1-a)*20-out*26+tiltY*2)*U}px,0)`;t1.style.opacity=a*(1-out);
   const ls=lerp(0.18,-0.045,eo(prog(t,.62,1.02)));
   t2.style.letterSpacing=ls.toFixed(3)+"em";
   t2.style.transform=`translate3d(${((1-b)*105+tiltX*4)*U}px,${(tiltY*2.5)*U}px,0) scale(${1+prog(t,1.1,1.55)*.12})`;
   t2.style.opacity=b>0?1:0;
+  /* Pink Diamond Glint menyala saat FAST mengunci ketukan */
+  const gp=Math.sin(Math.PI*prog(t,.85,1.45));
+  gl.style.opacity=gp>0?gp:0;
+  gl.style.transform=`scale(${(0.5+gp*0.9).toFixed(2)}) rotate(${(t*180).toFixed(0)}deg)`;
   const sp=prog(t,.62,1.35);
   sl.style.opacity=Math.sin(Math.PI*sp)*0.85;
   sl.style.transform=`translateX(${lerp(20,-45,sp)}%)`;
@@ -739,8 +769,8 @@ function s6(t,T){
   SPARKS.forEach(s=>{
     const dy=-((t*s.sp*18)%40);
     const op=0.35+0.55*Math.sin(T*3.2+s.ph);
-    s.el.style.transform=`translate3d(${(Math.sin(T*1.5+s.ph)*2+tiltX*6)*U}px,${(dy+tiltY*6)*U}px,0)`;
-    s.el.style.opacity=clamp(op,0,0.9);
+    s.el.style.transform=`translate3d(${(Math.sin(T*1.5+s.ph)*2+tiltX*6)*U}px,${(dy+tiltY*6)*U}px,0) rotate(${(T*90+s.ph*40).toFixed(0)}deg)`;
+    s.el.style.opacity=clamp(op,0,0.95);
   });
   let wordPtr=0;
   BLOCKS.forEach(bl=>{
@@ -756,38 +786,47 @@ function s6(t,T){
 
       const wStart=bl.a+i*span;
       const p=eo(prog(T,wStart,wStart+.32));
+      /* Lil Uzi Pink-Cyan Diamond Karaoke Spotlight */
       const active=Math.sin(Math.PI*clamp((T-wStart)/(span*1.45)));
-      const bassLift=active>0?active*bassLevel*0.14:0;
-      const sc=1+active*0.09+bassLift+rip*0.24;
-      const dimOp=T>(wStart+span*1.35)?0.72:1;
+      const bassLift=active>0?active*bassLevel*0.15:0;
+      const sc=1+active*0.1+bassLift+rip*0.24;
+      const dimOp=T>(wStart+span*1.35)?0.74:1;
 
       const bl2=(1-p)*8+out*10;
       w.style.opacity=p*(1-out)*dimOp;
-      w.style.transform=`translate3d(0,${((1-p)*1.6-active*0.45-rip*0.8)*U}px,0) scale(${sc.toFixed(3)})`;
-      w.style.color=(active>0.35||rip>0.2)?"#fff5d6":"#ffffff";
-      w.style.textShadow=`0 0 ${(1.8+active*3.2+rip*4)*U}px rgba(255,190,65,${(0.32+active*0.62+rip*0.4).toFixed(2)})`;
+      w.style.transform=`translate3d(0,${((1-p)*1.6-active*0.5-rip*0.8)*U}px,0) scale(${sc.toFixed(3)})`;
+      w.style.color=(active>0.35||rip>0.2)?"#ffe6f4":"#ffffff";
+      w.style.textShadow=(active>0.25||rip>0.2)
+        ? `0 0 ${(2+active*3.6+rip*4)*U}px rgba(255,65,165,${(0.45+active*0.55).toFixed(2)}), 0 0 ${(3.2+active*4.2)*U}px rgba(92,225,230,${(0.35+active*0.5).toFixed(2)})`
+        : `0 0 ${2*U}px rgba(140,55,110,.45)`;
       w.style.filter=bl2>.2?`blur(${bl2.toFixed(1)}px)`:"none";
     });
   });
   const sw=prog(T,8.4,8.8),sE=$("#sweep");
   sE.style.opacity=sw>0&&sw<1?1:0;sE.style.transform=`translateX(${lerp(-100,100,eio(sw))}%)`;
-  const bp=eo(prog(T,8.8,9.15)),big=$("#bigw");
+  const bp=eo(prog(T,8.8,9.15)),bw=$("#bigWrap");
   const bigPulse=1+bassLevel*0.06+prog(T,9.15,9.4)*.1;
-  big.style.opacity=bp;
-  big.style.transform=`translate(${(tiltX*-3)*U}px,${(tiltY*-2)*U}px) scale(${(lerp(1.38,1,bp)*bigPulse).toFixed(3)})`;
-  big.style.filter=bp<1?`blur(${((1-bp)*10).toFixed(1)}px) drop-shadow(0 ${1.2*U}px ${3.5*U}px rgba(160,70,5,.42))`:"";
+  bw.style.opacity=bp;
+  bw.style.transform=`translate(${(tiltX*-3)*U}px,${(tiltY*-2)*U}px) scale(${(lerp(1.38,1,bp)*bigPulse).toFixed(3)})`;
+  bw.style.filter=bp<1?`blur(${((1-bp)*10).toFixed(1)}px)`:"none";
 }
-/* S7: 3 Kartu Ponsel dengan jarak Z bertingkat agar kartu tengah tidak pernah tertembus */
+/* S7: 3 Kartu Ponsel (Efek baru: 2D Cosmic Levitation Fan-Out — 100% anti-tembus) */
 function s7(t,T){
   const z=eio(prog(T,10.22,10.85));
-  [["#ph0",-21,4,-9,0,18,-22],["#ph2",21,6,9,.1,-18,-22],["#ph1",0,0,0,.2,0,34]].forEach(([id,x,y,r,d,ry,tz],i)=>{
-    const p=eb(prog(T,9.3+d,9.3+d+.48)),el=$(id);
-    const curRy=ry*(1-z*0.7)+tiltX*10;
-    const curRx=-tiltY*8;
-    el.style.transform=`translate3d(${(x+tiltX*2.5)*U}px,${(y+(1-p)*80+tiltY*2.5)*U}px,${tz}px) rotateX(${curRx.toFixed(1)}deg) rotateY(${curRy.toFixed(1)}deg) rotate(${r*(0.4+.6*p)}deg) scale(${i===2?1.08:1})`;
+  const fan=eo(prog(T,9.42,9.85))*(1-z*0.35);
+  $("#s7Aura").style.transform=`translate(${(tiltX*4)*U}px,${(tiltY*4)*U}px) scale(${(1+bassLevel*0.18).toFixed(3)})`;
+
+  /* Kartu muncul dari tengah lalu mekar ke kiri & kanan + melayang bergelombang */
+  [["#ph0",-21,-9,0,0.0],["#ph2",21,9,0.1,2.1],["#ph1",0,0,0.18,4.2]].forEach(([id,targetX,targetRot,d,phase],i)=>{
+    const p=eb(prog(T,9.3+d,9.3+d+.44)),el=$(id);
+    const curX=targetX*fan + tiltX*(i===2?3.2:1.6);
+    const floatY=Math.sin(T*4.6+phase)*1.1*fan + tiltY*(i===2?3.2:1.6);
+    const curRot=targetRot*fan + Math.cos(T*3.8+phase)*1.2*fan;
+    const sc=(i===2?1.08:0.96)*(0.88+0.12*p);
+    el.style.transform=`translate3d(${(curX*U).toFixed(1)}px,${(((1-p)*78+floatY)*U).toFixed(1)}px,0) rotate(${curRot.toFixed(2)}deg) scale(${sc.toFixed(3)})`;
     el.style.opacity=clamp(p*4);
   });
-  $("#zoomer").style.transform=`scale(${lerp(1.45,3.1,z)})`;
+  $("#zoomer").style.transform=`scale(${lerp(1.42,3.1,z)})`;
   LAB.forEach(l=>{
     const raw=prog(T,l.a,l.a+.22);
     const p=eb(raw);
@@ -807,8 +846,10 @@ function s8(t){
   f.style.opacity=1-prog(t,.32,.52);f.style.filter=`blur(${(p*4).toFixed(1)}px)`;
 }
 function s9(t){
-  const a=eo(prog(t,.08,.48)),tx=$("#tx9");
-  tx.style.transform=`translate3d(${((1-a)*60+tiltX*-2)*U}px,${(tiltY*-2)*U}px,0)`;tx.style.opacity=a;tx.style.filter=a<1?`blur(${((1-a)*8).toFixed(1)}px)`:"none";
+  const raw=prog(t,.08,.48),a=eo(raw),tx=$("#tx9");
+  const glitch=raw>0.55 && raw<0.95 ? Math.sin(t*75)*1.4*U*(1-raw) : 0;
+  tx.style.transform=`translate3d(${(((1-a)*60+tiltX*-2)*U+glitch).toFixed(1)}px,${(tiltY*-2)*U}px,0)`;
+  tx.style.opacity=a;tx.style.filter=a<1?`blur(${((1-a)*8).toFixed(1)}px)`:"none";
   $("#pp9").style.transform=`translate(${(tiltX*2)*U}px,${(tiltY*2)*U}px) scale(${1+t*.05})`;
   const k=Math.floor(t*18);
   $("#gr9").style.transform=`translate(${(rnd(k)-.5)*2*U}px,${(rnd(k+3)-.5)*2*U}px)`;
@@ -827,6 +868,13 @@ function s10(t,T){
   const b=$("#finbig");
   b.style.opacity=clamp(rawB*4);
   b.style.transform=`rotate(${shakeB.toFixed(2)}deg) scale(${lerp(1.36,1,bp).toFixed(3)})`;
+  /* Kilau berlian di sekitar DOUGH */
+  const dp=prog(T,12.92,13.38);
+  const d1=$("#d10a"),d2=$("#d10b");
+  d1.style.opacity=dp>0?Math.min(1,dp*3):0;
+  d1.style.transform=`scale(${(0.6+Math.sin(T*9)*0.35).toFixed(2)}) rotate(${(T*140).toFixed(0)}deg)`;
+  d2.style.opacity=dp>0?Math.min(1,dp*3):0;
+  d2.style.transform=`scale(${(0.7+Math.cos(T*9)*0.35).toFixed(2)}) rotate(${(-T*140).toFixed(0)}deg)`;
 }
 let glowX=0,glowY=22;
 function s11(t,T){
